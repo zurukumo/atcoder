@@ -1,4 +1,4 @@
-# O(√N)
+# 素因数分解
 def prime_factor(n) :
     ret = dict()
     if n % 2 == 0 :

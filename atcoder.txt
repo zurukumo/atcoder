@@ -4,7 +4,7 @@ ABC003D 包所原理・パスカルの三角形
 ABC004C 思考問題
 ABC004D 動的計画法
 ABC005D 動的計画法・面積・包除原理
-ABC006D LIS・二部探索
+ABC006D LIS・二分探索
 ABC007D 思考問題・進数変換
 ABC008C 思考問題
 ABC008D 動的計画法
@@ -22,17 +22,17 @@ ABC017C いもす法
 ABC017D* 動的計画法・尺取り法
 ABC018D 全探索
 ABC019D 木の直径・Double Sweep
-ABC020C 二部探索・シミュレーション
+ABC020C 二分探索・シミュレーション
 ABC020D LCM・GCD・思考問題
 ABC022D 思考問題
-ABC023D 二部探索・シミュレーション
+ABC023D 二分探索・シミュレーション
 ABC025D 動的計画法
-ABC026D 二部探索
+ABC026D 二分探索
 ABC027C シミュレーション
 ABC027D 思考問題
 ABC032D ナップザック問題
 ABC033D 角度ソート・尺取法・浮動小数点誤差
-ABC034D 二部探索・シミュレーション
+ABC034D 二分探索・シミュレーション
 ABC035D 各点からある点へのダイクストラ
 ABC038D 2値LIS
 ABC040D UnionFind木・先読み
@@ -55,7 +55,7 @@ ABC101D 思考問題
 ABC102C 絶対値の最小化
 ABC102D 思考問題
 ABC103D 区間スケジューリング問題（解けたけど別解に感心）
-
+ABC107D BinaryIndexedTree・転倒数・二分探索
 ABC125C GCDの結合則
 ABC126E 連結成分数・Union-Find木
 ABC126F 思考問題
@@ -76,7 +76,7 @@ ABC134F 動的計画法(箱根駅伝DP)
 ABC135E *思考問題
 ABC135F ローリングハッシュ
 ABC136E *思考問題
-ABC136F Bit-Indexed-Tree
+ABC136F BinaryIndexedTree
 ABC137D 思考問題
 ABC137E ベルマンフォード
 ABC137F フェルマーの小定理・ラグランジュの補完定理
@@ -85,8 +85,9 @@ ABC139F 角度ソート
 ABC140F 思考問題
 ABC141F xorの掃き出し法・思考問題
 ABC142F すぐにわかったが実装にえげつない時間がかかったので注意
+ABC143F 思考問題
 
-AGC034C 二部探索・シミュレーション
+AGC034C 二分探索・シミュレーション
 AGC034D 最小費用流
 AGC034E 木DP
 AGC034F アダマール変換

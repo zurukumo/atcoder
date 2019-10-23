@@ -1,21 +1,10 @@
-N, M = map(int, input().split())
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**5)
 
-ret = [float('inf')] * (1 << N)
-for _ in range(M) :
-    a, b = map(int, input().split())
-    c = 0
-    for i in input().split() :
-        c |= 1 << (int(i) - 1)
-    ret[c] = min(ret[c], a)
-
-for i in range(1 << N) :
-    if ret[i] == float('inf') :
-        continue
-    for j in range(1 << N) :
-        k = i | j
-        ret[k] = min(ret[k], ret[i] + ret[j])
-
-if ret[-1] == float('inf') :
-    print(-1)
-else :
-    print(ret[-1])
+N = int(input())
+S = input()
+N, K = map(int, input().split())
+xy = [[int(i) for i in input().split()] for _ in range(N)]
+x = [int(i) for i in input().split()]
+A = [int(input()) for _ in range(N)]
