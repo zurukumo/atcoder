@@ -1,10 +1,10 @@
-import sys
-input = sys.stdin.readline
-sys.setrecursionlimit(10**5)
+from math import log
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-A = [int(input()) for _ in range(N)]
+P = float(input())
+x = 1.5 * (log(log(2) * P / 1.5)) / log(2)
+y = x + P / pow(2, x / 1.5)
+
+if x > 0 :
+    print(y)
+else :
+    print(P)
