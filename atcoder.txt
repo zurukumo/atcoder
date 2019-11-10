@@ -1,3 +1,4 @@
+=== ABC ===
 ABC001D いもす法
 ABC002D 最大クリーク問題・NP困難
 ABC003D 包所原理・パスカルの三角形
@@ -89,8 +90,10 @@ ABC142F すぐにわかったが実装にえげつない時間がかかったの
 ABC143F 思考問題
 ABC144F 動的計画法
 
+=== ARC ===
 ARC054B 三分探索
 
+=== AGC ===
 AGC034C 二分探索・シミュレーション
 AGC034D 最小費用流
 AGC034E 木DP
@@ -102,14 +105,19 @@ AGC035E* 動的計画法
 AGC036A 思考問題
 AGC036D 動的計画法
 
-Chokudai Speedrun 002 K 思考問題・UnionFind木・座標圧縮
-Chokudai Speedrun 002 L 2値LIS
+=== Rated ===
 M-SOLUTIONS プロコンオープン C 二項分布・幾何分布
 M-SOLUTIONS プロコンオープン E モジュラ逆数・フェルマーの小定理
 M-SOLUTIONS プロコンオープン F* 動的計画法
 diverta 2019 Programming Contest 2 D ナップザック問題
 diverta 2019 Programming Contest 2 E* 動的計画法
 diverta 2019 Programming Contest 2 F ハミルトン経路問題（実際はほぼ発想力の問題）
+第一回日本最強プログラマー学生選手権-予選- C 思考問題
+第二回全国統一プログラミング王決定戦予選 C 巡回置換とサイクル数
+第二回全国統一プログラミング王決定戦予選 D ダイクストラ
+
+=== Unrated ===
+Chokudai Speedrun 002 K 思考問題・UnionFind木・座標圧縮
+Chokudai Speedrun 002 L 2値LIS
 技術室奥プログラミングコンテスト#4 Day1 K 思考問題
 技術室奥プログラミングコンテスト#4 Day1 L 動的計画法
-第一回日本最強プログラマー学生選手権-予選- C 思考問題
