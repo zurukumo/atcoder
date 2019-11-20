@@ -1,6 +1,7 @@
+# 添字が1から始まることに注意
 class BinaryIndexedTree() :
     def __init__(self, N) :
-        self.N = N
+        self.size = N
         self.tree = [0] * (N + 1)
         
     def sum(self, i) :
@@ -11,6 +12,6 @@ class BinaryIndexedTree() :
         return s
         
     def add(self, i, x) :
-        while i <= self.N :
+        while i <= self.size :
             self.tree[i] += x
             i += i & -i
