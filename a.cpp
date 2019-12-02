@@ -3,8 +3,9 @@
 #include <algorithm>
 
 using namespace std;
+typdef long long ll;
+int N, M;
 
-int N, K;
 vector<int> a;
 
 bool judge(int m) {
