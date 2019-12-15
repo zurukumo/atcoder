@@ -66,12 +66,10 @@
 		<KeyWord name="asin" />
 		<KeyWord name="asinh" />
 		<KeyWord name="assert" />
-		<KeyWord name="async" />
 		<KeyWord name="atan" />
 		<KeyWord name="atan2" />
 		<KeyWord name="atanh" />
 		<KeyWord name="athrow" />
-		<KeyWord name="await" />
 		<KeyWord name="base_exec_prefix" />
 		<KeyWord name="base_prefix" />
 		<KeyWord name="bin" />
@@ -82,8 +80,6 @@
 		<KeyWord name="bits_per_digit" />
 		<KeyWord name="bool" />
 		<KeyWord name="break" />
-		<KeyWord name="breakpoint" />
-		<KeyWord name="breakpointhook" />
 		<KeyWord name="buffer" />
 		<KeyWord name="builtin_module_names" />
 		<KeyWord name="builtins" />
@@ -140,7 +136,6 @@
 		<KeyWord name="denominator" />
 		<KeyWord name="deque" />
 		<KeyWord name="detach" />
-		<KeyWord name="dev_mode" />
 		<KeyWord name="dict" />
 		<KeyWord name="difference" />
 		<KeyWord name="difference_update" />
@@ -211,7 +206,6 @@
 		<KeyWord name="gcd" />
 		<KeyWord name="get" />
 		<KeyWord name="get_asyncgen_hooks" />
-		<KeyWord name="get_coroutine_origin_tracking_depth" />
 		<KeyWord name="get_coroutine_wrapper" />
 		<KeyWord name="getallocatedblocks" />
 		<KeyWord name="getattr" />
@@ -272,7 +266,6 @@
 		<KeyWord name="is_integer" />
 		<KeyWord name="isalnum" />
 		<KeyWord name="isalpha" />
-		<KeyWord name="isascii" />
 		<KeyWord name="isatty" />
 		<KeyWord name="isclose" />
 		<KeyWord name="isdecimal" />
@@ -402,10 +395,8 @@
 		<KeyWord name="readlines" />
 		<KeyWord name="readonly" />
 		<KeyWord name="real" />
-		<KeyWord name="reconfigure" />
 		<KeyWord name="release" />
 		<KeyWord name="releaselevel" />
-		<KeyWord name="remainder" />
 		<KeyWord name="remove" />
 		<KeyWord name="repeat" />
 		<KeyWord name="replace" />
@@ -429,7 +420,6 @@
 		<KeyWord name="serial" />
 		<KeyWord name="set" />
 		<KeyWord name="set_asyncgen_hooks" />
-		<KeyWord name="set_coroutine_origin_tracking_depth" />
 		<KeyWord name="set_coroutine_wrapper" />
 		<KeyWord name="setattr" />
 		<KeyWord name="setcheckinterval" />
@@ -490,7 +480,6 @@
 		<KeyWord name="union" />
 		<KeyWord name="update" />
 		<KeyWord name="upper" />
-		<KeyWord name="utf8_mode" />
 		<KeyWord name="value" />
 		<KeyWord name="values" />
 		<KeyWord name="vars" />
@@ -505,7 +494,6 @@
 		<KeyWord name="with_traceback" />
 		<KeyWord name="writable" />
 		<KeyWord name="write" />
-		<KeyWord name="write_through" />
 		<KeyWord name="writelines" />
 		<KeyWord name="yield" />
 		<KeyWord name="zfill" />
