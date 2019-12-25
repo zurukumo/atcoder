@@ -1,17 +1,11 @@
-A, B = map(int, input().split())
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**5)
 
-def f(X) :
-  X = [int(i) for i in str(X)]
-  a, b = 0, 1
-  for x in X :
-    if 4 < x <= 9 :
-      a = a * 8 + b * (x - 1)
-    else :
-      a = a * 8 + b * x
-    
-    if x == 4 or x == 9 :
-      b = 0
-      
-  return a + b
-
-print(B - (A - 1) - (f(B) - f(A - 1)))
+N = int(input())
+S = input()
+N, K = map(int, input().split())
+xy = [[int(i) for i in input().split()] for _ in range(N)]
+x = [int(i) for i in input().split()]
+S = [input() for _ in range(N)]
+A = [int(input()) for _ in range(N)]
