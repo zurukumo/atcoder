@@ -1,36 +1,33 @@
-# Ford-Fulkerson algorithm
+# Using DFS
 class FordFulkerson:
   def __init__(self, N):
     self.N = N
     self.G = [[] for i in range(N)]
 
   def add_edge(self, fr, to, cap):
-    forward = [to, cap, None]
-    forward[2] = backward = [fr, 0, forward]
-    self.G[fr].append(forward)
-    self.G[to].append(backward)
+    self.G[fr].append([to, cap, len(G[to])])
+    self.G[to].append([fr, 0, len(G[fr]) - 1])
 
-  def dfs(self, v, t, f):
-    if v == t:
+  def dfs(self, cur, t, f):
+    if cur == t:
       return f
-    used = self.used
-    used[v] = 1
-    for e in self.G[v]:
-      w, cap, rev = e
-      if cap and not used[w]:
-        d = self.dfs(w, t, min(f, cap))
+      
+    self.used[cur] = True
+    for i, (nex, cap, rev) in enumerate(self.G[cur]) :
+      if cap > 0 and not self.used[nex] :
+        d = self.dfs(nex, t, min(f, cap))
         if d:
-          e[1] -= d
-          rev[1] += d
+          self.G[cur][i][1] -= d
+          self.G[nex][rev][1] += d
           return d
     return 0
 
   def flow(self, s, t):
-      flow = 0
-      f = INF = 10**9 + 7
-      N = self.N
-      while f:
-          self.used = [0]*N
-          f = self.dfs(s, t, INF)
-          flow += f
-      return flow
+    flow = 0
+    f = INF = 10**9 + 7
+    N = self.N
+    while f:
+        self.used = [False] * N
+        f = self.dfs(s, t, INF)
+        flow += f
+    return flow
