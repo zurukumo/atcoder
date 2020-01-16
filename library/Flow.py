@@ -1,5 +1,5 @@
 # Using DFS
-class FordFulkerson:
+class FordFulkerson :
   def __init__(self, N):
     self.N = N
     self.G = [[] for i in range(N)]
