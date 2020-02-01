@@ -85,6 +85,7 @@ ABC152E LCM, 素因数分解
 ABC152F 解けた, 包除原理
 
 === ARC ===
+ARC008C ダイクストラ 解けなかった. なぜ解けなかったのか・・・.
 ARC017C ナップザック問題・半分全列挙
 ARC035C フロイドワーシャルの更新
 ARC049B 想定解は二分探索だが三分探索をした
@@ -129,6 +130,7 @@ diverta 2019 Programming Contest 2 F ハミルトン経路問題（実際はほ�
 第6回 ドワンゴからの挑戦状 予選 B 期待値, 頑張れば解けたようなそうでもないような・・・
 
 === Unrated ===
+Educational DP Contest G トポロジカルソート
 Chokudai Speedrun 002 K 思考問題・UnionFind木・座標圧縮
 Chokudai Speedrun 002 L 2値LIS
 技術室奥プログラミングコンテスト#4 Day1 K 思考問題
