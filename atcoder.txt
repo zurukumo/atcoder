@@ -137,3 +137,4 @@ Chokudai Speedrun 002 K 思考問題・UnionFind木・座標圧縮
 Chokudai Speedrun 002 L 2値LIS
 技術室奥プログラミングコンテスト#4 Day1 K 思考問題
 技術室奥プログラミングコンテスト#4 Day1 L 動的計画法
+第一回 アルゴリズム実技検定 過去問 M 二分探索. なんで思いつけないんだ・・・.
