@@ -59,7 +59,7 @@ ABC132E nずつ進むダイクストラ
 ABC132F 動的計画法
 ABC133F LCA・先読み
 ABC134E dilworthの定理
-ABC134F 動的計画法(箱根駅伝DP)
+ABC134F 動的計画法・箱根駅伝DP
 ABC135E *思考問題
 ABC135F ローリングハッシュ
 ABC136E *思考問題
@@ -92,6 +92,7 @@ ABC157F 幾何
 ABC158E フェルマーの小定理を覚えてませんでした.
 ABC161E NlogNで解いたけどNで解ける.むずい.
 ABC161F 解けたけどなんで皆こんなに解けるんだ・・・.
+ABC163F 橙diff初自力AC.
 
 === ARC ===
 ARC003E ひと目思いつくのは二分探索だがpythonではTLE. ダイクストラ解は間に合うが天才の発想.
@@ -144,6 +145,7 @@ diverta 2019 Programming Contest 2 F ハミルトン経路問題（実際はほ�
 第6回 ドワンゴからの挑戦状 予選 B 期待値, 頑張れば解けたようなそうでもないような・・・
 
 === Unrated ===
+DISCO presents ディスカバリーチャンネル プログラミングコンテスト2016 本選 B 二分探索（分かった）. 後ろから見る（分からなかった）.
 Educational DP Contest G トポロジカルソート
 Chokudai Speedrun 002 K 思考問題・UnionFind木・座標圧縮
 Chokudai Speedrun 002 L 2値LIS
