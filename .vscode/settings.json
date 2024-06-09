@@ -2,5 +2,6 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.autopep8"
   },
-  "autopep8.args": ["--max-line-length=200"]
+  "autopep8.args": ["--max-line-length=200"],
+  "flake8.args": ["--ignore=E226,E741"]
 }
