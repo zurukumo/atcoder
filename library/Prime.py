@@ -24,14 +24,17 @@ def prime_factor(x):
 
 
 # 素数列挙
-primes = [2]
-for i in range(3, N + 1, 2):
-    flag = True
-    for p in primes:
-        if p * p > i:
-            break
-        if i % p == 0:
-            flag = False
-            break
-    if flag:
-        primes.append(i)
+def list_primes(N):
+    primes = [2]
+    for i in range(3, N + 1, 2):
+        flag = True
+        for p in primes:
+            if p * p > i:
+                break
+            if i % p == 0:
+                flag = False
+                break
+        if flag:
+            primes.append(i)
+
+    return primes
