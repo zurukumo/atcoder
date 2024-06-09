@@ -1,4 +1,3 @@
-# Using DFS
 class FordFulkerson:
     def __init__(self, N):
         self.N = N

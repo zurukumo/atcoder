@@ -24,7 +24,7 @@ def prime_factor(x):
 
 
 # 素数列挙
-def list_primes(N):
+def create_primes(N):
     primes = [2]
     for i in range(3, N + 1, 2):
         flag = True
