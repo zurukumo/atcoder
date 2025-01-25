@@ -20,8 +20,8 @@ class DoublingLowestCommonAncestor:
         # doubling
         for i in range(1, K):
             for j in range(N):
-                if par[i-1][j] > 0:
-                    par[i][j] = par[i-1][par[i-1][j]]
+                if par[i - 1][j] > 0:
+                    par[i][j] = par[i - 1][par[i - 1][j]]
 
         self.K = K
         self.par = par

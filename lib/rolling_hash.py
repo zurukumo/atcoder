@@ -1,7 +1,7 @@
-class RollingHash():
+class RollingHash:
     # mod ex. (1<<61)-1, (1<<31)-1
     # 文字列のときはxをordに通すのを忘れない！！
-    def __init__(self, x, base=26, mod=(1 << 61)-1):
+    def __init__(self, x, base=26, mod=(1 << 61) - 1):
         self.hash = [0]
         self.pow = [1]
         self.mod = mod
@@ -12,4 +12,4 @@ class RollingHash():
 
     # [l, r)
     def get(self, l, r):
-        return (self.hash[r] - self.hash[l] * self.pow[r-l]) % self.mod
+        return (self.hash[r] - self.hash[l] * self.pow[r - l]) % self.mod
