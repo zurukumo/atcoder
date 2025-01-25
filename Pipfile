@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+colorama = "*"
 sortedcontainers = "*"
 
 [dev-packages]
@@ -20,3 +21,4 @@ e = "python3 problem/e.py"
 f = "python3 problem/f.py"
 g = "python3 problem/g.py"
 h = "python3 problem/h.py"
+test = "python3 clis/test.py"
