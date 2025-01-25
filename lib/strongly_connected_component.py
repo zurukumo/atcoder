@@ -3,6 +3,7 @@ import sys
 sys.setrecursionlimit(10**10)
 
 
+# Kosaraju's algorithm
 class StronglyConnectedComponent:
     def __init__(self, n):
         self.n = n

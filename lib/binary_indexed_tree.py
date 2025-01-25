@@ -1,5 +1,5 @@
 # 1-indexed
-class BinaryIndexedTree():
+class BinaryIndexedTree:
     def __init__(self, n):
         self.n = n
         self.tree = [0] * (n + 1)
