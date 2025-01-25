@@ -13,9 +13,9 @@ def main():
     i = 1
     while True:
         try:
-            with open(f"tests/{args.problem}/in-{i}.txt") as f:
+            with open(f"tests/{args.problem}/{i}-in.txt") as f:
                 input = f.read()
-            with open(f"tests/{args.problem}/out-{i}.txt") as f:
+            with open(f"tests/{args.problem}/{i}-out.txt") as f:
                 expected = f.read()
         except FileNotFoundError:
             break
