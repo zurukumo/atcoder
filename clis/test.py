@@ -10,13 +10,16 @@ def main():
 
     args = parser.parse_args()
 
-    i = 1
-    while True:
+    for i in range(1, 1000):
         try:
             with open(f"tests/{args.problem}/{i}-in.txt") as f:
                 input = f.read()
             with open(f"tests/{args.problem}/{i}-out.txt") as f:
                 expected = f.read()
+
+            # inputが空の場合break
+            if input == "":
+                break
         except FileNotFoundError:
             break
 
@@ -40,8 +43,6 @@ def main():
         else:
             print(colorama.Fore.GREEN + f"Test {i} passed")
         print(colorama.Style.RESET_ALL)
-
-        i += 1
 
 
 if __name__ == "__main__":
