@@ -1,6 +1,7 @@
 class UnionFind:
     def __init__(self, N):
         self.parent = [-1] * N
+        self.units = N
 
     def root(self, x):
         while self.parent[x] >= 0:
@@ -12,6 +13,7 @@ class UnionFind:
         ry = self.root(y)
 
         if rx != ry:
+            self.units -= 1
             if self.parent[rx] > self.parent[ry]:
                 self.parent[rx] = ry
             else:
@@ -30,6 +32,7 @@ class WeightedUnionFind:
     def __init__(self, N):
         self.parent = [-1] * N
         self.potential = [0] * N
+        self.unites = N
 
     def root(self, x):
         while self.parent[x] >= 0:
@@ -41,6 +44,7 @@ class WeightedUnionFind:
         ry = self.root(y)
 
         if rx != ry:
+            self.unites -= 1
             w = w + self.weight(x) - self.weight(y)
             if self.parent[rx] > self.parent[ry]:
                 self.parent[rx] = ry
