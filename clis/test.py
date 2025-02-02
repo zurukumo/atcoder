@@ -2,7 +2,7 @@ import argparse
 import subprocess
 from typing import Generator
 
-import colorama
+from utils import print_green, print_red
 
 
 def read_testcase_file(problem, testcase) -> tuple[str, str]:
@@ -50,14 +50,13 @@ def main():
             exit()
 
         if result.stdout.decode() != expected:
-            print(colorama.Fore.RED + f"Test {i} failed")
-            print("Expected:")
-            print(expected)
-            print("Got:")
-            print(result.stdout.decode())
+            print_red(f"Test {i} failed")
+            print_red("Expected:")
+            print_red(expected)
+            print_red("Got:")
+            print_red(result.stdout.decode())
         else:
-            print(colorama.Fore.GREEN + f"Test {i} passed")
-        print(colorama.Style.RESET_ALL)
+            print_green(f"Test {i} passed")
 
 
 if __name__ == "__main__":
