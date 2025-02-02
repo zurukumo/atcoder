@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 colorama = "*"
+playwright = "*"
 sortedcontainers = "*"
 
 [dev-packages]
