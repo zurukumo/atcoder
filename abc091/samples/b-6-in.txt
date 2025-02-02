@@ -1,3 +1,10 @@
-6
-4 6 0 0 3 3
-0 5 6 5 0 3
+3
+apple
+orange
+apple
+5
+apple
+apple
+apple
+apple
+apple

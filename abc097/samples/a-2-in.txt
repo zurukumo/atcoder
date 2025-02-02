@@ -1,2 +1,1 @@
-atcoderandatcodeer
-5
+100 10 1 2

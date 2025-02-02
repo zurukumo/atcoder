@@ -1,4 +1,1 @@
-3
-cbaa
-daacc
-acacac
+3 2 1
