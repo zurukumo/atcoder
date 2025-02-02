@@ -19,13 +19,13 @@ def login():
 
         page = context.new_page()
         page.goto(LOGIN_URL)
+        page.wait_for_load_state("networkidle")
 
         # ヘッダーにログインボタンがあるかどうかでログイン済みかどうかを判定する
         login_button = page.query_selector("#header a[href='/login']")
         if login_button is None:
             print_green("Already logged in.")
-            context.close()
-            return
+            exit()
 
         # ログイン処理
         page.fill("#username", USERNAME)
