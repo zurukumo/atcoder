@@ -53,12 +53,12 @@ def main():
         problem_links = page.query_selector_all("tr td:first-child a")
         urls = [page.evaluate("(e) => e.href", link) for link in problem_links]
 
-        for url in urls:
+        for i, url in enumerate(urls):
             page.goto(url)
             page.wait_for_load_state("networkidle")
 
-            # 問題番号を抽出
-            problem = page.url.split("_")[-1]
+            # 問題番号を生成
+            problem = chr(ord("a") + i)
 
             # テンプレートの作成
             try:
