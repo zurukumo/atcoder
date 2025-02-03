@@ -1,39 +1,29 @@
-N, M = map(int, input().split())
-ab = [[int(i) - 1 for i in input().split()] for _ in range(M)]
+N = int(input())
+ab = [[int(i) for i in input().split()] for _ in range(N)]
 
-class UnionFind() :
-    def __init__(self, N) :
-        self.parent = [-1] * N
-        
-    def root(self, x) :
-        while self.parent[x] >= 0:
-            x = self.parent[x]
-        return x
+iab = []
+for i, (a, b) in enumerate(ab) :
+  iab.append([i, a, b])
 
-    def unite(self, x, y) :
-        rx = self.root(x)
-        ry = self.root(y)
+iab.sort(key=lambda x: x[1], reverse=True)
 
-        if rx != ry :
-            if self.parent[rx] > self.parent[ry] :
-                self.parent[rx] = ry
-            else :
-                if self.parent[rx] == self.parent[ry] :
-                    self.parent[rx] -= 1
-                self.parent[ry] = rx
+ret = []
+INF = 1 << 60
+l, r = INF, INF
+for i, a, b in iab :
+  if b <= l :
+    l, r = a, b
+    ret.append([i, a, b])
+print(len(ret))
     
-    def same(self, x, y) :
-        return self.root(x) == self.root(y)
-        
-    def size(self, x) :
-        return -self.parent[self.root(x)]
-        
-UF = UnionFind(N)
-for a, b in ab :
-    UF.unite(a, b)
-    
-ret = 0
-for p in UF.parent :
-    if p < 0 :
-        ret += 1
-print(ret - 1)
+ret = [[-INF, -INF, -INF]] + ret[::-1] + [[INF, INF, INF]]
+
+iab.sort(key=lambda x: x[2])
+n = 1
+for i, a, b in iab :
+  while ret[n + 1][1] < b :
+    n += 1
+  if ret[n - 1][2] <= a and ret[n][0] > i :
+    ret[n] = [i, a, b]
+
+print(*[i + 1 for i, a, b in ret[1:-1]])

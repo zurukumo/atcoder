@@ -1,28 +1,12 @@
-N = int(input())
-A = [int(i) for i in input().split()]
+y = int(input())
+m = int(input())
+d = int(input())
 
-mod = 10 ** 9 + 7
-
-def comb(n, r) :
-  if r == 0 or n < r :
-    return 1
-  ret = 1
-  for i in range(r) :
-    ret *= n - i
-    ret *= pow(i + 1, mod - 2, mod)
-    ret %= mod
-  return ret
-
-ret = 1
-l = 1
-emp = 0
-for i in range(N) :
-  if A[i] == -1 :
-    emp += 1
-  else :
-    ret *= comb(A[i] - l + emp, emp)
-    ret %= mod
-    l = A[i]
-    emp = 0
-
-print(ret)
+def f(y, m, d) :
+  if m == 1 or m == 2 :
+    y -= 1
+    m += 12
+  
+  return 365 * y + y // 4 - y // 100 + y // 400 + 306 * (m + 1) // 10 + d - 429
+  
+print(f(2014, 5, 17) - f(y, m, d))

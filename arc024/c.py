@@ -1,21 +1,25 @@
-N = int(input())
-color = [int(input()) for _ in range(N)]
+N, K = map(int, input().split())
+S = input()
 
-if sum(color) == 0 or sum(color) == N :
-    print(-1)
-
+ma, mb = (1<<61)-1, (1<<31)-1
+wa, wb = 0, 0
+mem = dict()
+for i in range(N) :
+  wa += pow(26, ord(S[i]) - 97, ma)
+  wb += pow(26, ord(S[i]) - 97, mb)
+  wa %= ma
+  wb %= mb
+  
+  if i >= K - 1 :
+    if (wa, wb) in mem and i - mem[(wa, wb)] >= K :
+      print('YES')
+      break
+      
+    if not (wa, wb) in mem :
+      mem[(wa, wb)] = i
+      
+    wa -= pow(26, ord(S[i-K+1]) - 97, ma)
+    wb -= pow(26, ord(S[i-K+1]) - 97, mb)
+      
 else :
-    color = color * 2
-
-    ret = 0
-    pre = -1
-    count = 0
-    for c in color :
-        if c == pre :
-            count += 1
-        else :
-            ret = max(ret, count)
-            count = 1
-            pre = c
-            
-    print((ret + 1) // 2)
+  print('NO')

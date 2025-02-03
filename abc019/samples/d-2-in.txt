@@ -1,3 +1,0 @@
-System.out.printf("? %d %d\n", 1, 2);
-Scanner scanner = new Scanner(System.in);
-dist = scanner.nextInt();

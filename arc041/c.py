@@ -1,18 +1,27 @@
-from collections import defaultdict
+N, L = map(int, input().split())
+xd = [input().split() for _ in range(N)]
 
-N, M = map(int, input().split())
-b = [[int(i) for i in input()] for _ in range(N)]
+for i in range(N) :
+  xd[i][0] = int(xd[i][0])
+  
+if xd[0][1] == 'L' :
+  xd = [[0, 'R']] + xd
+if xd[-1][1] == 'R' :
+  xd = xd + [[L + 1, 'L']]
+N = len(xd)
 
-a = [[0] * M for _ in range(N)]
-
-for y in range(1, N - 1) :
-    for x in range(1, M - 1) :
-        z = min(b[y-1][x], b[y+1][x], b[y][x-1], b[y][x+1])
-        b[y-1][x] -= z
-        b[y+1][x] -= z
-        b[y][x-1] -= z
-        b[y][x+1] -= z
-        a[y][x] += z
-        
-for y in range(N) :
-    print(''.join(map(str, a[y])))
+ret = 0
+for i in range(N - 1) :
+  if xd[i][1] == 'R' and xd[i+1][1] == 'L' :
+    cr, cl = 1, 1
+    for j in range(i - 1, -1, -1) :
+      if xd[j][1] == 'L' : break
+      ret += xd[i][0] - xd[j][0] - cr
+      cr += 1
+    for j in range(i + 2, N) :
+      if xd[j][1] == 'R' : break
+      ret += xd[j][0] - xd[i + 1][0] - cl
+      cl += 1
+    ret += max(cl, cr) * (xd[i + 1][0] - xd[i][0] - 1)
+    
+print(ret)

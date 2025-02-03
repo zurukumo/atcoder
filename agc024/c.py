@@ -1,18 +1,23 @@
 N = int(input())
-P = [int(input()) for _ in range(N)]
+A = [int(input()) for _ in range(N)]
 
-pos = [0] * N
-for i in range(N) :
-    pos[P[i] - 1] = i
-    
-ret = 0
-c = 1
-for i in range(1, N) :
-    if pos[i] > pos[i - 1] :
-        c += 1
-    else :
-        ret = max(ret, c)
-        c = 1
-ret = max(ret, c)
-        
-print(N - ret)
+def solve() :
+  if A[0] != 0 :
+    return -1
+
+  for i in range(1, N) :
+    if A[i] - A[i-1] >= 2:
+      return -1
+
+  ret = 0
+  for i in range(1, N) :
+    if A[i] == 0 :
+      continue
+
+    ret += 1
+    if A[i] != A[i-1] + 1 :
+      ret += A[i] - 1
+  
+  return ret
+
+print(solve())

@@ -1,9 +1,28 @@
-R, C, D = map(int, input().split())
-A = [[int(i) for i in input().split()] for _ in range(R)]
+N = int(input())
+A = [int(i) for i in input().split()]
 
-ret = 0
-for y in range(R) :
-    for x in range(C) :
-        if y + x <= D and (y + x) % 2 == D % 2 :
-            ret = max(ret, A[y][x])
+mod = 10 ** 9 + 7
+
+def comb(n, r) :
+  if r == 0 or n < r :
+    return 1
+  ret = 1
+  for i in range(r) :
+    ret *= n - i
+    ret *= pow(i + 1, mod - 2, mod)
+    ret %= mod
+  return ret
+
+ret = 1
+l = 1
+emp = 0
+for i in range(N) :
+  if A[i] == -1 :
+    emp += 1
+  else :
+    ret *= comb(A[i] - l + emp, emp)
+    ret %= mod
+    l = A[i]
+    emp = 0
+
 print(ret)

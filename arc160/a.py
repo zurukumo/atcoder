@@ -1,22 +1,40 @@
-T = int(input())
-N = [int(input()) for _ in range(T)]
+from sortedcontainers import SortedList
 
-mod = 998244353
+N, K = map(int, input().split())
+A = [int(i) - 1 for i in input().split()]
 
 
-for n in N:
-    ret = 0
-    for y in range(1, n + 1):
-        if y * y > n:
-            break
-        z_max = n // y
-        if z_max >= y:
-            ret += (z_max - y + 1) * y * 6 % mod
-            # yとzが同じ場合を引く
-            ret -= y * 3
-            # xとyが同じ場合を引く
-            ret -= (z_max - y + 1) * 3
-            # xとyとzが同じ場合を足す
-            ret += 1
-        ret %= mod
-    print(ret)
+def swap_point(N, K, A):
+    sl = SortedList(A)
+    idx = [0] * N
+    for i in range(N):
+        idx[A[i]] = i
+
+    # 未満
+    for i in range(N):
+        less = sl.bisect_left(A[i])
+        if K <= less:
+            j = idx[sl[K - 1]]
+            return i, j
+        K -= less
+        sl.remove(A[i])
+
+    # 等しい
+    same = N
+    if K <= same:
+        return 0, 0
+    K -= same
+
+    # 超過
+    for i in range(N - 1, -1, -1):
+        less = sl.bisect_left(A[i])
+        more = len(sl) - less
+        if K <= more:
+            j = idx[sl[less + K - 1]]
+            return i, j
+        K -= more
+        sl.add(A[i])
+
+
+i, j = swap_point(N, K, A)
+print(*[i + 1 for i in A[:i] + A[i : j + 1][::-1] + A[j + 1 :]])

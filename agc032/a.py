@@ -1,14 +1,21 @@
 N = int(input())
+b = [int(i) for i in input().split()]
 
-ret = []
-for i in range(1, N + 1) :
-    for j in range(i + 1, N + 1) :
-        if N % 2 == 0 and i + j == N + 1 :
-            continue
-        if N % 2 == 1 and i + j == N :
-            continue
-        ret.append((i, j))
-
-print(len(ret))
-for r in ret :
-    print(*r)
+def solve() :
+    ret = []
+    while len(b) != 0 :
+        M = -1
+        for i in range(len(b)) :
+            if i + 1 == b[i] :
+                M = i
+        
+        if M == -1 :
+            print(-1)
+            return 
+        
+        ret.append(b.pop(M))
+    
+    for r in ret[::-1] :
+        print(r)
+        
+solve()

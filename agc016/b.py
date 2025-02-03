@@ -1,19 +1,31 @@
-s = input()
+from collections import Counter
 
-ret = float('inf')
-for c in set(s) :
-  tmp = 0
-  t = s[::]
-  u = ''
-  while t.count(c) != len(t) :
-    tmp += 1
-    for i in range(len(t) - 1) :
-      if t[i] == c or t[i+1] == c :
-        u += c
-      else :
-        u += t[i]
-    t = u[::]
-    u = ''
-  ret = min(ret, tmp)
-  
-print(ret)
+N = int(input())
+a = [int(i) for i in input().split()]
+
+def solve() :
+    c = Counter(a)
+    if len(c.keys()) > 2 :
+        return 'No'
+    
+    if len(c.keys()) == 2 :
+        if max(c.keys()) - min(c.keys()) != 1 :
+            return 'No'
+            
+        mk, Mk = min(c.keys()), max(c.keys())
+        mv, Mv = c[mk], c[Mk]
+        n = N - mv
+        m = Mk - mv
+        if 0 < m * 2 <= n :
+            return 'Yes'
+        else :
+            return 'No'
+    else :
+        n = N
+        m = list(c.keys())[0]
+        if m * 2 <= n or m == n - 1 :
+            return 'Yes'
+        else :
+            return 'No' 
+
+print(solve())

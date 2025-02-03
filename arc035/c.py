@@ -1,23 +1,43 @@
-from collections import Counter
+from heapq import heappush, heappop
+import sys
+input = sys.stdin.readline
 
-N = int(input())
-T = [int(input()) for _ in range(N)]
+N, M = map(int, input().split())
+vec = [[] for _ in range(N)]
 
-T.sort()
+for _ in range(M) :
+    A, B, C = map(int, input().split())
+    vec[A-1].append((B-1, C))
+    vec[B-1].append((A-1, C))
 
-penalty = 0
+def dijikstra(s) :
+  dist = [-1] * N
+  dist[s] = 0
+  q = [(0, s)]
+  while q :
+    cco, cur = heappop(q)
+    if dist[cur] < cco :
+      continue
+    for nex, nco in vec[cur] :
+      if 0 <= dist[nex] <= cco + nco : continue
+      dist[nex] = cco + nco
+      heappush(q, (dist[nex], nex))
+  return dist
+
+fw = [dijikstra(i) for i in range(N)]
+
+K = int(input())
+ret = 0
 for i in range(N) :
-    penalty += T[i] * (N - i)
+  for j in range(i + 1, N) :
+    ret += fw[i][j]
 
-mod = 10 ** 9 + 7
-fac = [1]
-for i in range(1, N + 1) :
-    fac.append(fac[-1] * i % mod)
-
-way = 1
-for i in Counter(T).values() :
-    way *= fac[i]
-    way %= mod
-    
-print(penalty)
-print(way)
+for _ in range(K) :
+  X, Y, Z = map(int, input().split())
+  if Z < fw[X-1][Y-1] :
+    for i in range(N) :
+      for j in range(i + 1, N) :
+        ndist = min(fw[i][j], fw[i][X-1] + fw[Y-1][j] + Z, fw[j][X-1] + fw[Y-1][i] + Z)
+        ret -= (fw[i][j] - ndist)
+        fw[i][j] = fw[j][i] = ndist
+  print(ret)

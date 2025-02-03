@@ -1,11 +1,31 @@
-N = int(input())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
+X, Y = map(int, input().split('/'))
 
-ret = 0
-for i in range(N) :
-    xi, yi = xy[i]
-    for j in range(i + 1, N) :
-        xj, yj = xy[j]
-        ret = max(ret, ((xi - xj) ** 2 + (yi - yj) ** 2) ** 0.5)
-        
-print(ret)
+def gcd(a, b) :
+  if b > a : 
+    a, b = b, a
+  
+  while b != 0 :
+    a, b = b, a % b
+  return a
+  
+g = gcd(X, Y)
+X //= g
+Y //= g
+
+ret = []
+N = ((2 * X // Y) + Y - 1) // Y * Y
+if N == 0 :
+  N += Y
+  
+while True :
+  M = N * (N + 1) // 2 - X * N // Y
+  if M > N :
+    break
+  ret.append((N, M))
+  N += Y
+
+if ret :
+  for x, y in ret :
+    print(x, y)
+else :
+  print('Impossible')

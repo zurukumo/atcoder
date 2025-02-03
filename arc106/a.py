@@ -1,13 +1,12 @@
-N, M = map(int, input().split())
+import sys
 
-ans = [[i, i + 2] for i in range(2, 4 * N + 2, 4)]
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
 
-if M == 0:
-    for row in ans:
-        print(*row)
-elif M < 0 or N == M or N == M + 1:
-    print(-1)
-else:
-    ans[0][1] = ans[M + 1][0] + 1
-    for row in ans:
-        print(*row)
+N = int(input())
+S = input()
+N, K = map(int, input().split())
+xy = [[int(i) for i in input().split()] for _ in range(N)]
+x = [int(i) for i in input().split()]
+S = [input() for _ in range(N)]
+A = [int(input()) for _ in range(N)]

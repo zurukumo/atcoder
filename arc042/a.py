@@ -1,13 +1,10 @@
-N, P = map(int, input().split())
-ab = [[int(i) for i in input().split()] for _ in range(N)]
+N, M = map(int, input().split())
+a = [int(input()) for _ in range(M)]
 
-ab.sort(reverse=True)
+order = [[N - i, i + 1] for i in range(N)]
+for i in range(M) :
+    order[a[i] - 1][0] = N + i
 
-ret = -float('inf')
-dp = [0] * 10000
-for a, b in ab :
-  for i in range(P + a, a - 1, -1) :
-    dp[i] = max(dp[i], dp[i-a] + b)
-    ret = max(ret, dp[i])
-    
-print(ret)
+order.sort(reverse=True)
+for i in range(N) :
+    print(order[i][1])

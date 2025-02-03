@@ -1,43 +1,12 @@
-N, K, Q = map(int, input().split())
-A = [int(i) for i in input().split()]
+import sys
 
-def solve() :
-    if Q == 1 : return 0
-        
-    ret = float('inf')
-    for i in range(N) :
-        l = -1
-        for j in range(i, max(-1, i - K), -1) :
-            if A[j] < A[i] :
-                l = j
-                break
-        r = N      
-        for j in range(i, min(N, i + K)) :
-            if A[j] < A[i] :
-                r = j
-                break
-                
-        if r - l - 1 < K :
-            continue
-            
-        B = A[::]
-        B.pop(i)
-        
-        C = [-1]
-        for j in range(N - 1) :
-            if B[j] < A[i] :
-                C.append(j)
-        C.append(N - 1)
-        
-        D = []
-        for j in range(len(C) - 1) :
-            if C[j+1] - C[j] >= K :
-                D += sorted(B[C[j]+1:C[j+1]])[:C[j+1] - C[j] - K]
-        
-        if len(D) >= Q - 1 :
-            D.sort()
-            ret = min(ret, D[Q-2] - A[i])
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
 
-    return ret
-    
-print(solve())
+N = int(input())
+S = input()
+N, K = map(int, input().split())
+xy = [[int(i) for i in input().split()] for _ in range(N)]
+x = [int(i) for i in input().split()]
+S = [input() for _ in range(N)]
+A = [int(input()) for _ in range(N)]

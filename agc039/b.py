@@ -1,21 +1,36 @@
-S = list(input())
-K = int(input())
+from heapq import heappush, heappop
 
-S = S + S + S
-N = len(S)
+N = int(input())
+vec = [[] for _ in range(N)]
+for i in range(N) :
+    for j, v in enumerate(input()) :
+        if v == '1' :
+            vec[i].append(j)
 
-a = 0
-b = 0
-c = 0
-for i in range(1, N) : 
-    if S[i] == S[i-1] :
-        if i < N // 3 :
-            a += 1
-        elif i < N // 3 * 2 :
-            b += 1
-        else :
-            c += 1
-        S[i] = '#'
-        
-ret = a + K // 2 * b + (K - K // 2 - 1) * c
+def bfs(s) :
+    dist = [float('inf')] * N
+    queue = [(1, s)]
+    dist[s] = 1
+    
+    while queue :
+        co, cur = heappop(queue)
+        if dist[cur] < co :
+            continue
+            
+        for nex in vec[cur] :
+            if co + 1 < dist[nex] :
+                dist[nex] = co + 1
+                heappush(queue, (co + 1, nex))
+                
+    for i in range(N) :
+        for j in vec[i] :
+            if abs(dist[i] - dist[j]) != 1 :
+                return -1
+    
+    return max(dist)
+
+ret = -1
+for i in range(N) :
+    ret = max(ret, bfs(i))
+    
 print(ret)

@@ -1,22 +1,19 @@
-H, W, h, w = map(int, input().split())
+s = input()
 
-if h == w == 1 :
-  print('No')
-
-else :
-  a = (10 ** 9 - 1) // (h * w - 1)
-  ret = [[a] * W for _ in range(H)]
-  for y in range(h - 1, H, h) :
-    for x in range(w - 1, W, w) :
-      ret[y][x] = - a * (h * w - 1) - 1
-
-  s = 0
-  for y in range(H) :
-    s += sum(ret[y])
-    
-  if s > 0 :
-    print('Yes')
-    for r in ret :
-      print(*r)
-  else :
-    print('No')
+ret = float('inf')
+for c in set(s) :
+  tmp = 0
+  t = s[::]
+  u = ''
+  while t.count(c) != len(t) :
+    tmp += 1
+    for i in range(len(t) - 1) :
+      if t[i] == c or t[i+1] == c :
+        u += c
+      else :
+        u += t[i]
+    t = u[::]
+    u = ''
+  ret = min(ret, tmp)
+  
+print(ret)

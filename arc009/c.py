@@ -1,25 +1,20 @@
-b = [int(i) for i in input().split()]
-N = int(input())
-a = [int(input()) for _ in range(N)]
+N, K = map(int, input().split())
+mod = 1777777777
 
-c = [0] * 10
-for i in range(10) :
-    c[b[i]] = i
-    
-def transform(x) :
-    ret = 0
-    base = 1
-    while x :
-        y = x % 10
-        x //= 10
-        ret += base * c[y]
-        base *= 10
-    return ret
-    
-d = []
-for i in range(N) :
-    d.append((transform(a[i]), a[i]))
+ret = 0
+fac = 1
+inv = 1
+sgn = 1
+for i in range(1, K + 1) :
+  fac = fac * i % mod
+  inv = pow(fac, mod - 2, mod)
+  if i != 1 :
+    ret += sgn * inv
+    ret %= mod
+    sgn *= -1
 
-d.sort()
-for i in range(N) :
-    print(d[i][1])
+for i in range(K) :
+  ret *= N - i
+  ret %= mod
+
+print(ret)

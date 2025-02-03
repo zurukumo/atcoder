@@ -1,26 +1,25 @@
-from heapq import heappush, heappop
+from collections import Counter
 
 N = int(input())
 a = [int(i) for i in input().split()]
 
-b = [N] * N
-c = [-1] * N
+def solve() :
+    cnt = list(Counter(a).items())
+    cnt.sort()
+    
+    if cnt[0][1] == 1 and cnt[-1][0] != 2 * cnt[0][0] :
+        return 'Impossible'
+    if cnt[0][1] == 2 and cnt[-1][0] != 2 * cnt[0][0] - 1 :
+        return 'Impossible'
+    if cnt[0][1] > 2 :
+        return 'Impossible'
 
-h = []
-for i in range(N) :
-    while len(h) > 0 and -h[0][0] > a[i] :
-        b[h[0][1]] = i
-        heappop(h)
-    heappush(h, (-a[i], i))
-
-h = []
-for i in range(N - 1, -1, -1) :
-    while len(h) > 0 and -h[0][0] > a[i] :
-        c[h[0][1]] = i
-        heappop(h)
-    heappush(h, (-a[i], i))
-
-ret = 0
-for i in range(N) :
-    ret += a[i] * (b[i] - i) * (i - c[i])
-print(ret)
+    for i in range(1, len(cnt)) :
+        if cnt[i][0] != cnt[i-1][0] + 1 :
+            return 'Impossible'
+        if cnt[i][1] < 2 :
+            return 'Impossible'
+            
+    return 'Possible'
+    
+print(solve())

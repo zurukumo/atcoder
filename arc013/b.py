@@ -1,9 +1,10 @@
-from itertools import permutations
+C = int(input())
+NML = [sorted([int(i) for i in input().split()]) for _ in range(C)]
 
-N, M, L = map(int, input().split())
-P, Q, R = map(int, input().split())
+Nmax, Mmax, Lmax = 0, 0, 0
+for N, M, L in NML :
+    Nmax = max(Nmax, N)
+    Mmax = max(Mmax, M)
+    Lmax = max(Lmax, L)
 
-ret = 0
-for p, q, r in permutations((P, Q, R)) :
-    ret = max(ret, (N // p) * (M // q) * (L // r))
-print(ret)
+print(Nmax * Mmax * Lmax)

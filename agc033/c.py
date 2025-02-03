@@ -1,28 +1,33 @@
-from collections import deque
+N = int(input())
+vec = [[] for _ in range(N)]
+for _ in range(N - 1) :
+  a, b = map(int, input().split())
+  vec[a-1].append(b-1)
+  vec[b-1].append(a-1)
 
-H, W = map(int, input().split())
-A = [list(input()) for _ in range(H)]
+que = [(0, -1, 0)]
+Mi, Mv = 0, 0
+while que :
+  cur, pre, dist = que.pop()
+  if dist > Mv :
+    Mi, Mv = cur, dist
+  for nex in vec[cur] :
+    if nex == pre :
+      continue
+    que.append((nex, cur, dist + 1))
 
-q = []
-for y in range(H) :
-    for x in range(W) :
-        if A[y][x] == '#' :
-            q.append((y, x))
+que = [(Mi, -1, 1)]
+Mi, Mv = 0, 0
+while que :
+  cur, pre, dist = que.pop()
+  if dist > Mv :
+    Mi, Mv = cur, dist
+  for nex in vec[cur] :
+    if nex == pre :
+      continue
+    que.append((nex, cur, dist + 1))
 
-ret = 0
-while True :
-    r = []
-    while q :
-        cy, cx = q.pop()
-        for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1)) :
-            ny, nx = cy + dy, cx + dx
-            if 0 <= ny < H and 0 <= nx < W and A[ny][nx] == '.' :
-                A[ny][nx] = '#'
-                r.append((ny, nx))
-    ret += 1
-    if len(r) == 0 :
-        break
-    
-    q = r
-    
-print(ret - 1)
+if Mv % 3 != 2 :
+  print('First')
+else :
+  print('Second')

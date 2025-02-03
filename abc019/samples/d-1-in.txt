@@ -1,3 +1,0 @@
-printf("? %d %d\n", 1, 2);
-fflush(stdout);
-scanf("%d", &dist);

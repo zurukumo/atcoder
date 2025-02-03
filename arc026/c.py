@@ -1,37 +1,19 @@
-N = int(input())
+from heapq import heappush, heappop
 
-def prime_factor(n) :
-    ret = dict()
-    if n % 2 == 0 :
-        ret[2] = 0
-        while n % 2 == 0 :
-            n //= 2
-            ret[2] += 1
-            
-    i = 3
-    while i * i <= n :
-        if n % i == 0 :
-            ret[i] = 0
-            
-            while n % i == 0 :
-                n //= i
-                ret[i] += 1
-        i += 2
-        
-    if n != 1 :
-        ret[n] = 1
+N, L = map(int, input().split())
+lrc = [[int(i) for i in input().split()] for _ in range(N)]
+
+lrc.sort()
+
+ret = float('inf')
+q = [(0, 0)]
+for l, r, c in lrc :
+  while q and q[0][1] < l :
+    heappop(q)
     
-    return ret
-    
-ret = 1
-for k, v in prime_factor(N).items() :
-    ret *= (pow(k, v + 1) - 1) // (k - 1)
-
-ret -= N
-
-if ret == N :
-    print('Perfect')
-elif ret < N :
-    print('Deficient')
-else :
-    print('Abundant')
+  nc = q[0][0] + c
+  heappush(q, (nc, r))
+  if r == L :
+    ret = min(ret, nc)
+  
+print(ret)

@@ -1,15 +1,19 @@
-N = int(input())
-a = [int(i) for i in input().split()]
+x = [int(i) for i in input().split()]
 
-def gcd(a, b) :
-  if b > a : 
-    a, b = b, a
+def solve() :
+  for i in range(1 << 4) :
+    a = 0
+    b = 0
+    for j in range(4) :
+      if i & (1 << j) :
+        a += x[j]
+      else :
+        b += x[j]
   
-  while b != 0 :
-    a, b = b, a % b
-  return a
+    if a == b :
+      return 'Yes'
+      
+  return 'No'
   
-ret = a[0]
-for i in range(1, N) :
-  ret = gcd(ret, a[i])
-print(ret)
+print(solve())
+    

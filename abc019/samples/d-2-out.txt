@@ -1,2 +1,0 @@
-Console.WriteLine("? {0} {1}", 1, 2);
-dist = int.Parse(Console.ReadLine());

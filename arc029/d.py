@@ -1,14 +1,12 @@
-N = int(input())
-t = [int(input()) for _ in range(N)]
+import sys
 
-ret = float('inf')
-for i in range(1 << N) :
-    a, b = 0, 0
-    for j in range(N) :
-        if i & (1 << j) :
-            a += t[j]
-        else :
-            b += t[j]
-    ret = min(ret, max(a, b))
-    
-print(ret)
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
+
+N = int(input())
+S = input()
+N, K = map(int, input().split())
+xy = [[int(i) for i in input().split()] for _ in range(N)]
+x = [int(i) for i in input().split()]
+S = [input() for _ in range(N)]
+A = [int(input()) for _ in range(N)]

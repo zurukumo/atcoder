@@ -1,9 +1,19 @@
-N, A, B = map(int, input().split())
-S = [int(input()) for _ in range(N)]
+from bisect import bisect_left, bisect_right
 
-if max(S) != min(S) :
-    P = B / (max(S) - min(S))
-    Q = A - P * sum(S) / N
-    print(P, Q)
-else :
-    print(-1)
+N = int(input())
+D = [-float('inf')] + [int(input()) for _ in range(N)] + [float('inf')]
+mod = 10 ** 9 + 7
+
+D.sort()
+s = list(range(N + 2))
+
+for _ in range(3) :
+    t = [0] * (N + 2)
+    for i in range(1, N + 1) :
+        t[i] = s[bisect_right(D, D[i] // 2) - 1]
+    for i in range(1, N + 1) :
+        t[i] += t[i-1]
+        t[i] %= mod
+    s = t
+    
+print(s[-2])

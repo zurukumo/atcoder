@@ -1,3 +1,0 @@
-writeln("? ", 1, " ", 2);
-stdout.flush();
-dist = readln.chomp.to!int;

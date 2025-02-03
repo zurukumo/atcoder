@@ -1,25 +1,12 @@
-from collections import Counter
+X = input()
 
-N = int(input())
-a = [int(i) for i in input().split()]
-
-def solve() :
-    cnt = list(Counter(a).items())
-    cnt.sort()
-    
-    if cnt[0][1] == 1 and cnt[-1][0] != 2 * cnt[0][0] :
-        return 'Impossible'
-    if cnt[0][1] == 2 and cnt[-1][0] != 2 * cnt[0][0] - 1 :
-        return 'Impossible'
-    if cnt[0][1] > 2 :
-        return 'Impossible'
-
-    for i in range(1, len(cnt)) :
-        if cnt[i][0] != cnt[i-1][0] + 1 :
-            return 'Impossible'
-        if cnt[i][1] < 2 :
-            return 'Impossible'
-            
-    return 'Possible'
-    
-print(solve())
+S, T = 0, 0
+for x in X :
+    if x == 'T' and S > 0 :
+        S -= 1
+    elif x == 'T' :
+        T += 1
+    elif x == 'S' :
+        S += 1
+        
+print(S + T)

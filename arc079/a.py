@@ -1,22 +1,12 @@
+import sys
+
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
+
 N = int(input())
-a = [int(i) for i in input().split()]
-
-ng, ok = -1, sum(a)
-
-while ok - ng > 1 :
-    m = (ok + ng) // 2
-    
-    for i in range(-N, 1) :
-        if m + i <= ng :
-            continue
-            
-        c = 0
-        for j in range(N) :
-            c += (a[j] + m + i - N) // (N + 1) + 1
-        if c <= m + i :
-            ok = m + i
-            break
-    else :
-        ng = m
-        
-print(ok)
+S = input()
+N, K = map(int, input().split())
+xy = [[int(i) for i in input().split()] for _ in range(N)]
+x = [int(i) for i in input().split()]
+S = [input() for _ in range(N)]
+A = [int(input()) for _ in range(N)]

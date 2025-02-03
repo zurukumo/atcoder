@@ -1,12 +1,10 @@
-N = int(input())
-c = input()
+Y = int(input())
 
-LR = ['AA', 'AB', 'AX', 'AY', 'BA', 'BB', 'BX', 'BY', 'XA', 'XB', 'XX', 'XY', 'YA', 'YB', 'YX', 'YY']
-
-ret = float('inf')
-for l in range(16) :
-    d = c.replace(LR[l], 'L')
-    for r in range(16) :
-        ret = min(ret, len(d) - d.count(LR[r]))
-
-print(ret)
+if Y % 400 == 0 :
+    print('YES')
+elif Y % 100 == 0 :
+    print('NO')
+elif Y % 4 == 0 :
+    print('YES')
+else :
+    print('NO')

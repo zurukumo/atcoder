@@ -1,12 +1,15 @@
-import sys
+N, K, L = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+mod = 998244353
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 1
+
+# (N-K)個前 ~ 1個前のと違うものを選ぶ
+for i in range(N):
+    if i <= N - K:
+        ret *= max(L - i, 0)
+    else:
+        ret *= max(L - (N - K), 0)
+    ret %= mod
+
+print(ret)

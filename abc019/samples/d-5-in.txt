@@ -1,3 +1,0 @@
-print "? ", 1, " ", 2, "\n"
-STDOUT.flush
-dist = gets.to_i

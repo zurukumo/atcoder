@@ -1,4 +1,3 @@
-day = input()
+N, va, vb, L = map(int, input().split())
 
-week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-print((6 - week.index(day)) % 6)
+print('{:.8f}'.format(L * pow(vb, N) / pow(va, N)))

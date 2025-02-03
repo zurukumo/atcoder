@@ -1,22 +1,12 @@
-T = int(input())
+import sys
 
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
 
-def solve(N, A):
-    s = sum(A)
-    while len(A) >= 2:
-        a = A.pop()
-        s -= a
-        c = (a * len(A) - s) // (1 + len(A))
-        s += c
-        A[-1] += c
-        if c < 0:
-            return "No"
-
-    return "Yes"
-
-
-for _ in range(T):
-    N = int(input())
-    A = [int(i) for i in input().split()]
-
-    print(solve(N, A))
+N = int(input())
+S = input()
+N, K = map(int, input().split())
+xy = [[int(i) for i in input().split()] for _ in range(N)]
+x = [int(i) for i in input().split()]
+S = [input() for _ in range(N)]
+A = [int(input()) for _ in range(N)]

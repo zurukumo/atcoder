@@ -1,2 +1,0 @@
-echo "? ", 1, " ", 2, PHP_EOL;
-$dist = trim(fgets(STDIN));

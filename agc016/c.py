@@ -1,31 +1,22 @@
-from collections import Counter
+H, W, h, w = map(int, input().split())
 
-N = int(input())
-a = [int(i) for i in input().split()]
+if h == w == 1 :
+  print('No')
 
-def solve() :
-    c = Counter(a)
-    if len(c.keys()) > 2 :
-        return 'No'
+else :
+  a = (10 ** 9 - 1) // (h * w - 1)
+  ret = [[a] * W for _ in range(H)]
+  for y in range(h - 1, H, h) :
+    for x in range(w - 1, W, w) :
+      ret[y][x] = - a * (h * w - 1) - 1
+
+  s = 0
+  for y in range(H) :
+    s += sum(ret[y])
     
-    if len(c.keys()) == 2 :
-        if max(c.keys()) - min(c.keys()) != 1 :
-            return 'No'
-            
-        mk, Mk = min(c.keys()), max(c.keys())
-        mv, Mv = c[mk], c[Mk]
-        n = N - mv
-        m = Mk - mv
-        if 0 < m * 2 <= n :
-            return 'Yes'
-        else :
-            return 'No'
-    else :
-        n = N
-        m = list(c.keys())[0]
-        if m * 2 <= n or m == n - 1 :
-            return 'Yes'
-        else :
-            return 'No' 
-
-print(solve())
+  if s > 0 :
+    print('Yes')
+    for r in ret :
+      print(*r)
+  else :
+    print('No')

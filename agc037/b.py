@@ -1,19 +1,12 @@
-S = input()
+import sys
 
-ret = 1
-pre = S[0]
-flag = True
-i = 1
-while i < len(S) :
-    if flag and S[i] == pre :
-        if i == len(S) - 1 :
-            break
-        flag = False
-        i += 2
-    else :
-        flag = True
-        pre = S[i]
-        i += 1
-    ret += 1
-    
-print(ret)
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
+
+N = int(input())
+S = input()
+N, K = map(int, input().split())
+xy = [[int(i) for i in input().split()] for _ in range(N)]
+x = [int(i) for i in input().split()]
+S = [input() for _ in range(N)]
+A = [int(input()) for _ in range(N)]

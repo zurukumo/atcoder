@@ -1,19 +1,17 @@
-x1, y1, r = map(int, input().split())
-x2, y2, x3, y3 = map(int, input().split())
+N, A, B = map(int, input().split())
+a = [int(i) for i in input().split()]
 
-if x2 <= x1 - r and x1 + r <= x3 and y2 <= y1 - r and y1 + r <= y3 :
-    red = 'NO'
-else :
-    red = 'YES'
-    
-M = 0
-for x, y in ((x2, y2), (x2, y3), (x3, y2), (x3, y3)) :
-    M = max(M, (x - x1) ** 2 + (y - y1) ** 2)
+mod = 10 ** 9 + 7
 
-if M <= r ** 2 :
-    blue = 'NO'
+if A != 1 :
+  while B > 0 and min(a) * A <= max(a) :
+    i = a.index(min(a))
+    a[i] *= A
+    B -= 1
 else :
-    blue = 'YES'
-    
-print(red)
-print(blue)
+  B = 0
+  
+a.sort()
+for i in range(B % N, B % N + N) :
+  i = i % N
+  print(a[i] * pow(A, (B - i - 1) // N + 1, mod) % mod)

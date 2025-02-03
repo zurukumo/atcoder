@@ -1,18 +1,37 @@
-from collections import Counter
-
 N = int(input())
-A = [int(i) for i in input().split()]
 
-mod = 10 ** 9 + 7
+def prime_factor(x) :
+    ret = dict()
+    if x % 2 == 0 :
+        ret[2] = 0
+        while x % 2 == 0 :
+            x //= 2
+            ret[2] += 1
+            
+    i = 3
+    while i * i <= x :
+        if x % i == 0 :
+            ret[i] = 0
+            
+            while x % i == 0 :
+                x //= i
+                ret[i] += 1
+        i += 2
+        
+    if x != 1 :
+        ret[x] = 1
+    
+    return ret
+    
+pf = prime_factor(N)
+if N == 1 :
+    print('Not Prime')
 
-cnt = Counter(A)
-if cnt[0] != 1 or A[0] != 0 :
-  print(0)
-
+elif sum(pf.values()) == 1 :
+    print('Prime')
+    
+elif N % 2 != 0 and N % 10 != 5 and N % 3 != 0 :
+    print('Prime')
+    
 else :
-  ret = 1
-  for i in range(1, max(A) + 1) :
-    ret *= pow(pow(2, cnt[i-1], mod) - 1, cnt[i], mod) * pow(2, cnt[i] * (cnt[i] - 1) // 2, mod) % mod
-    ret %= mod
-
-  print(ret)
+    print('Not Prime')

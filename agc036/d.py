@@ -1,47 +1,32 @@
-import sys
-input = sys.stdin.readline
+N = int(input())
 
-N, K = map(int, input().split())
-A = [int(i) for i in input().split()]
+A = [[0] * N for _ in range(N)]
+Al = [[0] * (N + 1) for _ in range(N + 1)]
+Ar = [[0] * (N + 1) for _ in range(N + 1)]
 
-last = dict()
-v = [-1] * N
+for i in range(N):
+    a = [int(i) for i in input().split()]
+    for j in range(N):
+        if i < j:
+            A[i][j] = a[j - 1]
+        elif i > j:
+            A[i][j] = a[j]
 
-for i, a in enumerate(A + A) :
-    if a in last and last[a] < N :
-        v[last[a]] = i + 1
-    
-    last[a] = i
+for i in range(N):
+    for j in range(i + 1, N):
+        Al[j][i + 1] = Al[j][i] + A[j][i]
+        Ar[i][j] = Ar[i - 1][j] + A[i][j]
 
-dist = [-1] * N
-cur = 0
-cycle = 0
-while dist[cur] < 0 :
-    dist[cur] = cycle 
-    cycle += v[cur] - cur
-    cur = v[cur] % N
+dp = [[float("inf")] * (N + 1) for _ in range(N + 1)]
+dp[0][0] = 0
 
-NK = N * K
-
-m = NK % cycle
-cur = v[cur] % N
-s = 0
-while m > dist[cur] > 0 :
-    s = dist[cur]
-    cur = v[cur] % N
-m -= s
-
-ret = []
-seen = set()
-for a in A[N-m:] :
-    if a in seen :
-        p = ret.pop()
-        seen.remove(a)
-        while p != a :
-            seen.remove(p)
-            p = ret.pop()
-    else :
-        ret.append(a)
-        seen.add(a)
-        
-print(' '.join([str(i) for i in ret]))
+for i in range(N + 1):
+    for j in range(i, N + 1):
+        if dp[i][j] == float("inf"):
+            continue
+        l, r = 0, 0
+        for k in range(j + 1, N + 1):
+            l += Al[k - 1][i]
+            r += Ar[k - 2][k - 1] - Ar[j - 1][k - 1]
+            dp[j][k] = min(dp[j][k], dp[i][j] + l + r)
+print(min(dp[i][N] for i in range(N + 1)))

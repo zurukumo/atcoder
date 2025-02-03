@@ -39,7 +39,19 @@ def main():
                 continue
             done.add(problem_url)
 
-            problem = chr(ord("a") + i)
+            problem = problem_url.split("_")[-1]
+            if problem == "1":
+                problem = "a"
+            elif problem == "2":
+                problem = "b"
+            elif problem == "3":
+                problem = "c"
+            elif problem == "4":
+                problem = "d"
+            elif problem == "5":
+                problem = "e"
+            elif problem == "6":
+                problem = "f"
 
             page.goto(submission_url)
             page.wait_for_load_state("networkidle")

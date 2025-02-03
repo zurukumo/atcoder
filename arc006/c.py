@@ -1,28 +1,19 @@
-E = [int(i) for i in input().split()]
-B = int(input())
-L = [int(i) for i in input().split()]
+N = int(input())
+w = [int(input()) for _ in range(N)]
 
-c = 0
-for i in range(6) :
-    if L[i] in E :
-        c += 1
+mountain = []
 
-b = B in L
-
-if c == 6 :
-    print('1')
-
-elif c == 5 and b :
-    print('2')
+for i in range(N) :
+    mk, mv = -1, float('inf')
+    for j in range(len(mountain)) :
+        if mountain[j][-1] >= w[i] :
+            if mountain[j][-1] < mv :
+                mk = j
+                mv = mountain[j][-1]
     
-elif c == 5 :
-    print('3')
-    
-elif c == 4 :
-    print('4')
-    
-elif c == 3 :
-    print('5')
-    
-else :
-    print('0')
+    if mk == -1 :
+        mountain.append([w[i]])
+    else :
+        mountain[mk].append(w[i])
+        
+print(len(mountain))

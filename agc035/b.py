@@ -1,16 +1,41 @@
-# ikatakosさんの提出を見てlru_cacheなるものを知った。
-# まだまだ知らないことがたくさんありますね。
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**5)
 
-from functools import lru_cache
+N, M = map(int, input().split())
 
-N = int(input())
-A = [int(i) for i in input().split()]
+if M % 2 == 0 :
+    vec = [[] for _ in range(N)]
+    for _ in range(M) :
+        A, B = map(int, input().split())
+        vec[A-1].append(B-1)
+        vec[B-1].append(A-1)
 
-@lru_cache(maxsize=None)
-def rec(l, r, xl, xr) :
-    if l + 1 == r :
-        return 0
-    
-    return min(rec(l, m, xl, xl+xr)+rec(m, r, xl+xr, xr)+A[m]*(xl+xr) for m in range(l+1, r))
-    
-print(A[0] + rec(0, N-1, 1, 1) + A[N-1])
+    visited = [False] * N
+    CD = [[] for _ in range(N)]
+
+    def dfs(cur, pre) :
+        for nex in vec[cur] :
+            if nex == pre :
+                continue
+            
+            if not visited[nex] :
+                visited[nex] = True
+                dfs(nex, cur)
+            elif not cur in CD[nex] :
+                CD[cur].append(nex)
+        
+        if pre != -1 :
+            if len(CD[cur]) % 2 == 0 :
+                CD[pre].append(cur)
+            else :
+                CD[cur].append(pre)
+
+    visited[0] = True            
+    dfs(0, -1)
+
+    for i in range(N) :
+        for j in CD[i] :
+            print(i + 1, j + 1)
+else :
+    print(-1)

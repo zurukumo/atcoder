@@ -1,14 +1,21 @@
-from collections import Counter
+N = int(input())
+color = [int(input()) for _ in range(N)]
 
-L, R = map(int, input().split())
-l = [int(i) for i in input().split()]
-r = [int(i) for i in input().split()]
+if sum(color) == 0 or sum(color) == N :
+    print(-1)
 
-ret = 0
-cnt = Counter(l)
-for i in range(R) :
-  if cnt[r[i]] >= 1 :
-    ret += 1
-    cnt[r[i]] -= 1
-    
-print(ret)
+else :
+    color = color * 2
+
+    ret = 0
+    pre = -1
+    count = 0
+    for c in color :
+        if c == pre :
+            count += 1
+        else :
+            ret = max(ret, count)
+            count = 1
+            pre = c
+            
+    print((ret + 1) // 2)
