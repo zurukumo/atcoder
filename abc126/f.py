@@ -1,12 +1,34 @@
-import sys
+M, K = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+def xor_match(M, K) :
+	if K >= 2 ** M :
+		return '-1' 
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+	elif (M, K) == (0, 0) :
+		return '0 0'
+
+	elif (M, K) == (1, 0) :
+		return '0 0 1 1'
+
+	elif (M, K) == (1, 1) :
+		return '-1'
+
+	init = 1
+
+	if K == 0 :
+		p_left = [1, 0, 1]
+		init = 2
+	else :
+		p_left = [0, K, 0]
+
+	p_right = []
+	for i in range(init, 2**M) :
+		if i == K :
+			continue
+		
+		p_right.append(i)
+
+	p = map(str, p_left + p_right + [K] + p_right[::-1])
+	return ' '.join(p)
+
+print(xor_match(M, K))

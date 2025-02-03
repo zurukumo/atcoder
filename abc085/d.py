@@ -1,12 +1,21 @@
-import sys
+N, H = map(int, input().split())
+ab = [[int(i) for i in input().split()] for _ in range(N)]
+amax = max(ab)[0]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+def solve(H) :
+    ret = 0
+    ab.sort(key=lambda x: x[1], reverse=True)
+    for a, b in ab :
+        if b > amax :
+            H -= b
+            ret += 1
+        else :
+            break
+            
+        if H <= 0 :
+            return ret
+            
+    ret += (H + amax - 1) // amax
+    return ret
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(solve(H))

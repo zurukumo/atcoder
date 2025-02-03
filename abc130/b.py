@@ -1,12 +1,12 @@
-import sys
+N, X = map(int, input().split())
+L = [int(i) for i in input().split()]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+D = 0
+ret = 1
+for l in L :
+    D += l
+    if D <= X :
+        ret += 1
+    else :
+        break
+print(ret)

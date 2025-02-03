@@ -1,12 +1,34 @@
-import sys
+H, W, X, Y = map(int, input().split())
+S = [input() for _ in range(H)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+X, Y = X - 1, Y - 1
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+for y in range(Y - 1, -1, -1):
+  if S[X][y] == '.':
+    ret += 1
+  else :
+    break
+    
+for y in range(Y + 1, W):
+  if S[X][y] == '.':
+    ret += 1
+  else :
+    break
+    
+for x in range(X - 1, -1, -1):
+  if S[x][Y] == '.':
+    ret += 1
+  else :
+    break
+    
+for x in range(X + 1, H):
+  if S[x][Y] == '.':
+    ret += 1
+  else :
+    break
+    
+if S[X][Y] == '.':
+  ret += 1
+    
+print(ret)

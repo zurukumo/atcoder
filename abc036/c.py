@@ -1,12 +1,10 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+from bisect import bisect_left
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+a = [int(input()) for _ in range(N)]
+
+b = list(set(a))
+b.sort()
+
+for i in range(N) :
+    print(bisect_left(b, a[i]))

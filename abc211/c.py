@@ -1,12 +1,32 @@
-import sys
+from collections import defaultdict
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+mod = 10 ** 9 + 7
+dp = defaultdict(int)
+for c in S:
+    if c == 'c':
+        dp['c'] += 1
+    if c == 'h':
+        dp['h'] += dp['c']
+        dp['h'] %= mod
+    if c == 'o':
+        dp['o'] += dp['h']
+        dp['o'] %= mod
+    if c == 'k':
+        dp['k'] += dp['o']
+        dp['k'] %= mod
+    if c == 'u':
+        dp['u'] += dp['k']
+        dp['u'] %= mod
+    if c == 'd':
+        dp['d'] += dp['u']
+        dp['d'] %= mod
+    if c == 'a':
+        dp['a'] += dp['d']
+        dp['a'] %= mod
+    if c == 'i':
+        dp['i'] += dp['a']
+        dp['i'] %= mod
+
+print(dp['i'])

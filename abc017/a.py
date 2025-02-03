@@ -1,12 +1,5 @@
-import sys
+s1, e1 = map(int, input().split())
+s2, e2 = map(int, input().split())
+s3, e3 = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print((s1 * e1 + s2 * e2 + s3 * e3) // 10)

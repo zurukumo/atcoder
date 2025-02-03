@@ -1,12 +1,8 @@
-import sys
+abc = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+a = abc // 100
+b = abc // 10 % 10
+c = abc % 10
+s = a + b + c
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(s * 111)

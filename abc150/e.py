@@ -1,12 +1,13 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+C = [int(i) for i in input().split()]
+mod = 10 ** 9 + 7
+
+C.sort()
+
+ret = 0
+P = pow(4, N - 1, mod)
+for i in range(N) :
+  ret += C[i] * P * (N - i + 1) % mod
+  ret %= mod
+
+print(ret)

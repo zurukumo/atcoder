@@ -1,12 +1,11 @@
-import sys
+n = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if n < 3 :
+	print(0)
+else :
+	a, b, c = 0, 0, 1
+	
+	for _ in range(3, n) :
+		a, b, c = b, c, (a + b + c) % 10007
+		
+	print(c)

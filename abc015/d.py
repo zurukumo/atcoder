@@ -1,12 +1,12 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
+W = int(input())
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+AB = [[int(i) for i in input().split()] for _ in range(N)]
+
+dp = [[-float('inf')] * (W + 1) for _ in range(K + 1)]
+dp[0][0] = 0
+for A, B in AB :
+  for i in range(K, 0, -1) :
+    for j in range(A, W + 1) :
+      dp[i][j] = max(dp[i][j], dp[i-1][j-A] + B)
+    
+print(max(max(dp[i]) for i in range(K + 1)))

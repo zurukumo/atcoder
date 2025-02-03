@@ -1,12 +1,11 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
+from math import atan2, sin, cos, pi
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+x0, y0 = map(int, input().split())
+x1, y1 = map(int, input().split())
+
+xc, yc = (x0 + x1) / 2, (y0 + y1) / 2
+r = ((x0 - xc) ** 2 + (y0 - yc) ** 2) ** 0.5
+
+rad = atan2(y0 - yc, x0 - xc)
+rad += 2 * pi / N
+print(xc + r * cos(rad), yc + r * sin(rad))

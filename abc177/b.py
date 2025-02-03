@@ -1,12 +1,13 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+T = input()
+
+ret = float('inf')
+for i in range(len(S) - len(T) + 1):
+    tmp = 0
+    for s, t in zip(S[i:], T):
+        if s != t:
+            tmp += 1
+
+    ret = min(ret, tmp)
+
+print(ret)

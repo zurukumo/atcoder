@@ -1,12 +1,24 @@
-import sys
+from bisect import bisect_left
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
+N, M = map(int, input().split())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+reach = []
+for i, s in enumerate(S) :
+    if s == '0' :
+        reach.append(i)
+
+def solve() :
+    ret = []
+    cur = N
+    while cur != 0 :
+        i = bisect_left(reach, cur - M)
+        if reach[i] == cur :
+            return [-1]
+        ret.append(cur - reach[i])
+        cur = reach[i]
+    
+    ret.reverse()
+    return ret
+    
+print(*solve())

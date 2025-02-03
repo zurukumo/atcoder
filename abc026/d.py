@@ -1,12 +1,22 @@
-import sys
+import math
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+A, B, C = map(int, input().split())
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def f(x) :
+    return A*x + B*math.sin(C*x*math.pi)-100
+
+left = (100-B)/A
+right = (100+B)/A
+
+while True :
+    mid = (left + right) / 2
+    
+    if abs(f(mid)) <= 10 ** -6 :
+        break
+    
+    if f(mid) <= 0 :
+        left = mid
+    else :
+        right = mid
+        
+print(mid)

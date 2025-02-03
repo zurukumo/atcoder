@@ -1,12 +1,17 @@
-import sys
+from itertools import product
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+T = [[int(i) for i in input().split()] for _ in range(N)]
+
+def check() :
+    for i in product(range(K), repeat=N) :
+        res = 0
+        for k, v in enumerate(i) :
+            res ^= T[k][v]
+        
+        if res == 0 :
+            return 'Found'
+
+    return 'Nothing'
+
+print(check())

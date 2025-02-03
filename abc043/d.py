@@ -1,12 +1,12 @@
-import sys
+s = input()
+S = len(s)
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for i in range(S-1) :
+    if s[i] == s[i+1] :
+        print(i+1, i+2)
+        break
+    elif i + 2 < S and s[i] == s[i+2] :
+        print(i+1, i+3)
+        break
+else :
+    print(-1, -1)

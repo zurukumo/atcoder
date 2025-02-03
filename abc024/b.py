@@ -1,12 +1,17 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
+N, T = map(int, input().split())
 A = [int(input()) for _ in range(N)]
+
+imos = [0] * (10 ** 6 + T)
+
+for a in A :
+    imos[a-1] += 1
+    imos[a-1+T] -= 1
+    
+for i in range(1, len(imos)) :
+    imos[i] += imos[i-1]
+
+ret = 0
+for i in imos :
+    if i :
+        ret += 1
+print(ret)

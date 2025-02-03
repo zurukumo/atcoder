@@ -1,12 +1,12 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
+N, M, X, Y = map(int, input().split())
 x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+y = [int(i) for i in input().split()]
+
+def check() :        
+    for Z in range(max(x) + 1, min(y) + 1) :
+        if X < Z <= Y :
+            return 'No War'
+    
+    return 'War'
+    
+print(check())

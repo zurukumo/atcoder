@@ -1,12 +1,42 @@
-import sys
+from collections import deque
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N, M = map(int, input().split())
+v = [[] for _ in range(N)]
+for _ in range(M) :
+    A, B = map(int, input().split())
+    v[A-1].append(B-1)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def bfs(i) :
+    dist = [float('inf')] * N
+    pre = [-1] * N
+    
+    queue = deque([(i, 0)])
+    while queue :
+        cur, cost = queue.popleft()
+        if dist[cur] < cost :
+            continue
+        for nex in v[cur] :                
+            if cost + 1 < dist[nex] :
+                dist[nex] = cost + 1
+                pre[nex] = cur
+                queue.append((nex, cost + 1))
+    
+    return dist[i], pre
+
+mi = -1
+mv = float('inf')
+mp = []
+for i in range(N) :
+    m, pre = bfs(i)
+    if m < mv :
+        mi, mv, mp = i, m, pre
+
+if mi >= 0 :
+    print(mv)
+    cur = mi
+    while mp[cur] != mi :
+        print(cur + 1)
+        cur = mp[cur]
+    print(cur + 1)
+else :
+    print(-1)

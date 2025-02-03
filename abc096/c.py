@@ -1,12 +1,19 @@
-import sys
+H, W = map(int, input().split())
+s = [input() for _ in range(H)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def check() :
+    for y in range(H) :
+        for x in range(W) :
+            if s[y][x] == '.' :
+                continue
+                
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)) :
+                if not (0 <= (y + dy) < H and 0 <= (x + dx) < W) :
+                    continue
+                if s[y+dy][x+dx] == '#' :
+                    break
+            else :
+                return 'No'
+    return 'Yes'
+    
+print(check())

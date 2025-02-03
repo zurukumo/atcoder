@@ -1,12 +1,13 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+from collections import defaultdict
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+P = [int(i) for i in input().split()]
+
+m = float('inf')
+ret = 0
+for i, p in enumerate(P) :
+  if p < m  :
+    ret += 1
+    m = p
+    
+print(ret)

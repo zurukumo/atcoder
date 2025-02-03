@@ -1,12 +1,8 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+if 1 <= N <= 125:
+    print(4)
+elif 126 <= N <= 211:
+    print(6)
+elif 212 <= N <= 214:
+    print(8)

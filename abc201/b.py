@@ -1,12 +1,21 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ST = [input().split() for _ in range(N)]
+
+ST.sort(key=lambda x: int(x[1]), reverse=True)
+print(ST[1][0])
+
+# JS
+# let st = [
+#     ['Fuji', 3776],
+#     ['Everest', 8849]
+# ]
+# st.sort((a, b) => a[1] - a[0])
+# st.sort((a, b) => a[0] - a[1])  //逆順
+
+# Ruby
+# st = [
+#     ['Fuji', 3776],
+#     ['Everest', 8849]
+# ]
+# st.sort{ |a, b| a[1] > a[0] }
+# st.sort{ |a, b| a[1] < a[0] } //逆順

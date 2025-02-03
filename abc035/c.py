@@ -1,12 +1,12 @@
-import sys
+N, Q = map(int, input().split())
+lr = [[int(i)-1 for i in input().split()] for _ in range(Q)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+board = [0] * (N+1)
+for l, r in lr :
+    board[l] += 1
+    board[r+1] -= 1
+for i in range(1, N) :
+    board[i] += board[i-1]
+for i in range(N) :
+    board[i] = str(board[i] % 2)
+print(''.join(board[:N]))

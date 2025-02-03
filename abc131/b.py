@@ -1,12 +1,15 @@
-import sys
+N, L = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+s = 0
+for i in range(1, N + 1):
+    s += L + i - 1
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+zettaici = float('inf')
+jissai = 0
+for i in range(1, N + 1):
+    x = L + i - 1
+    if abs(x) < zettaici:
+        zettaici = abs(x)
+        jissai = x
+
+print(s - jissai)

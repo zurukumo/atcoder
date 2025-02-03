@@ -1,12 +1,26 @@
 import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+sys.setrecursionlimit(10**5)
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+def rec(N, m) :
+    if N < 6 :
+        return N + m
+    
+    
+    a, b = float('inf'), float('inf')
+    six = 6
+    while six * 6 <= N :
+        six *= 6
+    if N >= six :
+        a = rec(N - six, m + 1)
+    
+    nine = 9
+    while nine * 9 <= N :
+        nine *= 9
+    if N >= nine :
+        b = rec(N - nine, m + 1)
+    
+    return min(a, b)
+        
+print(rec(N, 0))

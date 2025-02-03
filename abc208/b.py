@@ -1,12 +1,18 @@
-import sys
+P = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+coins = []
+x = 1
+for i in range(1, 10 + 1):
+    x *= i
+    for _ in range(100):
+        coins.append(x)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+s = 0
+c = 0
+while coins:
+    coin = coins.pop()
+    if s + coin <= P:
+        s += coin
+        c += 1
+
+print(c)

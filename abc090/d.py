@@ -1,12 +1,10 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+ret = 0
+if K == 0 :
+    ret = N * N
+else :
+    for a in range(1, N + 1) :
+        ret += (N // a) * max(0, a - K)
+        ret += max(0, N % a - K + 1)
+print(ret)

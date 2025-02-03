@@ -1,12 +1,31 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+S1 = input()
+S2 = input()
+mod = 10 ** 9 + 7
+
+# False->tate True->yoko
+if S1[0] == S2[0] :
+    ret = 3
+    pre = False
+    i = 1
+else :
+    ret = 6
+    pre = True
+    i = 2
+
+while i < N :
+    cur = (S1[i] != S2[i])
+    if not pre :
+        ret *= 2
+    elif pre and cur :
+        ret *= 3
+    
+    ret %= mod
+    
+    if cur :
+        i += 2
+    else :
+        i += 1
+    pre = cur
+    
+print(ret)

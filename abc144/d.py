@@ -1,12 +1,9 @@
-import sys
+import math
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+a, b, x = map(int, input().split())
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+t = 2*x/(a*a)-b
+if t >= 0 :
+    print(math.degrees(math.atan2(2*b-2*x/(a*a), a)))
+else :
+    print(math.degrees(math.atan2(b, 2*x/(a*b))))

@@ -1,12 +1,8 @@
-import sys
+N, M = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+mod = 998244353
+same, diff = M, 0
+for i in range(1, N):
+    same, diff = diff, (same * (M - 1) + diff * (M - 2)) % mod
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(diff)

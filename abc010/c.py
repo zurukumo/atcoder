@@ -1,12 +1,11 @@
-import sys
+from math import sqrt
+txa, tya, txb, tyb, T, V = map(int, input().split())
+n = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for _ in range(n) :
+	x, y = map(int, input().split())
+	if sqrt((x-txa)**2 + (y-tya)**2) + sqrt((x-txb)**2 + (y-tyb)**2) <= T * V :
+		print('YES')
+		break
+else :
+	print('NO')

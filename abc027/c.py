@@ -1,12 +1,14 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+N_ = N
+
+parity = 0
+while N_ > 0 :
+    N_ //= 2
+    parity ^= 1
+c = 1 
+parity_ = parity
+while c <= N :
+    c = 2 * c + parity_
+    parity_ ^= 1
+print(['Takahashi', 'Aoki'][parity^parity_])
+    

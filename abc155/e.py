@@ -1,12 +1,11 @@
-import sys
+N = [int(i) for i in input()]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+dp = [0, float('inf')]
+# dp = [桁上げしてない, 桁上げあった]
+for n in N :
+  ndp = [0] * 2
+  ndp[0] = min(dp[0] + n, dp[1] + n)
+  ndp[1] = min(dp[0] + 11 - n, dp[1] + 9 - n)
+  dp = ndp
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(min(dp[0], dp[1]))

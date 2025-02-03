@@ -1,12 +1,34 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+A = [int(i) - 1 for i in input().split()]
+
+def solve() :
+  global K
+  visited = [-1] * N
+  visited[0] = 0
+
+  cur = 0
+  while True :
+    nex = A[cur]
+    if visited[cur] == K - 1 :
+      return nex + 1
+      
+    if visited[nex] == -1 :
+      visited[nex] = visited[cur] + 1
+      cur = nex
+    else :
+      # 一回目
+      i = visited[nex]
+      # 二回目
+      j = visited[cur] + 1
+      K -= i
+      K %= (j - i)
+      cur = nex
+      break
+      
+  while K > 0 :
+    cur = A[cur]
+    K -= 1
+    
+  return cur + 1
+    
+print(solve())

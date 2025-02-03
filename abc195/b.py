@@ -1,12 +1,18 @@
-import sys
+A, B, W = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+W *= 1000
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+m = float('inf')
+M = -float('inf')
+for i in range(10 ** 6 + 10):
+    if A * i > W:
+        break
+    if A * i <= W <= B * i:
+        m = min(m, i)
+        M = max(M, i)
+
+
+if m == float('inf'):
+    print('UNSATISFIABLE')
+else:
+    print(m, M)

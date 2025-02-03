@@ -1,12 +1,23 @@
-import sys
+from collections import defaultdict
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+c = [int(i) for i in input().split()]
+
+kinds = defaultdict(int)
+s = 0
+for i in range(K):
+  if kinds[c[i]] == 0:
+    s += 1
+  kinds[c[i]] += 1
+
+ret = s
+for i in range(K, N):
+  kinds[c[i - K]] -= 1
+  if kinds[c[i - K]] == 0:
+    s -= 1
+  if kinds[c[i]] == 0:
+    s += 1
+  kinds[c[i]] += 1
+  ret = max(ret, s)
+  
+print(ret)

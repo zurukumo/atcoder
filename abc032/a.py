@@ -1,12 +1,18 @@
-import sys
+a = int(input())
+b = int(input())
+n = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def gcd(m, n) :
+    if n > m :
+        m, n = n, m
+        
+    while m % n != 0 :
+        m, n = n, m % n
+        
+    return n
+        
+def lcm(m, n) :
+    return m * n // gcd(m, n)
+    
+l = lcm(a, b)
+print(-(-n//l) * l)

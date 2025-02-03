@@ -1,12 +1,14 @@
-import sys
+N, M = map(int, input().split())
+lrs = [[int(i) for i in input().split()] for _ in range(N)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+imos = [0] * (M + 1)
+ret = 0
+for l, r, s in lrs:
+  imos[l-1] += s
+  imos[r] -= s
+  ret += s
+  
+for i in range(1, M + 1) :
+  imos[i] += imos[i-1]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(ret - min(imos[:M]))

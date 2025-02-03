@@ -1,12 +1,26 @@
 import sys
-
 input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+sys.setrecursionlimit(10**5)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+K = int(input())
+
+cnt = 0
+def dfs(keta, cur) :
+  if keta == 0 :
+    global cnt
+    cnt += 1
+    if cnt == K :
+      print(cur)
+      exit()
+    return 
+      
+  i = cur % 10
+  if i - 1 >= 0 :
+    dfs(keta - 1, cur * 10 + i - 1)
+  dfs(keta - 1, cur * 10 + i)
+  if i + 1 <= 9 :
+    dfs(keta - 1, cur * 10 + i + 1)
+
+for keta in range(100) :
+  for i in range(1, 10) :
+    dfs(keta, i)

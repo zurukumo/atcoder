@@ -1,12 +1,13 @@
-import sys
+N, K = input().split()
+K = int(K)
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+a = N
+for _ in range(K) :
+  a = [i for i in a]
+  a.sort()
+  a = ''.join(a)
+  g1 = int(a)
+  g2 = int(a[::-1])
+  a = str(g2 - g1)
+  
+print(a)

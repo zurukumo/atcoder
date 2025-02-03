@@ -1,12 +1,43 @@
-import sys
+from heapq import heappush, heappop
+from collections import defaultdict
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N, X, D = map(int, input().split())
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if D == 0 :
+  if X == 0 :
+    print(1)
+  else :
+    print(N + 1)
+
+else :
+  s = X * N + D * N * (N - 1) // 2
+
+  h = defaultdict(lambda: [])
+  for i in range(N + 1) :
+    a = X * i + D * i * (i - 1) // 2
+    b = X * i + D * i * (2 * N - i - 1) // 2
+    
+    m = 2 * a - s
+    M = 2 * b - s
+    
+    if M < m :
+      m, M = M, m
+      
+    heappush(h[m % (abs(D) * 2)], (m, M))
+
+  D = abs(D)
+
+  ret = 0
+  for heap in h.values() :
+    u, v = heappop(heap)
+    while heap :
+      if heap[0][0] <= v :
+        v = max(v, heap[0][1])
+        heappop(heap)
+      else :
+        ret += (v - u) // (2 * D) + 1
+        u, v = heappop(heap)
+        
+    ret += (v - u) // (2 * D) + 1
+
+  print(ret)

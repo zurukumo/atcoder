@@ -1,12 +1,8 @@
-import sys
+A, B = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for i in range(1, 10 ** 6) :
+  if int(i * 0.08) == A and int(i * 0.1) == B :
+    print(i)
+    break
+else :
+  print(-1)

@@ -1,12 +1,10 @@
-import sys
+S = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+mod = 10 ** 9 + 7
+dp = [0] * 2001
+dp[0] = 1
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for i in range(3, 2001):
+    dp[i] = sum(dp[:i - 2]) % mod
+
+print(dp[S])

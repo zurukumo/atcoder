@@ -1,12 +1,13 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+S = list(S)
+
+if len(S) % 2 == 0 :
+    S.pop()
+S.pop()
+    
+while S :
+    if S[:len(S)//2] == S[len(S)//2:] :
+        print(len(S))
+        break
+    S.pop()
+    S.pop()

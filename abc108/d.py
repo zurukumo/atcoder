@@ -1,12 +1,19 @@
-import sys
+L = int(input())
+  
+ret = []
+count = 0
+for i in range(19, 0, -1) :
+    while L - (1 << (i - 1)) >= 0 :
+        ret.append((i, count))
+        count += 1 << (i - 1)
+        L -= 1 << (i - 1)
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N = ret[0][0]
+M = len(ret) + 2 * (N - 1)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(N + 1, M)
+for i in range(1, N) :
+    print(i, i + 1, 0)
+    print(i, i + 1, 1 << (i - 1))
+for r in ret :
+    print(r[0], N + 1, r[1])

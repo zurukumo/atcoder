@@ -1,12 +1,10 @@
-import sys
+S, T = input().split()
+A, B = map(int, input().split())
+U = input()
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if U == S :
+  A -= 1
+if U == T :
+  B -= 1
+  
+print(A, B)

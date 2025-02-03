@@ -1,12 +1,31 @@
-import sys
+N, Q = map(int, input().split())
+ab = [[int(i) for i in input().split()] for _ in range(N - 1)]
+cd = [[int(i) for i in input().split()] for _ in range(Q)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+vec = [[] for _ in range(N)]
+for a, b in ab:
+  a -= 1
+  b -= 1
+  vec[a].append(b)
+  vec[b].append(a)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+q = [0]
+p = [-1] * N
+while q:
+  cur = q.pop()
+  cp = p[cur]
+  for nex in vec[cur]:
+    if p[nex] != -1:
+      continue
+      
+    q.append(nex)
+    p[nex] = 1 - cp
+    
+for c, d in cd:
+  c -= 1
+  d -= 1
+  if p[c] == p[d]:
+    print('Town')
+  else:
+    print('Road')
+    

@@ -1,12 +1,31 @@
-import sys
+import heapq
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+Q = int(input())
+Query = [input() for _ in range(Q)]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ans = 0
+
+lq = []
+rq = []
+
+for q in Query :
+    if q[0] == '1' :
+        a, b = map(int, q[2:].split())
+        
+        heapq.heappush(lq, -a)
+        heapq.heappush(rq, a)
+
+        lmax, rmin = -lq[0], rq[0]
+        if lmax > rmin :
+            lmax, rmin = rmin, lmax
+            ans += rmin - lmax
+
+            heapq.heappop(lq)
+            heapq.heappop(rq)
+            heapq.heappush(lq, -lmax)
+            heapq.heappush(rq, rmin)
+
+        ans += b
+
+    else :
+        print(-lq[0], ans)

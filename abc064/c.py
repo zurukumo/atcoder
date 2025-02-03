@@ -1,12 +1,16 @@
 import sys
-
 input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+a = [int(i) for i in input().split()]
+
+color = [0] * 8
+over = 0
+for i in range(N) :
+    if a[i] >= 3200 :
+        over += 1
+    else :
+        color[a[i]//400] += 1
+
+m = 8 - color.count(0)
+print(max(1, m), m + over)

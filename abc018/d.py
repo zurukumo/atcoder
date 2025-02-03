@@ -1,12 +1,18 @@
-import sys
+from itertools import combinations
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N, M, P, Q, R = map(int, input().split())
+vec = [[] for _ in range(N)]
+for _ in range(R) :
+  x, y, z = map(int, input().split())
+  vec[x-1].append((y - 1, z))
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+for comb in combinations(range(N), P) :
+  tar = [0] * M
+  for x in comb :
+    for y, z in vec[x] :
+        tar[y] += z
+  tar.sort(reverse=True)
+  ret = max(ret, sum(tar[:Q]))
+
+print(ret)

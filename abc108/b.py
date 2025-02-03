@@ -1,12 +1,5 @@
-import sys
+x1, y1, x2, y2 = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+dx = x2 - x1
+dy = y2 - y1
+print(x2-dy, y2+dx, x2-dy-dx, y2+dx-dy)

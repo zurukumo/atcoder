@@ -1,12 +1,7 @@
-import sys
+H1, W1 = map(int, input().split())
+H2, W2 = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if (H1 == H2) or (H1 == W2) or (W1 == H2) or (W1 == W2) :
+    print('YES')
+else :
+    print('NO')

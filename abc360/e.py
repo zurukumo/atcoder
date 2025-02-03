@@ -1,12 +1,16 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+mod = 998244353
+inv = pow(N, mod - 2, mod)
+
+ret = 0
+a = 1
+b = 0
+for _ in range(K):
+    a = a * (N - 2) * inv + 2 * inv * inv
+    b = b * (N - 2) * inv + 2 * inv * inv
+    a %= mod
+    b %= mod
+
+ret = a + b * (2 + N) * (N - 1) // 2
+print(ret % mod)

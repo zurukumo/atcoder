@@ -1,12 +1,21 @@
-import sys
+from collections import defaultdict
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+T = input()
+
+first_appear_s = dict()
+first_appear_t = dict()
+
+for i in range(len(S)) :
+    s = S[i]
+    t = T[i]
+    if not s in first_appear_s :
+        first_appear_s[s] = i
+    if not t in first_appear_t :
+        first_appear_t[t] = i
+        
+    if first_appear_s[s] != first_appear_t[t] :
+        print('No')
+        break
+else :
+    print('Yes')

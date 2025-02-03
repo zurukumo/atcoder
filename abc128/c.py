@@ -1,12 +1,23 @@
-import sys
+from itertools import product
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N, M = map(int, input().split())
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ks = [[int(i) for i in input().split()] for _ in range(M)]
+p = [int(i) for i in input().split()]
+
+res = 0
+
+for i in product(range(2), repeat=N) :
+    flag = True
+    for j in range(M) :
+        tmp = 0
+        for s in ks[j][1:] :
+            tmp += i[s-1]
+        
+        if tmp % 2 != p[j] :
+            flag = False
+            break
+    if flag :
+        res += 1
+
+print(res)

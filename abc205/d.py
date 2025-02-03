@@ -1,12 +1,20 @@
-import sys
+from bisect import bisect_left, bisect_right
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N, Q = map(int, input().split())
+A = [int(i) for i in input().split()]
+K = [int(input()) for _ in range(Q)]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+sa = set(A)
+for k in K:
+  ng, ok = 0, 10 ** 19
+  while ok - ng > 1:
+    m = (ng + ok) // 2
+    if m - bisect_left(A, m) >= k:
+      ok = m
+    else:
+      ng = m
+  
+  while ok in sa:
+    ok += 1
+  print(ok)
+  # print()

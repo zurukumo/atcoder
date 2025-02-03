@@ -1,12 +1,14 @@
-import sys
+N, X = map(int, input().split())
+VP = [[int(i) for i in input().split()] for _ in range(N)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+# Σ (V * P / 100) > X
+# Σ (V * P) > X * 100
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+s = 0
+for i, (V, P) in enumerate(VP):
+    s += V * P
+    if s > X * 100:
+        print(i + 1)
+        break
+else:
+    print(-1)

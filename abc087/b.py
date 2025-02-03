@@ -1,12 +1,12 @@
-import sys
+A = int(input())
+B = int(input())
+C = int(input())
+X = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+for i in range(A + 1):
+    for j in range(B + 1):
+        for k in range(C + 1):
+            if i * 500 + j * 100 + k * 50 == X:
+                ret += 1
+print(ret)

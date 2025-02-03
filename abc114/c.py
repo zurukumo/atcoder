@@ -1,12 +1,19 @@
-import sys
+S = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+def solve() :
+    ret = 0
+    lst = [0]
+    pre, cur = 0, len(lst)
+    for _ in range(10) :
+        for i in range(pre, cur) :
+            for j in [3, 5, 7] :
+                s = lst[i]*10+j
+                if s > S :
+                    return ret
+                lst.append(s)
+                s = str(s)
+                if '3' in s and '5' in s and '7' in s :
+                    ret += 1
+        pre, cur = cur, len(lst)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(solve())

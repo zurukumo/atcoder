@@ -1,12 +1,8 @@
-import sys
+K, N = map(int, input().split())
+A = [int(i) for i in input().split()]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+M = K - (A[-1] - A[0])
+for i in range(1, N) :
+  M = max(M, A[i] - A[i-1])
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(K - M)

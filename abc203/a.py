@@ -1,12 +1,9 @@
-import sys
+dice = list(map(int, input().split()))
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+dice.sort()
+if dice[0] == dice[1]:
+  print(dice[2])
+elif dice[1] == dice[2]:
+  print(dice[0])
+else:
+  print(0)

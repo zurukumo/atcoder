@@ -1,12 +1,14 @@
-import sys
+N, X = map(int, input().split())
+A = [int(i) for i in input().split()]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+for i, a in enumerate(A):
+  if i % 2 == 1:
+    ret += a - 1
+  else:
+    ret += a
+    
+if ret <= X:
+  print('Yes')
+else:
+  print('No')

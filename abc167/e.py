@@ -1,12 +1,18 @@
-import sys
+N, M, K = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+mod = 998244353
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+fac = [1]
+inv = [1]
+for i in range(1, N + 10) :
+  fac.append(fac[-1] * i % mod)
+  inv.append(pow(fac[-1], mod - 2, mod))
+
+def comb(n, r) :
+  return fac[n] * inv[n-r] * inv[r] % mod
+
+ret = 0
+for k in range(K + 1) :
+  ret += comb(N - 1, k) * M * pow(M - 1, N - k - 1, mod) % mod
+  ret %= mod
+print(ret)

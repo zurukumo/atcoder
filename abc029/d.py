@@ -1,12 +1,14 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+ret = 0
+for i in range(1, 10) :
+    # 取れるだけ取る
+    ret += (N // (10**i)) * (10**(i-1))
+    # 例えば10の位に注目する
+    # N%100=19~99のとき10の位が1になるのは10~19の10個
+    if N % (10**i) >= 2 * (10**(i-1)) - 1 :
+        ret += 10**(i-1)
+    # N%100=10~19のとき10の位が1になるのは10~N%100の(N%100-10+1)個
+    elif N % (10**i) >= 10**(i-1) :
+        ret += N % (10**i) - 10**(i-1) + 1
+print(ret)

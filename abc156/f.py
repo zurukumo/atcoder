@@ -1,12 +1,12 @@
-import sys
+k, q = map(int, input().split())
+d = [int(i) for i in input().split()]
+nxm = [[int(i) for i in input().split()] for _ in range(q)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for n, x, m in nxm :
+  an = x
+  for i in range(k) :
+    if d[i] % m != 0 :
+      an += ((n - i - 2) // k + 1) * (d[i] % m)
+    else :
+      an += ((n - i - 2) // k + 1) * m
+  print(n - 1 - (an // m - x // m))

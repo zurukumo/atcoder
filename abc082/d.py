@@ -1,12 +1,36 @@
-import sys
+s = input()
+x, y = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+count = [[], []]
+now = 0
+for f in s.split('T') :
+    count[now].append(len(f))
+    now ^= 1
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def solve() :
+    dp = set([count[0][0]])
+    for c in count[0][1:] :
+        if c == 0 :
+            continue
+        dp_ = set()
+        for xi in dp :
+            dp_.add(xi+c)
+            dp_.add(xi-c)
+        dp = dp_
+    if not x in dp :
+        return 'No'
+    
+    dp = set([0])
+    for c in count[1] :
+        if c == 0 :
+            continue
+        dp_ = set()
+        for yi in dp :
+            dp_.add(yi+c)
+            dp_.add(yi-c)
+        dp = dp_
+    if not y in dp :
+        return 'No'
+    return 'Yes'
+
+print(solve())

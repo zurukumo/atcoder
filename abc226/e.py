@@ -1,12 +1,79 @@
 import sys
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+sys.setrecursionlimit(10**6)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+N, M = map(int, input().split())
+UV = [[int(i) for i in input().split()] for _ in range(M)]
+
+
+# Kosaraju's algorithm
+class StronglyConnectedComponent:
+    def __init__(self, n):
+        self.n = n
+        self.G = [[] for _ in range(n)]
+        self.rG = [[] for _ in range(n)]
+        self.vs = []
+        self.cmp = [0] * n
+
+    def add_edge(self, fr, to):
+        self.G[fr].append(to)
+        self.rG[to].append(fr)
+
+    def __dfs(self, v):
+        self.used[v] = True
+        for i in range(len(self.G[v])):
+            if not self.used[self.G[v][i]]:
+                self.__dfs(self.G[v][i])
+        self.vs.append(v)
+
+    def __rdfs(self, v, k):
+        self.used[v] = True
+        self.cmp[v] = k
+        for i in range(len(self.rG[v])):
+            if not self.used[self.rG[v][i]]:
+                self.__rdfs(self.rG[v][i], k)
+
+    def scc(self):
+        self.used = [False] * self.n
+        for i in range(self.n):
+            if not self.used[i]:
+                self.__dfs(i)
+        self.used = [False] * self.n
+        k = 0
+        for i in reversed(self.vs):
+            if not self.used[i]:
+                self.__rdfs(i, k)
+                k += 1
+
+        groups = [[] for _ in range(k)]
+        for i in range(self.n):
+            groups[self.cmp[i]].append(i)
+
+        return groups
+
+
+def solve(N, M, UV):
+    mod = 998244353
+
+    if N != M:
+        return 0
+
+    scc = StronglyConnectedComponent(N)
+    for u, v in UV:
+        scc.add_edge(u - 1, v - 1)
+        scc.add_edge(v - 1, u - 1)
+
+    groups = scc.scc()
+
+    for group in groups:
+        edges = 0
+        for node in group:
+            edges += len(scc.G[node])
+        if edges != len(group) * 2:
+            return 0
+
+    return pow(2, len(groups), mod)
+
+
+print(solve(N, M, UV))

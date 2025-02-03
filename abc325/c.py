@@ -1,12 +1,28 @@
-import sys
+H, W = map(int, input().split())
+S = [input() for _ in range(H)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+visited = [[False] * W for _ in range(H)]
+ret = 0
+for y in range(H):
+    for x in range(W):
+        if visited[y][x] or S[y][x] == ".":
+            continue
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+        queue = [(y, x)]
+        visited[y][x] = True
+        ret += 1
+        while queue:
+            cy, cx = queue.pop()
+            for dy in range(-1, 2):
+                for dx in range(-1, 2):
+                    ny, nx = cy + dy, cx + dx
+                    if (
+                        0 <= ny < H
+                        and 0 <= nx < W
+                        and not visited[ny][nx]
+                        and S[ny][nx] == "#"
+                    ):
+                        visited[ny][nx] = True
+                        queue.append((ny, nx))
+
+print(ret)

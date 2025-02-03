@@ -1,12 +1,16 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+from collections import Counter
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
 S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+cnt = Counter(S)
+M = max(cnt.values())
+
+ret = []
+for k, v in cnt.items() :
+  if v == M :
+    ret.append(k)
+    
+ret.sort()
+for r in ret :
+  print(r)

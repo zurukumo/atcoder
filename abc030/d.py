@@ -1,12 +1,28 @@
-import sys
+N, a = map(int, input().split())
+k = int(input())
+b = [int(i)-1 for i in input().split()]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+def solve() :
+    # aから見た各単語に行くまでのステップ数
+    step = [-1] * N
+    step[a-1] = 0
+    
+    # ステップ数に対応する単語
+    word = [a-1]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+    cur = a-1
+    while True :
+        if step[cur] == k :
+            return cur
+            
+        if step[b[cur]] == -1 :
+            step[b[cur]] = step[cur] + 1
+            cur = b[cur]
+            word.append(cur)
+        
+        else :
+            a2l = step[b[cur]]
+            l2l = step[cur] + 1 - a2l
+            return word[a2l+(k-a2l)%l2l]
+
+print(solve()+1)

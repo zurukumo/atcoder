@@ -1,12 +1,19 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+a = [int(i) for i in input().split()]
+
+if sum(a) % N != 0 :
+    print(-1)
+
+else :
+    avg = sum(a) // N
+
+    ret = 0
+    now = 0
+    for i in range(N) :
+        now += a[i]
+        now -= avg
+
+        if now != 0 :
+            ret += 1
+
+    print(ret)

@@ -1,12 +1,9 @@
-import sys
+R, G, B = map(int, input().split())
+C = input()
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if C == "Red":
+    print(min(G, B))
+elif C == "Green":
+    print(min(R, B))
+else:
+    print(min(R, G))

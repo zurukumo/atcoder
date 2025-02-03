@@ -1,12 +1,18 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+exp = 0
+
+def calc_exp(init) :
+	point = init
+	n_play = 0
+
+	while point < K :
+		point *= 2
+		n_play += 1
+
+	return 1 / (2 ** n_play)
+
+for i in range(1, N+1) :
+	exp += calc_exp(i)
+
+print('{:.10f}'.format(exp / N))

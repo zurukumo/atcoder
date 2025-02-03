@@ -1,12 +1,16 @@
-import sys
+S = list(input())
+T = list(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+last = -1
+for i in range(len(S)-len(T) + 1) :
+    for j in range(len(T)) :
+        if S[i+j] != T[j] and S[i+j] != '?' :
+            break
+    else :
+        last = i
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if last == -1 :
+    print('UNRESTORABLE')
+else :
+    S[last:last+len(T)] = T[::]
+    print(''.join(S).replace('?', 'a'))

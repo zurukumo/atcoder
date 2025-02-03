@@ -1,12 +1,15 @@
-import sys
+H, W, K = map(int, input().split())
+c = [[i == '#' for i in input()] for _ in range(H)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+for x in range(1 << W) :
+  for y in range(1 << H) :
+    s = 0
+    for i in range(W) :
+      for j in range(H) :
+        if x & (1 << i) or y & (1 << j) : continue
+        s += c[j][i]
+    if s == K :
+      ret += 1
+      
+print(ret)

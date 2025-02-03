@@ -1,12 +1,10 @@
-import sys
+x, y = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+a = [1, 3, 5, 7, 8, 10, 12]
+b = [4, 6, 9, 11]
+c = [2]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if x in a and y in a or x in b and y in b or x in c and y in c :
+    print('Yes')
+else :
+    print('No')

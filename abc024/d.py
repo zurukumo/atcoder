@@ -1,12 +1,13 @@
-import sys
+A = int(input())
+B = int(input())
+C = int(input())
+MOD = 10 ** 9 + 7
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+x = (A*(B+C)-B*C) % MOD
+inv = pow(x, MOD - 2, MOD)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+c = B*(C-A)*inv%MOD
+r = C*(B-A)*inv%MOD
+
+print(r, c)
+   

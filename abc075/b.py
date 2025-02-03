@@ -1,12 +1,16 @@
-import sys
+H, W = map(int, input().split())
+S = [input() for _ in range(H)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = [[0] * W for _ in range(H)]
+for y in range(H) :
+    for x in range(W) :
+        if S[y][x] == '#' :
+            for yy in range(max(0, y-1), min(H, y+2)) :
+                for xx in range(max(0, x-1), min(W, x+2)) :
+                    if S[yy][xx] != '#' :
+                        ret[yy][xx] += 1
+                    else :
+                        ret[yy][xx] = '#'
+for i in range(H) :
+    s = ''.join(map(str, ret[i]))
+    print(s)

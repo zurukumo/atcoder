@@ -1,12 +1,11 @@
-import sys
+A, B = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+A = (A + 12) % 14
+B = (B + 12) % 14
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if A > B :
+    print('Alice')
+elif A == B :
+    print('Draw')
+else :
+    print('Bob')

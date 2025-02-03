@@ -1,12 +1,29 @@
-import sys
+H, W = map(int, input().split())
+a = [input() for _ in range(H)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+yoko = [False] * H
+for i in range(H) :
+    k = set()
+    for j in range(W) :
+        k.add(a[i][j])
+    if len(k) == 1 and '.' in k :
+        yoko[i] = True
+        
+tate = [False] * W
+for i in range(W) :
+    k = set()
+    for j in range(H) :
+        k.add(a[j][i])
+    if len(k) == 1 :
+        tate[i] = True
+        
+for i in range(H) :
+    if yoko[i] : 
+        continue
+    s = ''
+    for j in range(W) :
+        if tate[j] and '.' in k :
+            continue
+        s += a[i][j]
+    print(s)
+            

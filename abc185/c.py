@@ -1,12 +1,10 @@
-import sys
+L = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+bunsi = 1
+bunbo = 1
+for i in range(1, 11 + 1):
+  bunsi *= L - i
+  bunbo *= i
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(bunsi // bunbo)
+  

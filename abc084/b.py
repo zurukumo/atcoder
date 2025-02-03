@@ -1,12 +1,13 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
+A, B = map(int, input().split())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+def solve() :
+    for i in range(A+B+1) :
+        if 0 <= i < A or A + 1 <= i <= A + B :
+            if not 48 <= ord(S[i]) <= 57 :
+                return 'No'
+        else :
+            if S[i] != '-' :
+                return 'No'
+    return 'Yes'
+print(solve())

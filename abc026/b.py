@@ -1,12 +1,13 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+import math
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+R = [int(input()) for _ in range(N)]
+R.sort(reverse=True)
+
+ret = 0
+pm = 1
+for r in R :
+    ret += r * r * pm
+    pm *= -1
+    
+print(ret * math.pi)

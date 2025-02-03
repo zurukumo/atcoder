@@ -1,12 +1,14 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+from collections import Counter
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+A = [int(i) for i in input().split()]
+
+cnt = Counter(A)
+mem = dict()
+for k, v in cnt.items() :
+  mem[k] = v * (v - 1) // 2
+
+s = sum(mem.values())
+for i in range(N) :
+  ret = s - mem[A[i]] + (cnt[A[i]] - 1) * (cnt[A[i]] - 2) // 2
+  print(ret)

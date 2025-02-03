@@ -1,12 +1,17 @@
-import sys
+N, M = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+def solve() :
+  b = 0
+  for b in range(N + 1) :
+    if (4 * N - b - M) % 2 != 0 :
+      continue
+    a = (4 * N - b - M) // 2
+    c = N - a - b
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+    if 0 <= a <= N and 0 <= b <= N and 0 <= c <= N :
+      return (a, b, c)
+    
+
+  return (-1, -1, -1)
+
+print(*solve())

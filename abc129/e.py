@@ -1,12 +1,16 @@
-import sys
+L = input()
+MOD = 10 ** 9 + 7
+N = len(L)
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+dp = [[0] * 2 for _ in range(N + 1)]
+dp[0][0] = 1
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for i in range(N) :
+    if L[i] == '1' :
+        dp[i+1][0] = (dp[i][0] * 2) % MOD
+        dp[i+1][1] = (dp[i][0] + dp[i][1] * 3) % MOD
+    else :
+        dp[i+1][0] = dp[i][0]
+        dp[i+1][1] = (dp[i][1] * 3) % MOD
+
+print(sum(dp[N]) % MOD)

@@ -1,12 +1,22 @@
-import sys
+N, X = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def rec(level, X) :
+    if level == 0 :
+        return 1
+        
+    if X == 1 :
+        return 0
+        
+    elif X <= 2 ** (level + 1) - 2 :
+        return rec(level - 1, X - 1)
+        
+    elif X == 2 ** (level + 1) - 1 :
+        return 2 ** level
+        
+    elif X <= 2 ** (level + 2) - 4 :
+        return 2 ** level + rec(level - 1, X - (2 ** (level + 1) - 1))
+        
+    else :
+        return 1 + (2 ** level - 1) * 2
+        
+print(rec(N, X))

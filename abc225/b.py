@@ -1,12 +1,12 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ab = [[int(i) - 1 for i in input().split()] for _ in range(N - 1)]
+
+e = [0] * N
+for a, b in ab:
+    e[a] += 1
+    e[b] += 1
+
+if N - 1 in e:
+    print('Yes')
+else:
+    print('No')

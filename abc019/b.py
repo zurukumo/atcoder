@@ -1,12 +1,22 @@
-import sys
+s = input()
+n = len(s)
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+count = 1
+c = s[0]
+i = 1
+t = ''
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+while i < n :
+    if s[i] == c :
+        count += 1
+    else :
+        t += c + str(count)
+        count = 1
+        c = s[i]
+
+    i += 1
+
+t += c + str(count)
+
+print(t)
+    

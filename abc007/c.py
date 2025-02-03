@@ -1,12 +1,27 @@
-import sys
+R, C = [int(i) for i in input().split()]
+sx, sy = [int(i)-1 for i in input().split()]
+gx, gy = [int(i)-1 for i in input().split()]
+c = [input() for _ in range(R)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+q = [[sx, sy]]
+path = [[R*C for _ in range(C)] for _ in range(R)]
+path[sx][sy] = 0
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+while len(q) > 0 :
+	x, y = q.pop(0)
+	current = path[x][y] + 1
+	
+	if c[x][y-1] == '.' and current < path[x][y-1] :
+		q.append([x, y-1])
+		path[x][y-1] = current
+	if c[x][y+1] == '.' and current < path[x][y+1] :
+		q.append([x, y+1])
+		path[x][y+1] = current
+	if c[x-1][y] == '.' and current < path[x-1][y] :
+		q.append([x-1, y])
+		path[x-1][y] = current
+	if c[x+1][y] == '.' and current < path[x+1][y] :
+		q.append([x+1, y])
+		path[x+1][y] = current
+		
+print(path[gx][gy])

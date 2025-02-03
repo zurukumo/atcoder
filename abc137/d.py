@@ -1,12 +1,18 @@
-import sys
+from heapq import heappush, heappop
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N, M = map(int, input().split())
+AB = [[] for _ in range(M+1)]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for _ in range(N) :
+    a, b = map(int, input().split())
+    if a <= M :
+        AB[M-a].append(b)
+    
+q = []
+for a in range(M+1) :
+    for b in AB[a] :
+        heappush(q, b)
+        if len(q) > a + 1 :
+            heappop(q)
+            
+print(sum(q))

@@ -1,12 +1,16 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+rating = {
+    "tourist": 3858,
+    "ksun48": 3679,
+    "Benq": 3658,
+    "Um_nik": 3648,
+    "apiad": 3638,
+    "Stonefeang": 3630,
+    "ecnerwala": 3613,
+    "mnbvmar": 3555,
+    "newbiedmy": 3516,
+    "semiexp": 3481,
+}
+
+print(rating[S])

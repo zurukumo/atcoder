@@ -1,12 +1,12 @@
-import sys
+from math import sin, cos, pi
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+A, B, H, M = map(int, input().split())
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+r1 = 2 * pi * (60 * H + M) / (12 * 60)
+x1, y1 = A * cos(r1), A * sin(r1)
+
+r2 = 2 * pi * M / 60
+x2, y2 = B * cos(r2), B * sin(r2)
+
+diff = (x1 - x2) ** 2 + (y1 - y2) ** 2
+print(diff ** 0.5)

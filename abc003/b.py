@@ -1,12 +1,10 @@
-import sys
+S, T = input(), input()
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+for i in range(len(S)) :
+	if (S[i] == '@' and T[i] in '@atcoder') or (T[i] == '@' and S[i] in '@atcoder') or S[i] == T[i] :
+		continue
+		
+	print('You will lose')
+	exit()
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print('You can win')

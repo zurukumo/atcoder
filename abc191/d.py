@@ -1,12 +1,27 @@
-import sys
+X, Y, R = map(float, input().split())
+E = 10 ** 4
+X = int(round(X * E))
+Y = int(round(Y * E))
+R = int(round(R * E))
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+def isqrt(x) :
+  l, r = 0, x
+  while r - l > 1 :
+    m = (l + r) // 2
+    if m * m > x :
+      r = m
+    else :
+      l = m
+  return l
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+for x in range(-R + X + (R - X) % E, R + X + 1, E) :
+  root = isqrt(R ** 2 - (x - X) ** 2)
+  l = Y - root
+  r = Y + root
+  l += (-l) % E
+  r -= r % E
+    
+  ret += max(0, (r - l) // E + 1)
+  
+print(ret)

@@ -1,12 +1,12 @@
-import sys
+Y = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+if Y % 4 != 0:
+    ret = 365
+elif Y % 4 == 0 and Y % 100 != 0:
+    ret = 366
+elif Y % 100 == 0 and Y % 400 != 0:
+    ret = 365
+elif Y % 400 == 0:
+    ret = 366
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(ret)

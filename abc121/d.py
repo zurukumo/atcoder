@@ -1,12 +1,16 @@
-import sys
+A, B = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def f(x) :
+    ret = 0
+    b = 1
+    for i in range(44) :
+        c = (x // (b * 2)) * b
+        rest = x % (b * 2)
+        if rest - b > 0 :
+            c += rest - b
+        if c & 1 :
+            ret += 1 << i
+        b <<= 1
+    return ret
+    
+print(f(A)^f(B+1))

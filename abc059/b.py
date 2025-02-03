@@ -1,12 +1,9 @@
-import sys
+A = int(input())
+B = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if A > B :
+    print('GREATER')
+elif A < B :
+    print('LESS')
+else :
+    print('EQUAL')

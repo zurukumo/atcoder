@@ -1,12 +1,14 @@
-import sys
+A, B, C, D = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+ymod0 = (D - 1) // 2 - (B - 1) // 2
+ymod1 = (D - 2) // 2 - (B - 2) // 2
+xmod0 = (C - 1) // 4 - (A - 1) // 4
+xmod1 = (C - 2) // 4 - (A - 2) // 4
+xmod2 = (C - 3) // 4 - (A - 3) // 4
+xmod3 = (C - 4) // 4 - (A - 4) // 4
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+ret += (ymod0 * xmod0 + ymod1 * xmod1) * 2
+ret += (ymod1 * xmod0 + ymod0 * xmod1 + ymod1 * xmod2 + ymod0 * xmod3) * 1
+
+print(ret)

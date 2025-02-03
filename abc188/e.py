@@ -1,12 +1,24 @@
 import sys
 
 input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+sys.setrecursionlimit(10**5)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+xy = [[int(i) - 1 for i in input().split()] for _ in range(M)]
+
+xy.sort()
+
+stock = [[-float('inf')] * N for _ in range(2)]
+BOUGHT = 0
+SOLD = 1
+for x, y in xy:
+    stock[BOUGHT][x] = max(stock[BOUGHT][x], -A[x])
+    stock[BOUGHT][y] = max(stock[BOUGHT][y], stock[BOUGHT][x], -A[y])
+    stock[SOLD][y] = max(stock[SOLD][y], stock[BOUGHT][x] + A[y])
+
+ans = -float('inf')
+for i in range(N):
+    ans = max(ans, stock[SOLD][i])
+
+print(ans)

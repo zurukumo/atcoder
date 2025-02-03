@@ -1,12 +1,15 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+A, B = int(S[:2]), int(S[2:])
+
+is_MM_A = 1 <= A <= 12
+is_MM_B = 1 <= B <= 12
+
+if is_MM_A and is_MM_B :
+	print('AMBIGUOUS')
+elif is_MM_A :
+	print('MMYY')
+elif is_MM_B :
+	print('YYMM')
+else :
+	print('NA')

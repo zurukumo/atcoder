@@ -1,12 +1,22 @@
-import sys
+K = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+def gcd(a, b) :
+  if b > a : 
+    a, b = b, a
+  
+  while b != 0 :
+    a, b = b, a % b
+  return a
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+
+x = [0] * (K + 1)
+for a in range(1, K + 1) :
+  for b in range(1, K + 1) :
+    x[gcd(a, b)] += 1
+
+for c in range(1, K + 1) :
+  for d in range(1, K + 1) :
+    ret += gcd(c, d) * x[d]
+    
+print(ret)

@@ -1,12 +1,10 @@
-import sys
+a, b = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+a, b = min(a, b), max(a, b)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if b == a + 1:
+    print("Yes")
+elif a == 1 and b == 10:
+    print("Yes")
+else:
+    print("No")

@@ -1,12 +1,22 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+MOD = 10 ** 9 + 7
+
+
+
+dp = [0] * 13
+dp[0] = 1
+for s in S :
+    dp_ = [0] * 13
+    if s == '?' :
+        for i in range(13) :
+            for j in range(10) :
+                dp_[(i*10+j)%13] += dp[i]
+                dp_[(i*10+j)%13] %= MOD
+    else :
+        s = int(s)
+        for i in range(13) :
+            dp_[(i*10+s)%13] += dp[i]
+            dp_[(i*10+s)%13] %= MOD
+    dp = dp_
+            
+print(dp[5])

@@ -1,12 +1,22 @@
-import sys
+SA = input()
+SB = input()
+SC = input()
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+cur, SA = SA[0], SA[1:]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+while True :
+    if cur == 'a' :
+        if len(SA) == 0 :
+            print('A')
+            break
+        cur, SA = SA[0], SA[1:]
+    elif cur == 'b' :
+        if len(SB) == 0 :
+            print('B')
+            break
+        cur, SB = SB[0], SB[1:]
+    elif cur == 'c' :
+        if len(SC) == 0 :
+            print('C')
+            break
+        cur, SC = SC[0], SC[1:]

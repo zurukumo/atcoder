@@ -1,12 +1,20 @@
-import sys
+X, Y = map(int, input().split())
+mod = 10 ** 9 + 7
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if (X + Y) % 3 == 0 : 
+    n = (X + Y) // 3
+    a = 2 * n - X
+    
+    if 0 <= a <= n and a * 2 + (n - a) == Y :
+        fac = [1]
+        inv = [1]
+        for i in range(1, n + 1) :
+            fac.append(fac[-1] * i % mod)
+            inv.append(pow(fac[-1], mod - 2, mod))
+        print(fac[n] * inv[n-a] * inv[a] % mod)
+    
+    else :
+        print(0)
+        
+else :
+    print(0)

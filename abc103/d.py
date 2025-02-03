@@ -1,12 +1,18 @@
-import sys
+from heapq import heappush, heappop
+N, M = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+ab = [[int(i) for i in input().split()] for _ in range(M)]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ab.sort(key=lambda x: x[1])
+ab.sort()
+
+ret = 1
+end = float('inf')
+for a, b in ab :
+    if a >= end :
+        ret += 1
+        end = b
+    else :
+        end = min(end, b)
+
+print(ret)

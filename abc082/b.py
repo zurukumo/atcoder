@@ -1,12 +1,20 @@
-import sys
+s = list(input())
+t = list(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+s.sort()
+t.sort(reverse=True)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def solve() :
+    flg = True
+    for i in range(min(len(s), len(t))) :
+        if ord(s[i]) < ord(t[i]) :
+            return 'Yes'
+        elif ord(s[i]) > ord(t[i]) :
+            flg = False
+    
+    if flg and len(t) > len(s) :
+        return 'Yes'
+    else :
+        return 'No'
+    
+print(solve())

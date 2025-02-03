@@ -1,12 +1,18 @@
-import sys
+N, M = map(int, input().split())
+A = [[1, int(i)] for i in input().split()]
+BC = A + [[int(i) for i in input().split()] for _ in range(M)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+BC.sort(key=lambda x: x[1], reverse=True)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+i = 0
+res = 0
+
+for B, C in BC :
+    if i + B <= N :
+        res += C * B
+        i += B
+    else :
+        res += C * (N - i)
+        break
+
+print(res)

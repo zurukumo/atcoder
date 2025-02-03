@@ -1,12 +1,31 @@
-import sys
+a, b, k = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def comb(n, k):
+    ret = 1
+    for i in range(1, n + 1):
+        ret *= i
+    for i in range(1, k + 1):
+        ret //= i
+    for i in range(1, n - k + 1):
+        ret //= i
+    return ret
+
+
+ret = ''
+for _ in range(a + b):
+    if a == 0:
+        ret += 'b'
+        b -= 1
+    elif b == 0:
+        a -= 1
+        ret += 'a'
+    else:
+        if k <= comb(a + b - 1, b):
+            ret += 'a'
+            a -= 1
+        else:
+            ret += 'b'
+            k -= comb(a + b - 1, b)
+            b -= 1
+print(ret)

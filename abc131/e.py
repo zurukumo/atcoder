@@ -1,12 +1,18 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+if K > (N - 1) * (N - 2) // 2 :
+    print(-1)
+else :
+    t = (N - 1) * (N - 2) // 2 - K
+    print(N + t - 1)
+    for i in range(1, N) :
+        print(i, N)
+
+    i, j = 1, 2
+    while t > 0 :
+        print(i, j)
+        
+        j += 1
+        if j == N :
+            i, j = i + 1, i + 2
+        t -= 1

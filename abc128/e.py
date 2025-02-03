@@ -1,12 +1,28 @@
-import sys
-
+import sys, heapq
 input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+N, Q = map(int, input().split())
+
+event = []
+for _ in range(N) :
+    s, t, x = map(int, input().split())
+    event.append([s - x, t - x, x])
+
+D = [int(input()) for _ in range(Q)]
+
+event.sort()
+
+closed = []
+ei = 0
+
+for d in D :
+    while ei < N and event[ei][0] <= d :
+        heapq.heappush(closed, (event[ei][2], event[ei][1]))
+        ei += 1
+    while closed and closed[0][1] <= d :
+        heapq.heappop(closed)
+    
+    if closed :
+        print(closed[0][0])
+    else :
+        print(-1)

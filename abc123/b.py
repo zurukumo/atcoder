@@ -1,12 +1,9 @@
-import sys
+ABCDE = [int(input()) for _ in range(5)]
+ABCDE_ = [(ABCDE[i] + 9) // 10 * 10 for i in range(5)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+s = sum(ABCDE_)
+m = float('inf')
+for i in range(5) :
+    m = min(m, s - (ABCDE_[i] - ABCDE[i]))
+    
+print(m)

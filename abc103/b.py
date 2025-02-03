@@ -1,12 +1,13 @@
-import sys
+S = list(input())
+T = list(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def check(S, T) :
+    for _ in range(len(S)) :
+        if S == T :
+            return 'Yes'
+        else :
+            t = T.pop()
+            T = [t] + T
+    return 'No'
+    
+print(check(S, T))

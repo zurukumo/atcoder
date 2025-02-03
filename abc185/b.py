@@ -1,12 +1,18 @@
-import sys
+N, M, T = map(int, input().split())
+AB = [[int(i) for i in input().split()] for _ in range(M)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+def judge():
+  t = 0
+  r = N
+  for A, B in AB:
+    r -= A - t
+    if r <= 0:
+      return 'No'
+      
+    t = B
+    r = min(r + (B - A), N)
+    
+  return 'Yes'
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+AB.append([T, T])
+print(judge())

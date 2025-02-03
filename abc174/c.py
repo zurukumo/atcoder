@@ -1,12 +1,19 @@
-import sys
+K = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+done = set()
+i = 0
+x = 7
+flag = True
+while x % K != 0 :
+  if not x in done :
+    done.add(x)
+  else :
+    flag = False
+    break
+  x = (x % K) * 10 + 7
+  i += 1
+    
+if flag :
+  print(i + 1)
+else :
+  print(-1)

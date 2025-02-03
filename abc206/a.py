@@ -1,12 +1,11 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+N *= 108
+N -= N % 100
+
+if N < 20600:
+  print('Yay!')
+elif N > 20600:
+  print(':(')
+else:
+  print('so-so')

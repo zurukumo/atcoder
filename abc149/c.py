@@ -1,12 +1,19 @@
-import sys
+X = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+primes = [2]
+for i in range(3, 10 ** 5 + 1000, 2):
+  chk = True
+  for p in primes:
+    if p * p > i :
+      break
+    if i % p == 0 : 
+      chk = False
+      break
+  if chk == True : 
+    primes.append(i)
+    # print(primes)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for p in primes :
+  if p >= X :
+    print(p)
+    break

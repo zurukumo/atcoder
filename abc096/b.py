@@ -1,12 +1,3 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+A, B, C = map(int, input().split())
+K = int(input())
+print(max([A, B, C]) * (2 ** K) + sum([A, B, C]) - max([A, B, C]))

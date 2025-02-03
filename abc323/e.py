@@ -1,12 +1,22 @@
-import sys
+N, X = map(int, input().split())
+T = [int(i) for i in input().split()]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+mod = 998244353
+inv = pow(N, mod - 2, mod)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+dp = [0] * (X + 1)
+dp[0] = 1
+
+for i in range(X + 1):
+    for t in T:
+        if i + t <= X:
+            dp[i + t] += dp[i] * inv
+            dp[i + t] %= mod
+
+ret = 0
+for i in range(X + 1):
+    if i + T[0] > X:
+        ret += dp[i] * inv
+        ret %= mod
+
+print(ret)

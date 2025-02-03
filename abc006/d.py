@@ -1,12 +1,16 @@
-import sys
+from bisect import bisect_left
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+def LongestIncreaseSubsequence(l) :
+    lis = [l[0]]
+    for x in l[1:] :
+        if x > lis[-1] :
+            lis.append(x)
+        else :
+            lis[bisect_left(lis, x)] = x
+    
+    return len(lis)
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+c = [int(input()) for _ in range(N)]
+
+print(N - LongestIncreaseSubsequence(c))

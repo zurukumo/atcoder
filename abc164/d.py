@@ -1,12 +1,15 @@
-import sys
+from collections import Counter
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+x = [0]
+dec = 1
+for s in S[::-1] :
+  x.append((x[-1] + dec * int(s)) % 2019)
+  dec *= 10
+  dec %= 2019
+
+ret = 0
+for v in Counter(x).values() :
+  ret += v * (v - 1) // 2
+print(ret)

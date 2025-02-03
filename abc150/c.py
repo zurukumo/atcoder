@@ -1,12 +1,18 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+from itertools import permutations
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+P = tuple(int(i) for i in input().split())
+Q = tuple(int(i) for i in input().split())
+
+perm = list(permutations(range(1, N + 1)))
+
+a = 0
+b = 0
+
+for i, p in enumerate(perm) :
+  if p == P :
+    a = i + 1
+  if p == Q :
+    b = i + 1
+    
+print(abs(a - b))

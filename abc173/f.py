@@ -1,12 +1,12 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+uv = [[int(i) for i in input().split()] for _ in range(N - 1)]
+
+e = 0
+for u, v in uv :
+  e += min(u, v) * (N - max(u, v) + 1)
+
+v = 0
+for i in range(1, N + 1) :
+  v += i * (N + 1 - i)
+  
+print(v - e)

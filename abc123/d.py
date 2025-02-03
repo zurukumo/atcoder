@@ -1,12 +1,22 @@
-import sys
+X, Y, Z, K = map(int, input().split())
+A = [int(i) for i in input().split()]
+B = [int(i) for i in input().split()]
+C = [int(i) for i in input().split()]
+A.sort(reverse=True)
+B.sort(reverse=True)
+C.sort(reverse=True)
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+s = []
+for x in range(X) :
+    for y in range(Y) :
+        s.append(A[x]+B[y])
+s.sort(reverse=True)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+t = []
+for k in range(min(K, len(s))) :
+    for z in range(Z) :
+        t.append(s[k]+C[z])
+        
+t.sort(reverse=True)
+
+print("\n".join(map(str, t[:K])))

@@ -1,12 +1,35 @@
-import sys
+N, M = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+v = [[] for _ in range(N)]
+abc = []
+for _ in range(M) :
+    a, b, c = map(int, input().split())
+    v[b-1].append((a-1, -c))
+    
+visited = [False] * N
+visited[N-1] = True
+queue = [N-1]
+while queue :
+    cur = queue.pop()
+    for nex, cost in v[cur] :
+        if not visited[nex] :
+            queue.append(nex)
+            visited[nex] = True
+        abc.append((nex, cur, cost))
+        
+dist = [float('inf')] * N
+dist[0] = 0
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+def bellmanford() :
+    for i in range(N) :
+        for a, b, c in abc :
+            if dist[a] + c < dist[b] :
+                dist[b] = dist[a] + c
+                if i == N-1 :
+                    return True
+    return False
+    
+if bellmanford() :
+    print('inf')
+else :
+    print(-dist[N-1])

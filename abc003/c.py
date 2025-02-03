@@ -1,12 +1,10 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+R = list(map(int, input().split()))
+
+R.sort()
+rate = 0
+
+for i in range(K) :
+	rate += R[N-K+i] * (2 ** i)
+
+print(rate / (2 ** K))

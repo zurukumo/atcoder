@@ -1,12 +1,33 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+S = list(map(int, input()))
+X = input()
+
+S = S[::-1]
+X = X[::-1]
+
+t = set([0])
+for s, x in zip(S[:-1], X[:-1]):
+  tt = set([])
+  if x == 'A':
+    for i in range(7) :
+      if (i * 10 + s) % 7 in t and (i * 10) % 7 in t :
+        tt.add(i)
+  else :
+    for i in range(7):
+      if (i * 10 + s) % 7 in t or (i * 10) % 7 in t:
+        tt.add(i)
+  t = tt
+
+
+s = S[-1]
+x = X[-1]
+if x == 'T' :
+  if 0 in t or (s % 7) in t :
+    print('Takahashi')
+  else :
+    print('Aoki')
+else :
+  if 0 in t and (s % 7) in t:
+    print('Takahashi')
+  else :
+    print('Aoki')

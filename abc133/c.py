@@ -1,12 +1,14 @@
-import sys
+L, R = map(int, input().split())
+MOD = 2019
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+m = float('inf')
+if L + MOD < R :
+    for i in range(MOD) :
+        for j in range(MOD) :
+            m = min(m, i*j%MOD)
+else :
+    for i in range(L, R) :
+        for j in range(i+1, R+1) :
+            m = min(m, i*j%MOD)
+            
+print(m)

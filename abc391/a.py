@@ -1,12 +1,15 @@
-import sys
+D = input()
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+ret = ""
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for c in D:
+    if c == "N":
+        ret += "S"
+    elif c == "S":
+        ret += "N"
+    elif c == "E":
+        ret += "W"
+    elif c == "W":
+        ret += "E"
+
+print(ret)

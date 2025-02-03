@@ -1,12 +1,24 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+Q = int(input())
+
+prefix = ''
+suffix = ''
+mode = 0
+for _ in range(Q) :
+  Query = list(input().split())
+  if Query[0] == '1' :
+    mode ^= 1
+  else :
+    _, F, C = Query
+    F = int(F) - 1
+    
+    if mode != F :
+      suffix += C
+    else :
+      prefix += C
+      
+
+if mode == 0 :
+  print(prefix[::-1] + S + suffix)
+else :
+  print(suffix[::-1] + S[::-1] + prefix)

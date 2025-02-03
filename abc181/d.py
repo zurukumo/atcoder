@@ -1,12 +1,32 @@
-import sys
+from collections import Counter
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+def judge() :
+  if len(S) == 1 :
+    if int(S) % 8 == 0 :
+      return 'Yes'
+    else :
+      return 'No'
+  
+  if len(S) == 2 :
+    a = int(S[0]) * 10 + int(S[1])
+    b = int(S[1]) * 10 + int(S[0])
+    if a % 8 == 0 or b % 8 == 0 :
+      return 'Yes'
+    else :
+      return 'No'
+  
+  cnt = Counter(S)
+
+  for i in range(8, 1000, 8) :
+    s = '{:03d}'.format(i)
+    for j in range(0, 10) :
+      if cnt[str(j)] < s.count(str(j)) :
+        break
+    else :
+      return 'Yes'
+  
+  return 'No'
+  
+print(judge())

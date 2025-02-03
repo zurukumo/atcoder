@@ -1,12 +1,12 @@
-import sys
+A, B, X = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+for d in range(11, -1, -1) :
+    n = (X - B * d) // A
+    if (10 ** d) - 1 <= n :
+        ret = max(ret, 10 ** d - 1)
+    elif 10 ** (d - 1) <= n <= (10 ** d) - 1 :
+        ret = max(ret, n)
+        
+print(min(ret, 10 ** 9))
+    

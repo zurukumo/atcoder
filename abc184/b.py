@@ -1,12 +1,13 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
+N, X = map(int, input().split())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+ans = X
+for c in S:
+    if c == 'o':
+        ans += 1
+    else:
+        if ans > 0:
+            ans -= 1
+        # ans = max(0, ans - 1)
+
+print(ans)

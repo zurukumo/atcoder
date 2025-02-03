@@ -1,12 +1,12 @@
-import sys
+S = [int(i) for i in input().split()]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for i in range(len(S)):
+    if i + 1 < len(S) and not (S[i] <= S[i + 1]):
+        print("No")
+        break
+    if not (100 <= S[i] <= 675 and S[i] % 25 == 0):
+        print("No")
+        break
+else:
+    print("Yes")

@@ -1,12 +1,20 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+s = [int(i) for i in input().split()]
+
+ret = 0
+for c in range(1, N) :
+    k = 1
+    tmp = 0
+    flag = (N - 1) % c == 0
+    while c * k < N - 1 :
+        l = c * k
+        r = N - 1 - l
+
+        if (flag and r <= l) or r <= c:
+            break
+
+        tmp += s[l] + s[r]
+        ret = max(ret, tmp)
+        k += 1
+
+print(ret)

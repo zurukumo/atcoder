@@ -1,12 +1,22 @@
-import sys
+from collections import defaultdict
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N, M = map(int, input().split())
+pS = [input().split() for _ in range(M)]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ac, wa = 0, 0
+solved = defaultdict(int)
+warning = defaultdict(int)
+
+for p, S in pS :
+  if solved[p] == 1 :
+    continue
+    
+  if S == 'WA' :
+    warning[p] += 1
+    
+  else :
+    ac += 1
+    solved[p] = 1
+    wa += warning[p]
+    
+print(ac, wa)

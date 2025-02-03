@@ -1,12 +1,10 @@
-import sys
+X = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if X < 40:
+    print(40 - X)
+elif X < 70:
+    print(70 - X)
+elif X < 90:
+    print(90 - X)
+else:
+    print("expert")

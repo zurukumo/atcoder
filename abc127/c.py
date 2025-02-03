@@ -1,12 +1,13 @@
-import sys
+N, M = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+imos = [0] * (10 ** 5 + 2)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for _ in range(M) :
+    L, R = map(int, input().split())
+    imos[L] += 1
+    imos[R+1] -= 1
+
+for i in range(10 ** 5 + 1) :
+    imos[i+1] += imos[i]
+
+print(imos.count(M))
