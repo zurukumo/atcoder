@@ -92,7 +92,7 @@ def main():
                     exit(1)
             print_green(f"Created {args.contest}_{problem} samples")
 
-            time.sleep(1)
+            time.sleep(2)
 
 
 if __name__ == "__main__":

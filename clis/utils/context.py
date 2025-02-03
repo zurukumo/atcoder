@@ -8,7 +8,7 @@ def session_file():
 
 
 def load_context(p: Playwright):
-    browser = p.chromium.launch(headless=False, slow_mo=1000)
+    browser = p.chromium.launch()
 
     if os.path.exists(session_file()):
         context = browser.new_context(storage_state=session_file())
