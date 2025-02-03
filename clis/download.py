@@ -8,6 +8,11 @@ from utils import load_context, print_green, print_red
 
 def copy_template(contest: str, problem: str) -> None:
     current_dir = os.path.dirname(__file__)
+
+    if os.path.exists(f"{contest}/{problem}.py"):
+        print_green(f"{contest}/{problem}.py already exists")
+        return
+
     template_path = os.path.join(current_dir, "data/template.py")
     with open(template_path) as f:
         template = f.read()
@@ -69,9 +74,16 @@ def main():
 
             # サンプルの作成
             samples = page.query_selector_all("pre[id^=pre-sample]")
+            if len(samples) == 0:
+                samples = page.query_selector_all("pre[id^=for_copy]")
+
             for sample in samples:
                 # preのidはpre-sample(数字)の形式になっているので数字だけ取り出す
-                id = int(sample.get_attribute("id").replace("pre-sample", ""))
+                id = int(
+                    sample.get_attribute("id")
+                    .replace("pre-sample", "")
+                    .replace("for_copy", "")
+                )
                 text = sample.text_content()
                 try:
                     create_samples(args.contest, problem, id, text)
