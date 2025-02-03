@@ -3,7 +3,7 @@ import os
 import subprocess
 
 for i in range(1, 71):
-    for file in ["a", "b", "c", "d", "e", "f"]:
+    for file in ["a", "b", "c", "d", "e", "f", "g", "h"]:
         if not os.path.exists(f"agc{i:03d}/{file}.py"):
             continue
 
