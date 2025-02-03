@@ -12,20 +12,20 @@ def comb(n, k):
     return ret
 
 
-ret = ''
+ret = ""
 for _ in range(a + b):
     if a == 0:
-        ret += 'b'
+        ret += "b"
         b -= 1
     elif b == 0:
         a -= 1
-        ret += 'a'
+        ret += "a"
     else:
         if k <= comb(a + b - 1, b):
-            ret += 'a'
+            ret += "a"
             a -= 1
         else:
-            ret += 'b'
+            ret += "b"
             k -= comb(a + b - 1, b)
             b -= 1
 print(ret)

@@ -4,4 +4,4 @@ xc -= xa
 yb -= ya
 yc -= ya
 
-print(abs(xb*yc - xc*yb) / 2)
+print(abs(xb * yc - xc * yb) / 2)

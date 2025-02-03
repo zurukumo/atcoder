@@ -13,25 +13,25 @@ q = q[-Y:]
 pi = 0
 qi = 0
 
-for rv in r :
-  if 0 <= pi < X and 0 <= qi < Y :
-    if p[pi] <= q[qi] and p[pi] < rv :
-      p[pi] = rv
-      pi += 1
-      continue
-    if q[qi] <= p[pi] and q[qi] < rv : 
-      q[qi] = rv
-      qi += 1
-      continue
-  
-  if 0 <= pi < X and p[pi] < rv :
-    p[pi] = rv
-    pi += 1
-    continue
-    
-  if 0 <= qi < Y and q[qi] < rv :
-    q[qi] = rv
-    qi += 1
-    continue
-    
+for rv in r:
+    if 0 <= pi < X and 0 <= qi < Y:
+        if p[pi] <= q[qi] and p[pi] < rv:
+            p[pi] = rv
+            pi += 1
+            continue
+        if q[qi] <= p[pi] and q[qi] < rv:
+            q[qi] = rv
+            qi += 1
+            continue
+
+    if 0 <= pi < X and p[pi] < rv:
+        p[pi] = rv
+        pi += 1
+        continue
+
+    if 0 <= qi < Y and q[qi] < rv:
+        q[qi] = rv
+        qi += 1
+        continue
+
 print(sum(p[:X]) + sum(q[:Y]))

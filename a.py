@@ -1,3 +1,4 @@
+# 提出を自動で取得するためのスクリプト
 # for i in range(1, 192):
 #     process = subprocess.Popen(["pipenv", "run", "download_submission", f"arc{i:03d}"])
 #     process.wait()
@@ -5,7 +6,7 @@
 #     process = subprocess.Popen(["pipenv", "run", "download_submission", f"agc{i:03d}"])
 #     process.wait()
 
-# abc, agc, arcで始まるディレクトリを探索
+# 欠損データを発見するスクリプト
 import collections
 import os
 import re

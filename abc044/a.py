@@ -3,7 +3,7 @@ K = int(input())
 X = int(input())
 Y = int(input())
 
-if N > K :
+if N > K:
     print(K * X + (N - K) * Y)
-else :
+else:
     print(N * X)

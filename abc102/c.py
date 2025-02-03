@@ -1,7 +1,7 @@
 N = int(input())
 A = [int(i) for i in input().split()]
 
-for i in range(N) :
+for i in range(N):
     A[i] -= i + 1
 A.sort()
 

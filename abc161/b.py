@@ -8,6 +8,6 @@ for a in A:
         ans += 1
 
 if ans >= M:
-    print('Yes')
+    print("Yes")
 else:
-    print('No')
+    print("No")

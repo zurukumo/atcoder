@@ -6,6 +6,6 @@ c2 = (xy[2][0] - xy[0][0]) ** 2 + (xy[2][1] - xy[0][1]) ** 2
 
 a2, b2, c2 = sorted([a2, b2, c2])
 if a2 + b2 == c2:
-    print('Yes')
+    print("Yes")
 else:
-    print('No')
+    print("No")

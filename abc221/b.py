@@ -5,10 +5,10 @@ for i in range(len(S) - 1):
     SS = S[::]
     SS[i], SS[i + 1] = SS[i + 1], SS[i]
     if SS == T:
-        print('Yes')
+        print("Yes")
         break
 else:
     if S == T:
-        print('Yes')
+        print("Yes")
     else:
-        print('No')
+        print("No")

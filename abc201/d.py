@@ -1,16 +1,17 @@
 import sys
+
 input = sys.stdin.readline
 
 H, W = map(int, input().split())
-A = [[1 if i == '+' else -1 for i in input()] for _ in range(H)]
+A = [[1 if i == "+" else -1 for i in input()] for _ in range(H)]
 
 dp = [[0] * W for _ in range(H)]
 for y in range(H):
     for x in range(W):
         if (y + x) % 2 == 0:
-            dp[y][x] = float('inf')
+            dp[y][x] = float("inf")
         else:
-            dp[y][x] = -float('inf')
+            dp[y][x] = -float("inf")
 dp[-1][-1] = 0
 
 for y in range(H - 1, -1, -1):
@@ -33,8 +34,8 @@ for y in range(H - 1, -1, -1):
     # print()
 
 if dp[0][0] < 0:
-    print('Takahashi')
+    print("Takahashi")
 elif dp[0][0] > 0:
-    print('Aoki')
+    print("Aoki")
 else:
-    print('Draw')
+    print("Draw")

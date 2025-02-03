@@ -1,6 +1,6 @@
 S, T = input().split()
 
 if sorted([S, T]) == [S, T]:
-    print('Yes')
+    print("Yes")
 else:
-    print('No')
+    print("No")

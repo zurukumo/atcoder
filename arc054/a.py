@@ -1,12 +1,12 @@
 L, X, Y, S, D = map(int, input().split())
 
-ret = float('inf')
-if D >= S :
+ret = float("inf")
+if D >= S:
     ds = D - S
-else :
+else:
     ds = D + L - S
-    
-if Y > X :
+
+if Y > X:
     print(min(ds / (X + Y), (L - ds) / (Y - X)))
-else :
+else:
     print(ds / (X + Y))

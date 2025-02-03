@@ -7,13 +7,13 @@ F.sort()
 
 ng = -1
 ok = 10**12
-while ok - ng > 1 :
+while ok - ng > 1:
     mid = (ok + ng) // 2
     k = 0
-    for i in range(N) :
+    for i in range(N):
         k += max(0, A[i] - mid // F[i])
-    if k <= K :
+    if k <= K:
         ok = mid
-    else :
+    else:
         ng = mid
 print(ok)

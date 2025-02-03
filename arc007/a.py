@@ -1,4 +1,4 @@
 X = input()
 s = input()
 
-print(s.replace(X, ''))
+print(s.replace(X, ""))

@@ -1,3 +1,3 @@
 S, T = map(int, input().split())
 
-print(T-S+1)
+print(T - S + 1)

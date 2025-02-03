@@ -9,7 +9,7 @@ xy = [[int(i) - 1 for i in input().split()] for _ in range(M)]
 
 xy.sort()
 
-stock = [[-float('inf')] * N for _ in range(2)]
+stock = [[-float("inf")] * N for _ in range(2)]
 BOUGHT = 0
 SOLD = 1
 for x, y in xy:
@@ -17,7 +17,7 @@ for x, y in xy:
     stock[BOUGHT][y] = max(stock[BOUGHT][y], stock[BOUGHT][x], -A[y])
     stock[SOLD][y] = max(stock[SOLD][y], stock[BOUGHT][x] + A[y])
 
-ans = -float('inf')
+ans = -float("inf")
 for i in range(N):
     ans = max(ans, stock[SOLD][i])
 

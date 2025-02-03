@@ -1,12 +1,12 @@
 A, B, C = map(int, input().split())
 
 if C % 2 == 0:
-  A = abs(A)
-  B = abs(B)
-  
+    A = abs(A)
+    B = abs(B)
+
 if A < B:
-  print('<')
+    print("<")
 elif A > B:
-  print('>')
+    print(">")
 else:
-  print('=')
+    print("=")

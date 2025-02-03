@@ -7,15 +7,15 @@ a.sort()
 visited = [False] * N
 
 ret = 0
-for i in range(N) :
-    if not visited[i] :
+for i in range(N):
+    if not visited[i]:
         ret += 1
-        
+
         n = a[i]
-        while n <= a[-1] :
+        while n <= a[-1]:
             j = bisect.bisect_left(a, n)
-            if a[j] == n :
+            if a[j] == n:
                 visited[j] = True
             n *= 2
-              
+
 print(ret)

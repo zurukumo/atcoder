@@ -8,6 +8,6 @@ C = [int(i) - 1 for i in input().split()]
 ca = Counter(A)
 ret = 0
 for c in C:
-  ret += ca[B[c]]
-  
+    ret += ca[B[c]]
+
 print(ret)

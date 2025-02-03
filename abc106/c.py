@@ -1,13 +1,13 @@
 S = input()
 K = int(input())
 
-for s in S :
-    if s == '1' :
+for s in S:
+    if s == "1":
         K -= 1
-    else :
+    else:
         print(s)
         break
-    
-    if K == 0 :
+
+    if K == 0:
         print(1)
         break

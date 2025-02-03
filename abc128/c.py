@@ -7,17 +7,17 @@ p = [int(i) for i in input().split()]
 
 res = 0
 
-for i in product(range(2), repeat=N) :
+for i in product(range(2), repeat=N):
     flag = True
-    for j in range(M) :
+    for j in range(M):
         tmp = 0
-        for s in ks[j][1:] :
-            tmp += i[s-1]
-        
-        if tmp % 2 != p[j] :
+        for s in ks[j][1:]:
+            tmp += i[s - 1]
+
+        if tmp % 2 != p[j]:
             flag = False
             break
-    if flag :
+    if flag:
         res += 1
 
 print(res)

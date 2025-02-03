@@ -9,4 +9,4 @@ r2 = 2 * pi * M / 60
 x2, y2 = B * cos(r2), B * sin(r2)
 
 diff = (x1 - x2) ** 2 + (y1 - y2) ** 2
-print(diff ** 0.5)
+print(diff**0.5)

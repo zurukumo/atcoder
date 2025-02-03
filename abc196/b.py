@@ -5,4 +5,4 @@ X = input()
 # else:
 #     print(X)
 
-print(X.split('.')[0])
+print(X.split(".")[0])

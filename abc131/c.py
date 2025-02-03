@@ -1,11 +1,13 @@
 A, B, C, D = map(int, input().split())
 
-def gcd(m, n) :
+
+def gcd(m, n):
     r = m % n
-    while r != 0 :
+    while r != 0:
         m, n = n, r
         r = m % n
     return n
+
 
 CD = (C * D) // gcd(C, D)
 

@@ -10,7 +10,7 @@ ce = list(Counter(e).items()) + [(-2, 0)]
 co.sort(key=lambda x: x[1], reverse=True)
 ce.sort(key=lambda x: x[1], reverse=True)
 
-if co[0][0] == ce[0][0] :
+if co[0][0] == ce[0][0]:
     print(min(n - co[0][1] - ce[1][1], n - co[1][1] - ce[0][1]))
-else :
+else:
     print(n - co[0][1] - ce[0][1])

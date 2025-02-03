@@ -6,9 +6,9 @@ ret = 0
 ret += 1
 
 # 2つK
-ret += 3 * (N-1)
+ret += 3 * (N - 1)
 
 # 1つK
-ret += 6 * (K-1) * (N - K)
+ret += 6 * (K - 1) * (N - K)
 
-print(ret / (N ** 3))
+print(ret / (N**3))

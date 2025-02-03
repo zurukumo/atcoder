@@ -1,6 +1,6 @@
 S = input()
 
 if S[0] == S[1] == S[2]:
-    print('Won')
+    print("Won")
 else:
-    print('Lost')
+    print("Lost")

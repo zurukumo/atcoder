@@ -4,8 +4,8 @@ N *= 108
 N -= N % 100
 
 if N < 20600:
-  print('Yay!')
+    print("Yay!")
 elif N > 20600:
-  print(':(')
+    print(":(")
 else:
-  print('so-so')
+    print("so-so")

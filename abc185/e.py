@@ -7,7 +7,7 @@ N, M = map(int, input().split())
 A = [int(i) for i in input().split()]
 B = [int(i) for i in input().split()]
 
-dp = [[float('inf')] * (M + 1) for _ in range(N + 1)]
+dp = [[float("inf")] * (M + 1) for _ in range(N + 1)]
 dp[0][0] = 0
 for i in range(N + 1):
     for j in range(M + 1):

@@ -1,2 +1,2 @@
 W = input()
-print('{}s'.format(W))
+print("{}s".format(W))

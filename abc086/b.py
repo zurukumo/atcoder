@@ -1,4 +1,4 @@
-x = int(input().replace(' ', ''))
+x = int(input().replace(" ", ""))
 
 
 def judge():
@@ -12,11 +12,11 @@ def judge():
 
     for i in range(1, 1000):
         if i * i == x:
-            return 'Yes'
+            return "Yes"
         if i * i > x:
             break
 
-    return 'No'
+    return "No"
 
 
 print(judge())

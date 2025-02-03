@@ -16,35 +16,38 @@ MOD = 998244353
 
 NN = 1 << N
 
-def fwht(a) :
+
+def fwht(a):
     i = 1
-    while i < NN :
+    while i < NN:
         j = 0
-        while j < NN :
-            for k in range(i) :
-                x, y = a[j+k], a[i+j+k]
-                a[j+k], a[i+j+k] = (x + y) % MOD, (x - y) % MOD
+        while j < NN:
+            for k in range(i):
+                x, y = a[j + k], a[i + j + k]
+                a[j + k], a[i + j + k] = (x + y) % MOD, (x - y) % MOD
             j += i << 1
         i <<= 1
 
-def inv(x) :
+
+def inv(x):
     return pow(x, MOD - 2, MOD)
 
+
 s = inv(sum(A) % MOD)
-for i in range(NN) :
+for i in range(NN):
     A[i] = (A[i] * s) % MOD
 A[0] = (A[0] - 1) % MOD
 fwht(A)
 
-B = [- 1] * (NN)
-B[0] = (NN-1) % MOD
+B = [-1] * (NN)
+B[0] = (NN - 1) % MOD
 fwht(B)
 
 C = [(inv(A[i]) * B[i]) % MOD for i in range(NN)]
 fwht(C)
 
-for i in range(NN) :
+for i in range(NN):
     C[i] = (C[i] * inv(NN)) % MOD
 
-for i in range(NN) :
+for i in range(NN):
     print((C[i] - C[0]) % MOD)

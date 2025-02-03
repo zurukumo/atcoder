@@ -9,11 +9,14 @@ A = [int(i) for i in input().split()]
 A2 = [(a, i) for i, a in enumerate(A)]
 A2.sort(key=lambda x: x[0])
 
-A3 = [(original_a, compressed_a + 1, original_index) for compressed_a, (original_a, original_index) in enumerate(A2)]
+A3 = [
+    (original_a, compressed_a + 1, original_index)
+    for compressed_a, (original_a, original_index) in enumerate(A2)
+]
 A3.sort(key=lambda x: x[2], reverse=True)
 
 
-class BinaryIndexedTree():
+class BinaryIndexedTree:
     def __init__(self, n):
         self.n = n
         self.tree = [0] * (n + 1)

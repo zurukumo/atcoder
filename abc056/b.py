@@ -1,9 +1,9 @@
 W, a, b = map(int, input().split())
 
-if a > b :
+if a > b:
     a, b = b, a
-    
-if a + W > b :
+
+if a + W > b:
     print(0)
-else :
+else:
     print(b - a - W)

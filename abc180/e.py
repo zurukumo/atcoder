@@ -7,7 +7,7 @@ sys.setrecursionlimit(10**5)
 N = int(input())
 XYZ = [[int(i) for i in input().split()] for _ in range(N)]
 
-dp = [[float('inf')] * N for _ in range(2 ** N)]
+dp = [[float("inf")] * N for _ in range(2**N)]
 
 
 def bit_patterns(n):
@@ -35,6 +35,8 @@ for bit in bit_patterns(N):
             p, q, r = XYZ[to]
 
             next_bit = bit | (1 << to)
-            dp[next_bit][to] = min(dp[next_bit][to], dp[bit][fr] + abs(p - a) + abs(q - b) + max(0, r - c))
+            dp[next_bit][to] = min(
+                dp[next_bit][to], dp[bit][fr] + abs(p - a) + abs(q - b) + max(0, r - c)
+            )
 
-print(dp[(2 ** N) - 1][0])
+print(dp[(2**N) - 1][0])

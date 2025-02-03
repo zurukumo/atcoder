@@ -4,12 +4,12 @@ n = len(s)
 count = 1
 c = s[0]
 i = 1
-t = ''
+t = ""
 
-while i < n :
-    if s[i] == c :
+while i < n:
+    if s[i] == c:
         count += 1
-    else :
+    else:
         t += c + str(count)
         count = 1
         c = s[i]
@@ -19,4 +19,3 @@ while i < n :
 t += c + str(count)
 
 print(t)
-    

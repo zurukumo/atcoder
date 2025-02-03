@@ -7,6 +7,6 @@ for a, b in ab:
     e[b] += 1
 
 if N - 1 in e:
-    print('Yes')
+    print("Yes")
 else:
-    print('No')
+    print("No")

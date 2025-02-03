@@ -3,11 +3,11 @@ t = [int(i) for i in input().split()]
 
 ret = 0
 cur = 0
-for tt in t :
-    if tt < cur :
+for tt in t:
+    if tt < cur:
         ret += tt + T - cur
-    else :
+    else:
         ret += T
     cur = tt + T
-    
+
 print(ret)

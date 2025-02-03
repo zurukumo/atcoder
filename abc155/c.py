@@ -7,10 +7,10 @@ cnt = Counter(S)
 M = max(cnt.values())
 
 ret = []
-for k, v in cnt.items() :
-  if v == M :
-    ret.append(k)
-    
+for k, v in cnt.items():
+    if v == M:
+        ret.append(k)
+
 ret.sort()
-for r in ret :
-  print(r)
+for r in ret:
+    print(r)

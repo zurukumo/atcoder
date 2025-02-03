@@ -5,8 +5,8 @@ B = sorted(A)
 M1 = B[-1]
 M2 = B[-2]
 
-for a in A :
-    if a == M1 :
+for a in A:
+    if a == M1:
         print(M2)
-    else :
+    else:
         print(M1)

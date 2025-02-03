@@ -1,10 +1,11 @@
 import sys
+
 input = sys.stdin.readline
 
 N = int(input())
 uvw = [[int(i) for i in input().split()] for _ in range(N - 1)]
 
-mod = 10 ** 9 + 7
+mod = 10**9 + 7
 
 vec = [[] for _ in range(N)]
 for u, v, w in uvw:

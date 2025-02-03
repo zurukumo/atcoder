@@ -17,6 +17,6 @@ for T, A, B in TAB:
         flip = 1 - flip
 
 if flip == 0:
-    print(''.join(S))
+    print("".join(S))
 else:
-    print(''.join(S[N:]) + ''.join(S[:N]))
+    print("".join(S[N:]) + "".join(S[:N]))

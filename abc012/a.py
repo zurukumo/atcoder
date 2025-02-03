@@ -1,3 +1,3 @@
 A, B = map(int, input().split())
 
-print('{} {}'.format(B, A))
+print("{} {}".format(B, A))

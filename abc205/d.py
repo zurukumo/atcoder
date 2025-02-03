@@ -6,15 +6,15 @@ K = [int(input()) for _ in range(Q)]
 
 sa = set(A)
 for k in K:
-  ng, ok = 0, 10 ** 19
-  while ok - ng > 1:
-    m = (ng + ok) // 2
-    if m - bisect_left(A, m) >= k:
-      ok = m
-    else:
-      ng = m
-  
-  while ok in sa:
-    ok += 1
-  print(ok)
-  # print()
+    ng, ok = 0, 10**19
+    while ok - ng > 1:
+        m = (ng + ok) // 2
+        if m - bisect_left(A, m) >= k:
+            ok = m
+        else:
+            ng = m
+
+    while ok in sa:
+        ok += 1
+    print(ok)
+    # print()

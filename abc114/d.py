@@ -1,13 +1,13 @@
 N = int(input())
 
 prime = [0] * (N + 1)
-for i in range(1, N + 1) :
-    while i % 2 == 0 :
+for i in range(1, N + 1):
+    while i % 2 == 0:
         i //= 2
         prime[2] += 1
     j = 3
-    while i != 1 :
-        while i % j == 0 :
+    while i != 1:
+        while i % j == 0:
             i //= j
             prime[j] += 1
         j += 2
@@ -15,18 +15,18 @@ for i in range(1, N + 1) :
 # 3 5 15 25 75
 over = [0] * 5
 
-for i in range(1, N + 1) :
-    if 74 <= prime[i] :
+for i in range(1, N + 1):
+    if 74 <= prime[i]:
         over[4] += 1
-    elif 24 <= prime[i] :
+    elif 24 <= prime[i]:
         over[3] += 1
-    elif 14 <= prime[i] :
+    elif 14 <= prime[i]:
         over[2] += 1
-    elif 4 <= prime[i] :
+    elif 4 <= prime[i]:
         over[1] += 1
-    elif 2 <= prime[i] :
+    elif 2 <= prime[i]:
         over[0] += 1
-        
+
 s = [sum(over[i:]) for i in range(5)]
 
 ret = 0

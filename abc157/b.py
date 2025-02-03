@@ -31,6 +31,6 @@ def check():
 
 
 if check():
-    print('Yes')
+    print("Yes")
 else:
-    print('No')
+    print("No")

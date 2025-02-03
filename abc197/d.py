@@ -1,4 +1,5 @@
 from math import atan2, sin, cos, pi
+
 N = int(input())
 x0, y0 = map(int, input().split())
 x1, y1 = map(int, input().split())

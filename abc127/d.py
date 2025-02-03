@@ -7,11 +7,11 @@ BC.sort(key=lambda x: x[1], reverse=True)
 i = 0
 res = 0
 
-for B, C in BC :
-    if i + B <= N :
+for B, C in BC:
+    if i + B <= N:
         res += C * B
         i += B
-    else :
+    else:
         res += C * (N - i)
         break
 

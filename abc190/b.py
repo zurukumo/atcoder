@@ -5,9 +5,9 @@ XY = [[int(i) for i in input().split()] for _ in range(N)]
 def judge():
     for X, Y in XY:
         if X < S and Y > D:
-            return 'Yes'
+            return "Yes"
 
-    return 'No'
+    return "No"
 
 
 print(judge())

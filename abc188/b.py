@@ -3,6 +3,6 @@ A = [int(i) for i in input().split()]
 B = [int(i) for i in input().split()]
 
 if sum([A[i] * B[i] for i in range(N)]) == 0:
-  print('Yes')
+    print("Yes")
 else:
-  print('No')
+    print("No")

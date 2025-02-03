@@ -1,5 +1,5 @@
 S = list(input())
 
-S[3] = '8'
+S[3] = "8"
 
-print(''.join(S))
+print("".join(S))

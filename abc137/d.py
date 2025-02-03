@@ -1,18 +1,18 @@
 from heapq import heappush, heappop
 
 N, M = map(int, input().split())
-AB = [[] for _ in range(M+1)]
+AB = [[] for _ in range(M + 1)]
 
-for _ in range(N) :
+for _ in range(N):
     a, b = map(int, input().split())
-    if a <= M :
-        AB[M-a].append(b)
-    
+    if a <= M:
+        AB[M - a].append(b)
+
 q = []
-for a in range(M+1) :
-    for b in AB[a] :
+for a in range(M + 1):
+    for b in AB[a]:
         heappush(q, b)
-        if len(q) > a + 1 :
+        if len(q) > a + 1:
             heappop(q)
-            
+
 print(sum(q))

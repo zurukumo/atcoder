@@ -1,22 +1,22 @@
 N, A, B = map(int, input().split())
 
 ret = 0
-for _ in range(N) :
+for _ in range(N):
     s, d = input().split()
     d = int(d)
-    if d < A :
+    if d < A:
         d = A
-    elif d > B :
+    elif d > B:
         d = B
-        
-    if s == 'East' :
+
+    if s == "East":
         ret += int(d)
-    else :
+    else:
         ret -= int(d)
-        
-if ret > 0 :
-    print('East', ret)
-elif ret < 0 :
-    print('West', -ret)
-else :
+
+if ret > 0:
+    print("East", ret)
+elif ret < 0:
+    print("West", -ret)
+else:
     print(0)

@@ -3,7 +3,7 @@ S = input()
 
 ans = X
 for c in S:
-    if c == 'o':
+    if c == "o":
         ans += 1
     else:
         if ans > 0:

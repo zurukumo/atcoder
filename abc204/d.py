@@ -1,7 +1,7 @@
 N = int(input())
 T = [int(i) for i in input().split()]
 
-M = 10 ** 5 + 10
+M = 10**5 + 10
 dp = [False] * M
 dp[0] = True
 
@@ -10,7 +10,7 @@ for t in T:
         if dp[i] and i + t < M:
             dp[i + t] = True
 
-ret = float('inf')
+ret = float("inf")
 s = sum(T)
 for i in range(M):
     if dp[i]:

@@ -1,3 +1,3 @@
 S = input()
 
-print('{}pp'.format(S))
+print("{}pp".format(S))
