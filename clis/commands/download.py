@@ -9,13 +9,12 @@ from ..print import print_green, print_red
 
 
 def copy_template(contest: str, problem: str) -> None:
-    current_dir = os.path.dirname(__file__)
-
     if os.path.exists(f"{contest}/{problem}.py"):
         print_green(f"{contest}/{problem}.py already exists")
         return
 
-    template_path = os.path.join(current_dir, "data/template.py")
+    current_dir = os.path.dirname(__file__)
+    template_path = os.path.join(current_dir, "../data/template.py")
     with open(template_path) as f:
         template = f.read()
     with open(f"{contest}/{problem}.py", "w") as f:
