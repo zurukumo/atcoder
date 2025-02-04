@@ -73,6 +73,8 @@ def main():
                 print_red(f"Failed to create {args.contest}_{problem} template")
 
             # サンプルの作成
+            # サンプルが重複するのでまず.lang-enを削除
+            page.evaluate("document.querySelector('span.lang-en').remove()")
             samples = page.query_selector_all("pre[id^=pre-sample]")
             if len(samples) == 0:
                 samples = page.query_selector_all("pre[id^=for_copy]")
