@@ -1,7 +1,9 @@
 import os
 
 from playwright.sync_api import sync_playwright
-from utils import load_context, print_green, print_red, save_context
+
+from ..context import load_context, save_context
+from ..print import print_green, print_red
 
 
 def login():

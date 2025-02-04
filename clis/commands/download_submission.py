@@ -2,7 +2,9 @@ import argparse
 import time
 
 from playwright.sync_api import sync_playwright
-from utils import load_context, print_green, print_red
+
+from ..context import load_context
+from ..print import print_green, print_red
 
 
 def main():
