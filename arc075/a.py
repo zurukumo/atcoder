@@ -1,12 +1,24 @@
 import sys
 
 input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+s = [int(input()) for _ in range(N)]
+
+dp = {
+    0,
+}
+for si in s:
+    dp_ = set()
+    for dpi in dp:
+        dp_.add(dpi + si)
+    dp = dp | dp_
+
+dp = list(dp)
+dp.sort(reverse=True)
+for dpi in dp:
+    if dpi % 10 != 0:
+        print(dpi)
+        break
+else:
+    print(0)

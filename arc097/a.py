@@ -1,12 +1,15 @@
-import sys
+s = input()
+K = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+ret = []
+slen = len(s)
+for i in range(1, 5 + 1):
+    for j in range(slen - i + 1):
+        t = s[j : j + i]
+        if not t in ret:
+            ret.append(t)
+        if len(ret) > K:
+            ret.sort()
+            ret.pop()
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(ret[-1])

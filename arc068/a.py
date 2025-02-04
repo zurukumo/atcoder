@@ -1,12 +1,9 @@
-import sys
+x = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+ret = (x // 11) * 2
+if 1 <= x % 11 <= 6:
+    ret += 1
+elif 6 < x % 11:
+    ret += 2
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(ret)

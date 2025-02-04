@@ -1,12 +1,22 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+while S != "":
+    if len(S) >= 5 and S[-5:] == "dream":
+        S = S[:-5]
+        continue
+    if len(S) >= 7 and S[-7:] == "dreamer":
+        S = S[:-7]
+        continue
+    if len(S) >= 5 and S[-5:] == "erase":
+        S = S[:-5]
+        continue
+    if len(S) >= 6 and S[-6:] == "eraser":
+        S = S[:-6]
+        continue
+
+    break
+
+if S == "":
+    print("YES")
+else:
+    print("NO")

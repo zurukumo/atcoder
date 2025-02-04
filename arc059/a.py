@@ -1,12 +1,8 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+a = [int(i) for i in input().split()]
+
+ret = float("inf")
+for i in range(-100, 101):
+    ret = min(ret, sum([(a_ - i) ** 2 for a_ in a]))
+
+print(ret)

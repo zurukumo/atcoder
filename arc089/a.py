@@ -1,12 +1,18 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+txy = [[int(i) for i in input().split()] for _ in range(N)]
+
+
+def solve():
+    pt, px, py = 0, 0, 0
+    for t, x, y in txy:
+        dd = abs(x - px) + abs(y - py)
+        dt = t - pt
+        if dd > dt or dd % 2 != dt % 2:
+            return "No"
+
+        pt, px, py = t, x, y
+
+    return "Yes"
+
+
+print(solve())

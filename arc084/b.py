@@ -1,12 +1,18 @@
-import sys
+from heapq import heappush, heappop
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+K = int(input())
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+queue = [(1, 1)]
+dist = [float("inf")] * K
+dist[1] = 1
+
+while queue:
+    cost, cur = heappop(queue)
+    if cost + 1 < dist[(cur + 1) % K]:
+        dist[(cur + 1) % K] = cost + 1
+        heappush(queue, (cost + 1, (cur + 1) % K))
+    if cost < dist[cur * 10 % K]:
+        dist[cur * 10 % K] = cost
+        heappush(queue, (cost, cur * 10 % K))
+
+print(dist[0])

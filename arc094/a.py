@@ -1,12 +1,13 @@
-import sys
+ABC = [int(i) for i in input().split()]
+ABC.sort()
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+diff = ABC[2] - ABC[1]
+ret = diff
+ABC[0] += diff
+ABC[1] += diff
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret += (ABC[1] - ABC[0]) // 2
+if (ABC[1] - ABC[0]) % 2 == 1:
+    ret += 2
+
+print(ret)

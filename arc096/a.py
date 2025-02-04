@@ -1,12 +1,7 @@
-import sys
+A, B, C, X, Y = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+ret = float("inf")
+for ab in range(0, max(X, Y) * 2 + 1, 2):
+    ret = min(ret, A * max(0, (X - ab // 2)) + B * max(0, (Y - ab // 2)) + C * ab)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+print(ret)
