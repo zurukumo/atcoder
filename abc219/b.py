@@ -1,12 +1,14 @@
-import sys
+S1 = input()
+S2 = input()
+S3 = input()
+T = input()
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = ""
+for c in T:
+    if c == "1":
+        ret += S1
+    elif c == "2":
+        ret += S2
+    else:
+        ret += S3
+print(ret)
