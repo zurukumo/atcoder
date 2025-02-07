@@ -91,7 +91,9 @@ def download_submission(contest: str, problem: str) -> None:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("contest", type=str, help="The contest to download")
-    parser.add_argument("--submission", action="store_true", help="Download submission")
+    parser.add_argument(
+        "--with-submission", action="store_true", help="Download submission code"
+    )
     args = parser.parse_args()
 
     PROBLEM_URL = f"https://atcoder.jp/contests/{args.contest}/tasks"
@@ -158,7 +160,7 @@ def main():
 
             time.sleep(2)
 
-    if args.submission:
+    if args.with_submission:
         download_submission(args.contest, problem)
 
 
