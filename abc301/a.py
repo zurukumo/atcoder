@@ -1,12 +1,13 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+winner = ""
+cnt = {"T": 0, "A": 0}
+for c in S:
+    cnt[c] += 1
+    if cnt["T"] > cnt["A"]:
+        winner = "T"
+    elif cnt["T"] < cnt["A"]:
+        winner = "A"
+
+print(winner)
