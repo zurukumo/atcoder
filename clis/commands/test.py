@@ -7,9 +7,9 @@ from ..print import print_green, print_red
 
 
 def read_testcase_file(contest, problem, testcase) -> tuple[str, str]:
-    with open(f"{contest}/samples/{problem}-{testcase}-in.txt") as f:
+    with open(f"contests/{contest}/samples/{problem}-{testcase}-in.txt") as f:
         input = f.read()
-    with open(f"{contest}/samples/{problem}-{testcase}-out.txt") as f:
+    with open(f"contests/{contest}/samples/{problem}-{testcase}-out.txt") as f:
         expected = f.read()
 
     if input == "":
@@ -68,7 +68,7 @@ def main():
         args.contest, args.problem, args.testcase
     ):
         result = subprocess.run(
-            ["python3", f"{args.contest}/{args.problem}.py"],
+            ["python3", f"contests/{args.contest}/{args.problem}.py"],
             input=input.encode(),
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

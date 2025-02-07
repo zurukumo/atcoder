@@ -4,7 +4,7 @@ from playwright.sync_api import BrowserContext, Playwright
 
 
 def session_file():
-    return os.path.join(os.path.dirname(__file__), "../data/session.json")
+    return os.path.join(os.path.dirname(__file__), "data/session.json")
 
 
 def load_context(p: Playwright):

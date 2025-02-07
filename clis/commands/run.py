@@ -10,7 +10,7 @@ def main():
     args = parser.parse_args()
 
     subprocess.run(
-        ["python3", f"{args.contest}/{args.problem}.py"],
+        ["python3", f"contests/{args.contest}/{args.problem}.py"],
     )
 
 
