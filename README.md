@@ -1,4 +1,9 @@
-# atcoder
+# AtCoder
+
+## Login
+```bash
+USERNAME=your_username PASSWORD=your_password pipenv run login
+```
 
 ## Run
 ```bash
