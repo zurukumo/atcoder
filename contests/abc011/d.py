@@ -23,7 +23,7 @@ def solve():
     ret = 0
     for x2 in range(0, rest + 1, 2):
         y2 = rest - x2
-        x, y = x1 + x2, y1 + y2
+        x, _ = x1 + x2, y1 + y2
         ret += comb(N, x) * comb(x, x2 // 2) * comb(N - x, y2 // 2) / (4**N)
 
     return ret

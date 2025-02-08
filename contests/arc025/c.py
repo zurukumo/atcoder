@@ -1,7 +1,7 @@
 import sys
 
 input = sys.stdin.readline
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 
 N, M, R, T = map(int, input().split())
 vec = [[] for _ in range(N)]

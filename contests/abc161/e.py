@@ -1,4 +1,4 @@
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 
 N, K, C = map(int, input().split())
 S = input()

@@ -1,4 +1,4 @@
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 
 H, W = map(int, input().split())
 a = [[i for i in input()] for _ in range(H)]

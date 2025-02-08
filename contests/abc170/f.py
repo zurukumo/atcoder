@@ -1,5 +1,5 @@
-from heapq import heappush, heappop
 import sys
+from heapq import heappop, heappush
 
 input = sys.stdin.readline
 

@@ -1,4 +1,4 @@
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 
 N = int(input())
 a = [int(i) for i in input().split()]

@@ -1,4 +1,3 @@
-from bisect import bisect_left
 
 N = int(input())
 a = [int(i) for i in input().split()]

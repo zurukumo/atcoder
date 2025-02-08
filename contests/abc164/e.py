@@ -1,7 +1,7 @@
 import sys
 
 input = sys.stdin.readline
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 
 N, M, S = map(int, input().split())
 STATE = 50 * N + 1

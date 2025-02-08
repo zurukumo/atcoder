@@ -1,5 +1,5 @@
-from heapq import heappush, heappop, heapify
 from collections import defaultdict
+from heapq import heapify, heappop, heappush
 
 N, M = map(int, input().split())
 A = [int(i) for i in input().split()]

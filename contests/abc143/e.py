@@ -1,5 +1,5 @@
-from collections import defaultdict, deque
 import sys
+from collections import defaultdict, deque
 
 input = sys.stdin.readline
 

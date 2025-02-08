@@ -1,4 +1,3 @@
-from bisect import bisect_left
 
 N = int(input())
 e5 = 10**5

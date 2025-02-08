@@ -1,8 +1,8 @@
 import sys
 
 input = sys.stdin.readline
-from math import sqrt
 from itertools import combinations
+from math import sqrt
 
 N = int(input())
 xy = [[int(i) for i in input().split()] for _ in range(N)]

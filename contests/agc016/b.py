@@ -14,7 +14,7 @@ def solve():
             return "No"
 
         mk, Mk = min(c.keys()), max(c.keys())
-        mv, Mv = c[mk], c[Mk]
+        mv, _ = c[mk], c[Mk]
         n = N - mv
         m = Mk - mv
         if 0 < m * 2 <= n:

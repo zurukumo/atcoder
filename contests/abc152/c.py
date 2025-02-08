@@ -1,4 +1,3 @@
-from collections import defaultdict
 
 N = int(input())
 P = [int(i) for i in input().split()]

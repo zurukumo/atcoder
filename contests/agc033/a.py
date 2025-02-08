@@ -1,4 +1,3 @@
-from collections import deque
 
 H, W = map(int, input().split())
 A = [list(input()) for _ in range(H)]

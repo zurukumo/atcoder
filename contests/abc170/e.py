@@ -1,7 +1,7 @@
 import sys
 
 input = sys.stdin.readline
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 
 N, Q = map(int, input().split())
 AB = [[int(i) for i in input().split()] for _ in range(N)]

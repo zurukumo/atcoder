@@ -1,4 +1,4 @@
-from bisect import bisect_left, bisect_right
+from bisect import bisect_right
 
 N, M = map(int, input().split())
 st = [[int(i) for i in input().split()] for _ in range(M)]

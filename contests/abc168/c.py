@@ -1,4 +1,4 @@
-from math import sin, cos, pi
+from math import cos, pi, sin
 
 A, B, H, M = map(int, input().split())
 

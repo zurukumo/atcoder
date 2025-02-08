@@ -1,4 +1,3 @@
-from bisect import bisect_left, bisect_right
 
 N, T = map(int, input().split())
 A = [int(i) for i in input().split()]

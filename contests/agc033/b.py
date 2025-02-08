@@ -1,4 +1,3 @@
-from collections import defaultdict
 
 H, W, N = map(int, input().split())
 sr, sc = map(int, input().split())

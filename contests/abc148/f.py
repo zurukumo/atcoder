@@ -1,4 +1,3 @@
-from collections import deque
 
 N, u, v = map(int, input().split())
 vec = [[] for _ in range(N)]

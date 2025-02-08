@@ -1,4 +1,4 @@
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 
 N, M = map(int, input().split())
 c = [[i for i in input()] for _ in range(N)]

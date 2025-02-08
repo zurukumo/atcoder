@@ -2,7 +2,7 @@ import sys
 
 input = sys.stdin.readline
 sys.setrecursionlimit(10**6)
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 
 N, M, X, Y = map(int, input().split())
 ABTK = [[int(i) for i in input().split()] for _ in range(M)]

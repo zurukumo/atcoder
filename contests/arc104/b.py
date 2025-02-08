@@ -1,4 +1,3 @@
-from collections import defaultdict
 
 N, S = input().split()
 N = int(N)

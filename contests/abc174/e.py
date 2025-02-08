@@ -1,4 +1,3 @@
-from heapq import heappush, heappop
 from math import ceil, floor
 
 N, K = map(int, input().split())

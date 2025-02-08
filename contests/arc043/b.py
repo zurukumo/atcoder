@@ -1,4 +1,4 @@
-from bisect import bisect_left, bisect_right
+from bisect import bisect_right
 
 N = int(input())
 D = [-float("inf")] + [int(input()) for _ in range(N)] + [float("inf")]

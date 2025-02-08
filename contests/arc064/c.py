@@ -1,4 +1,4 @@
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 from math import sqrt
 
 xs, ys, xt, yt = map(int, input().split())

@@ -3,7 +3,6 @@ import sys
 input = sys.stdin.readline
 sys.setrecursionlimit(10**5)
 
-from bisect import bisect_left, bisect_right
 
 N, K = map(int, input().split())
 A = [int(i) for i in input().split()]
