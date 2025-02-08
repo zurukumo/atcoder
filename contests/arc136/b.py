@@ -1,12 +1,22 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+A = [int(i) for i in input().split()]
+B = [int(i) for i in input().split()]
+
+if sorted(A) != sorted(B):
+    print("No")
+elif len(set(A)) != len(A):
+    print("Yes")
+else:
+    idxs = dict()
+    for i, a in enumerate(A):
+        idxs[a] = i
+    B = [idxs[b] for b in B]
+    s = 0
+    for i in range(N):
+        for j in range(i + 1, N):
+            if B[j] < B[i]:
+                s += 1
+    if s % 2 == 0:
+        print("Yes")
+    else:
+        print("No")
