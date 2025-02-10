@@ -1,12 +1,12 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
+N, D = map(int, input().split())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+S = list(S)[::-1]
+
+
+for _ in range(D):
+    if "@" in S:
+        S[S.index("@")] = "."
+
+S = S[::-1]
+print("".join(S))
