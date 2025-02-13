@@ -1,12 +1,10 @@
-import sys
+import collections
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+A, B, C, D = map(int, input().split())
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+counter = collections.Counter([A, B, C, D])
+values = sorted(counter.values())
+if values == [1, 3] or values == [2, 2]:
+    print("Yes")
+else:
+    print("No")
