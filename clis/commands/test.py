@@ -75,7 +75,9 @@ def main():
         )
 
         if result.returncode != 0:
-            print_red(f"Test {i} failed: {result.stderr.decode()}")
+            print_red(f"Test {i} failed")
+            print_red(result.stdout.decode())
+            print_red(result.stderr.decode())
             failed = True
             continue
 
