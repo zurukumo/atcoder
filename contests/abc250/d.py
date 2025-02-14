@@ -1,12 +1,20 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+prime = [2, 3]
+i = 5
+while 2 * i**3 <= N:
+    for p in prime:
+        if i % p == 0:
+            break
+        if p * p > i:
+            prime.append(i)
+            break
+    i += 2
+
+ret = 0
+i = 0
+for j in range(len(prime) - 1, -1, -1):
+    while i < len(prime) and prime[i] * prime[j] ** 3 <= N:
+        i += 1
+    ret += min(i, j)
+print(ret)
