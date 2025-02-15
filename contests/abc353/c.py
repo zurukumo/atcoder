@@ -1,12 +1,15 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+import sortedcontainers
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+A = [int(i) for i in input().split()]
+
+ret = 0
+sl = sortedcontainers.SortedList(A)
+s = sum(A)
+for a in A:
+    sl.remove(a)
+    s -= a
+    ret += a * len(sl) + s
+    over = len(sl) - sl.bisect_left(10**8 - a)
+    ret -= over * 10**8
+print(ret)
