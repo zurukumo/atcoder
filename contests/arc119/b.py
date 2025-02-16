@@ -1,12 +1,20 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+T = input()
+
+
+if S.count("0") != T.count("0"):
+    print(-1)
+else:
+    ret = 0
+    s0 = 0
+    t0 = 0
+    for s, t in zip(S, T):
+        if s == "0" and t == "0" and s0 == t0:
+            continue
+        if s == "0":
+            s0 += 1
+            ret += 1
+        if t == "0":
+            t0 += 1
+    print(ret)
