@@ -1,12 +1,9 @@
-import sys
+xy = [[int(i) for i in input().split()] for _ in range(3)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+xs = set(x for x, y in xy)
+ys = set(y for x, y in xy)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for x in xs:
+    for y in ys:
+        if [x, y] not in xy:
+            print(x, y)

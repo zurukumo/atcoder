@@ -1,12 +1,24 @@
-import sys
+N, Q = map(int, input().split())
+A = [int(i) for i in input().split()]
+X = [int(input()) for _ in range(Q)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+ret = [0] * Q
+Xi = [(x, i) for i, x in enumerate(X)]
+Xi.sort()
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ls = 0
+lc = 0
+rs = sum(A)
+rc = len(A)
+queue = sorted(A, reverse=True)
+for x, i in Xi:
+    while queue and queue[-1] < x:
+        p = queue.pop()
+        rs -= p
+        rc -= 1
+        ls += p
+        lc += 1
+    ret[i] = x * lc - ls + rs - x * rc
+
+for r in ret:
+    print(r)
