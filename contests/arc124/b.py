@@ -1,12 +1,23 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+import collections
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+a = [int(i) for i in input().split()]
+b = [int(i) for i in input().split()]
+
+acounter = collections.Counter(a)
+bcounter = collections.Counter(b)
+
+counter = collections.defaultdict(int)
+for ak, av in acounter.items():
+    for bk, bv in bcounter.items():
+        counter[ak ^ bk] += min(av, bv)
+
+ret = []
+for k, v in counter.items():
+    if v == N:
+        ret.append(k)
+
+ret.sort()
+print(len(ret))
+for r in ret:
+    print(r)
