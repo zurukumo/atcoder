@@ -1,12 +1,17 @@
-import sys
+N, M, K = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+mod = 998244353
+
+dp = [0] * (K + 1)
+dp[0] = 1
+for _ in range(N):
+    ndp = [0] * (K + 1)
+    for i in range(K, -1, -1):
+        for j in range(1, M + 1):
+            if i - j >= 0:
+                ndp[i] += dp[i - j]
+                ndp[i] %= mod
+    dp = ndp
+
+print(sum(dp) % mod)
