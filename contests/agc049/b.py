@@ -1,12 +1,23 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+T = input()
+
+ret = 0
+ss = []
+ts = []
+for i, (s, t) in enumerate(zip(S, T)):
+    if t == "1":
+        ts.append(i)
+
+    if s == "1":
+        if ss:
+            ret += i - ss.pop() - 1 + 1
+        elif ts:
+            ret += i - ts.pop()
+        else:
+            ss.append(i)
+
+if not ss and not ts:
+    print(ret)
+else:
+    print(-1)
