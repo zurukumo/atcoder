@@ -1,12 +1,16 @@
-import sys
+N, A, B = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+if N < A:
+    print(0)
+    exit()
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+if A <= B:
+    print(N - (A - 1))
+    exit()
+
+ret = 0
+N -= A - 1
+ret = N // A * B
+N = N % A
+ret += min(N, B)
+print(ret)
