@@ -1,12 +1,15 @@
-import sys
+N, M = map(int, input().split())
+a = []
+for _ in range(M):
+    C = int(input())
+    a.append([int(i) for i in input().split()])
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = 0
+for bit in range(1, 1 << M):
+    group = set()
+    for i in range(M):
+        if bit & (1 << i):
+            group |= set(a[i])
+    if len(group) == N:
+        ret += 1
+print(ret)

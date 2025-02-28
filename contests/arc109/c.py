@@ -1,12 +1,19 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
+n, k = map(int, input().split())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+S = S * 2
+for _ in range(k):
+    T = ""
+    for i in range(0, len(S), 2):
+        a, b = S[i], S[i + 1]
+        if a == b:
+            T += a
+        elif (a, b) in (("R", "S"), ("S", "R")):
+            T += "R"
+        elif (a, b) in (("S", "P"), ("P", "S")):
+            T += "S"
+        elif (a, b) in (("P", "R"), ("R", "P")):
+            T += "P"
+    S = 2 * T
+
+print(S[0])
