@@ -1,12 +1,40 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+import collections
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ABC = [[int(i) for i in input().split()] for _ in range(N - 1)]
+
+ret = 0
+
+graph = [[] for _ in range(N)]
+for a, b, c in ABC:
+    a -= 1
+    b -= 1
+    graph[a].append((b, c))
+    graph[b].append((a, c))
+    ret += c * 2
+
+queue = collections.deque([0])
+dist = [-1] * N
+dist[0] = 0
+while queue:
+    cur = queue.popleft()
+    for nex, c in graph[cur]:
+        if dist[nex] != -1:
+            continue
+        dist[nex] = dist[cur] + c
+        queue.append(nex)
+
+M = max(dist)
+idx = dist.index(M)
+queue = collections.deque([idx])
+dist = [-1] * N
+dist[idx] = 0
+while queue:
+    cur = queue.popleft()
+    for nex, c in graph[cur]:
+        if dist[nex] != -1:
+            continue
+        dist[nex] = dist[cur] + c
+        queue.append(nex)
+
+print(ret - max(dist))
