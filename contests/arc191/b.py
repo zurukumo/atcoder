@@ -1,12 +1,13 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+T = int(input())
+for _ in range(T):
+    N, K = map(int, input().split())
+    c = 2 ** bin(N)[2:].count("0")
+    if c < K:
+        print(-1)
+    else:
+        K -= 1
+        for i in range(40):
+            if (1 << i) & N == 0:
+                N |= (K & 1) << i
+                K >>= 1
+        print(N)
