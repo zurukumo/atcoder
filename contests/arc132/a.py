@@ -1,12 +1,15 @@
-import sys
+n = int(input())
+R = [int(i) for i in input().split()]
+C = [int(i) for i in input().split()]
+q = int(input())
+rc = [[int(i) for i in input().split()] for _ in range(q)]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = ""
+for r, c in rc:
+    rv = R[r - 1]
+    cv = C[c - 1]
+    if rv >= (n - cv + 1):
+        ret += "#"
+    else:
+        ret += "."
+print(ret)
