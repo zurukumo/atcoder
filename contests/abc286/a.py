@@ -1,12 +1,11 @@
-import sys
+N, P, Q, R, S = map(int, input().split())
+A = [int(i) for i in input().split()]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+P -= 1
+Q -= 1
+R -= 1
+S -= 1
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+A[P : Q + 1], A[R : S + 1] = A[R : S + 1], A[P : Q + 1]
+
+print(*A)
