@@ -1,12 +1,11 @@
-import sys
+Q = int(input())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+card = [0] * 100
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+for _ in range(Q):
+    query = input().split()
+    if query[0] == "1":
+        x = int(query[1])
+        card.append(x)
+    else:
+        print(card.pop())
