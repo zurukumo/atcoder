@@ -1,12 +1,25 @@
-import sys
+T = int(input())
+for _ in range(T):
+    K = int(input())
+    ret = ""
+    pre = None
+    for i in range(15, -1, -1):
+        for j in range(9, -1, -1):
+            if j == pre:
+                continue
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+            if pre is None:
+                if j > 0:
+                    rest = (j - 1) * (9**i) + (9 * 9**i - 9) // 8
+                else:
+                    continue
+            elif j > pre:
+                rest = (j - 1) * (9**i)
+            else:
+                rest = j * (9**i)
+            if K > rest:
+                K -= rest
+                ret += str(j)
+                pre = j
+                break
+    print(ret)

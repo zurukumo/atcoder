@@ -1,12 +1,16 @@
-import sys
+N, Q = map(int, input().split())
+C = [int(i) for i in input().split()]
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+colors = [set([C[i]]) for i in range(N)]
+for _ in range(Q):
+    a, b = map(int, input().split())
+    a -= 1
+    b -= 1
+    if len(colors[a]) > len(colors[b]):
+        colors[a] |= colors[b]
+        colors[b] = colors[a]
+        colors[a] = set()
+    else:
+        colors[b] |= colors[a]
+        colors[a] = set()
+    print(len(colors[b]))
