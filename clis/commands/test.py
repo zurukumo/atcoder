@@ -24,13 +24,13 @@ def is_decimal_string(s: str) -> bool:
 
 
 def same(output: str, expected: str) -> bool:
-    output = output.strip()
-    expected = expected.strip()
+    output = output.strip().split()
+    expected = expected.strip().split()
 
     if len(output) != len(expected):
         return False
 
-    for o, e in zip(output.split(), expected.split()):
+    for o, e in zip(output, expected):
         # 小数の場合は誤差を許容する
         if is_decimal_string(o) or is_decimal_string(e):
             if abs(float(o) - float(e)) >= 1e-6:
