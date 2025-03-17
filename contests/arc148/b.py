@@ -1,12 +1,24 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+if not "p" in S:
+    print(S)
+    exit()
+
+first_p = S.index("p")
+
+revS = ""
+for i in range(N - 1, first_p - 1, -1):
+    if S[i] == "p":
+        revS += "d"
+    else:
+        revS += "p"
+
+
+ret = S
+while revS:
+    T = S[:first_p] + revS + S[first_p + len(revS) :]
+    ret = min(ret, T)
+    revS = revS[1:]
+
+print(ret)
