@@ -1,12 +1,16 @@
-import sys
+A, B = map(int, input().split())
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+plus = [i for i in range(1, A + 1)]
+minus = [-i for i in range(1, B + 1)]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+sp = sum(plus)
+sm = sum(minus)
+
+if sp > -sm:
+    diff = sp - (-sm)
+    minus[-1] -= diff
+elif sp < -sm:
+    diff = -sm - sp
+    plus[-1] += diff
+
+print(*(plus + minus))
