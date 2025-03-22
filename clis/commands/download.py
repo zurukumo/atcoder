@@ -29,7 +29,9 @@ def create_samples(contest: str, problem: str, id: int, text: str) -> None:
 
 
 def download_submission(contest: str, problem: str) -> None:
-    SUBMISSION_URL = f"https://atcoder.jp/contests/{contest}/submissions/me?f.Task=&f.LanguageName=Python&f.Status=AC&f.User="
+    SUBMISSION_URL = (
+        f"https://atcoder.jp/contests/{contest}/submissions/me?f.Task=&f.LanguageName=Python&f.Status=AC&f.User="
+    )
 
     with sync_playwright() as p:
         context = load_context(p)
@@ -51,9 +53,7 @@ def download_submission(contest: str, problem: str) -> None:
         submission_urls = [page.evaluate("(e) => e.href", link) for link in col10]
 
         done = set()
-        for i, (problem_url, submission_url) in enumerate(
-            zip(problem_urls, submission_urls)
-        ):
+        for i, (problem_url, submission_url) in enumerate(zip(problem_urls, submission_urls)):
             if problem_url in done:
                 continue
             done.add(problem_url)
@@ -91,9 +91,7 @@ def download_submission(contest: str, problem: str) -> None:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("contest", type=str, help="The contest to download")
-    parser.add_argument(
-        "--with-submission", action="store_true", help="Download submission code"
-    )
+    parser.add_argument("--with-submission", action="store_true", help="Download submission code")
     args = parser.parse_args()
 
     PROBLEM_URL = f"https://atcoder.jp/contests/{args.contest}/tasks"
@@ -145,11 +143,7 @@ def main():
 
             for sample in samples:
                 # preのidはpre-sample(数字)の形式になっているので数字だけ取り出す
-                id = int(
-                    sample.get_attribute("id")
-                    .replace("pre-sample", "")
-                    .replace("for_copy", "")
-                )
+                id = int(sample.get_attribute("id").replace("pre-sample", "").replace("for_copy", ""))
                 text = sample.text_content()
                 try:
                     create_samples(args.contest, problem, id, text)

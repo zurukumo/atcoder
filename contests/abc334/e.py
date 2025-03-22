@@ -19,12 +19,7 @@ for y in range(H):
             for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 ny = cy + dy
                 nx = cx + dx
-                if (
-                    0 <= ny < H
-                    and 0 <= nx < W
-                    and S[ny][nx] == "#"
-                    and group[ny][nx] == -1
-                ):
+                if 0 <= ny < H and 0 <= nx < W and S[ny][nx] == "#" and group[ny][nx] == -1:
                     group[ny][nx] = c
                     queue.append((ny, nx))
         c += 1

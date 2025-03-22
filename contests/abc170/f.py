@@ -30,12 +30,7 @@ while q:
     for dx, dy in dir[cmode]:
         nx, ny = cx + dx, cy + dy
         ncost = ccost + 1
-        if (
-            0 <= nx < H
-            and 0 <= ny < W
-            and c[nx][ny]
-            and ncost < dist[pos(nx, ny, cmode)]
-        ):
+        if 0 <= nx < H and 0 <= ny < W and c[nx][ny] and ncost < dist[pos(nx, ny, cmode)]:
             heappush(q, (ncost, pos(nx, ny, cmode)))
             dist[pos(nx, ny, cmode)] = ncost
 

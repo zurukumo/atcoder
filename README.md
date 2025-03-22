@@ -15,7 +15,7 @@ pipenv run run abc001 a
 pipenv run download abc001
 ```
 
-## Download sample cases with my submission code
+## Download sample cases with submission code
 ```bash
 pipenv run download abc001 --with-submission
 ```

@@ -15,9 +15,7 @@ for i in range(N):
 def check(honest):
     for i in range(N):
         for j in range(N):
-            if honest[i] and (
-                (honest[j] == 0 and A[i][j] == 1) or (honest[j] == 1 and A[i][j] == 0)
-            ):
+            if honest[i] and ((honest[j] == 0 and A[i][j] == 1) or (honest[j] == 1 and A[i][j] == 0)):
                 return False
 
     return True

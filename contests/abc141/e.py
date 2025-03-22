@@ -14,9 +14,7 @@ for i in range(N + 1):
         for k in range(M + 1, N - j + 1):
             if i + k > j:
                 break
-            if (hash[j + k] - hash[j] * (pow[k])) % mod == (
-                hash[i + k] - hash[i] * pow[k]
-            ) % mod:
+            if (hash[j + k] - hash[j] * (pow[k])) % mod == (hash[i + k] - hash[i] * pow[k]) % mod:
                 M += 1
             else:
                 break

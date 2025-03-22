@@ -41,9 +41,7 @@ while stack:
             stack.append((nex, cur, 0))
     else:
         for nex in vec[cur]:
-            pattern[cur] *= (
-                pattern[nex] * comb(subtree[cur] + subtree[nex], subtree[nex]) % mod
-            )
+            pattern[cur] *= pattern[nex] * comb(subtree[cur] + subtree[nex], subtree[nex]) % mod
             pattern[cur] %= mod
             subtree[cur] += subtree[nex]
         subtree[cur] += 1
@@ -55,13 +53,7 @@ while queue:
     for nex in vec[cur]:
         if nex == pre:
             continue
-        pattern[nex] = (
-            pattern[cur]
-            * subtree[nex]
-            * inv[N - subtree[nex]]
-            * fac[N - subtree[nex] - 1]
-            % mod
-        )
+        pattern[nex] = pattern[cur] * subtree[nex] * inv[N - subtree[nex]] * fac[N - subtree[nex] - 1] % mod
         queue.append((nex, cur))
 
 for i in range(N):

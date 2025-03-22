@@ -1,4 +1,3 @@
-
 N, M = map(int, input().split())
 b = [[int(i) for i in input()] for _ in range(N)]
 

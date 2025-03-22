@@ -7,9 +7,7 @@ vec2 = [[INF] * N for _ in range(N)]
 
 for _ in range(M):
     a, b, c = map(int, input().split())
-    vec1[a - 1][b - 1] = vec1[b - 1][a - 1] = vec2[a - 1][b - 1] = vec2[b - 1][
-        a - 1
-    ] = c
+    vec1[a - 1][b - 1] = vec1[b - 1][a - 1] = vec2[a - 1][b - 1] = vec2[b - 1][a - 1] = c
 
 for i in range(N):
     vec1[i][i] = vec2[i][i] = 0

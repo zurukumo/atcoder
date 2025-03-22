@@ -54,12 +54,7 @@ ret = 0
 for i in range(N):
     ret += (power[lu[i]] - 1) * power[ld[i]] * power[ru[i]] * (power[rd[i]] - 1)
     ret += power[lu[i]] * (power[ld[i]] - 1) * (power[ru[i]] - 1) * power[rd[i]]
-    ret -= (
-        (power[lu[i]] - 1)
-        * (power[ld[i]] - 1)
-        * (power[ru[i]] - 1)
-        * (power[rd[i]] - 1)
-    )
+    ret -= (power[lu[i]] - 1) * (power[ld[i]] - 1) * (power[ru[i]] - 1) * (power[rd[i]] - 1)
     ret += power[lu[i]] * power[ld[i]] * power[ru[i]] * power[rd[i]]
     ret %= MOD
 

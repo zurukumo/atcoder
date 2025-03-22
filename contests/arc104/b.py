@@ -1,4 +1,3 @@
-
 N, S = input().split()
 N = int(N)
 

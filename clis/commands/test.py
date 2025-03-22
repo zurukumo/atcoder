@@ -64,9 +64,7 @@ def main():
     args = parser.parse_args()
 
     failed = False
-    for i, (input, expected) in testcase_generator(
-        args.contest, args.problem, args.testcase
-    ):
+    for i, (input, expected) in testcase_generator(args.contest, args.problem, args.testcase):
         result = subprocess.run(
             ["python3", f"contests/{args.contest}/{args.problem}.py"],
             input=input.encode(),

@@ -5,8 +5,6 @@ ret = -float("inf")
 for i in [-1, 1]:
     for j in [-1, 1]:
         for k in [-1, 1]:
-            ret = max(
-                ret, sum(sorted([x * i + y * j + z * k for x, y, z in xyz])[N - M :])
-            )
+            ret = max(ret, sum(sorted([x * i + y * j + z * k for x, y, z in xyz])[N - M :]))
 
 print(ret)

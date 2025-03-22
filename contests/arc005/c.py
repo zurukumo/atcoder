@@ -15,12 +15,7 @@ def bfs(y, x):
         y, x = q.pop()
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             nx, ny = x + dx, y + dy
-            if (
-                0 <= ny < H
-                and 0 <= nx < W
-                and c[ny][nx] != "#"
-                and visited[ny][nx] == -1
-            ):
+            if 0 <= ny < H and 0 <= nx < W and c[ny][nx] != "#" and visited[ny][nx] == -1:
                 q.append((ny, nx))
                 visited[ny][nx] = 0
 
@@ -37,12 +32,7 @@ for y in range(H):
 
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             nx, ny = x + dx, y + dy
-            if (
-                0 <= ny < H
-                and 0 <= nx < W
-                and c[ny][nx] == "#"
-                and visited[ny][nx] == -1
-            ):
+            if 0 <= ny < H and 0 <= nx < W and c[ny][nx] == "#" and visited[ny][nx] == -1:
                 visited[ny][nx] = 1
 
 for y in range(H):
@@ -57,12 +47,7 @@ for y in range(H):
 
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             nx, ny = x + dx, y + dy
-            if (
-                0 <= ny < H
-                and 0 <= nx < W
-                and c[ny][nx] == "#"
-                and visited[ny][nx] == -1
-            ):
+            if 0 <= ny < H and 0 <= nx < W and c[ny][nx] == "#" and visited[ny][nx] == -1:
                 visited[ny][nx] = 2
 
 for y in range(H):

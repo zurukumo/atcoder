@@ -48,9 +48,7 @@ def judge(p1, p2, p3, p1x, p1y, p2x, p2y, p3x, p3y):
     return True
 
 
-for p1, p2, p3 in itertools.product(
-    [R0P1], [R0P2, R1P2, R2P2, R3P2], [R0P3, R1P3, R2P3, R3P3]
-):
+for p1, p2, p3 in itertools.product([R0P1], [R0P2, R1P2, R2P2, R3P2], [R0P3, R1P3, R2P3, R3P3]):
     for p1x, p1y, p2x, p2y, p3x, p3y in itertools.product(range(-3, 4), repeat=6):
         if judge(p1, p2, p3, p1x, p1y, p2x, p2y, p3x, p3y):
             print("Yes")

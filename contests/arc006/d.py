@@ -14,12 +14,7 @@ def bfs(y, x):
         for dy in [-1, 0, 1]:
             for dx in [-1, 0, 1]:
                 ny, nx = cy + dy, cx + dx
-                if (
-                    0 <= ny < H
-                    and 0 <= nx < W
-                    and not visited[ny][nx]
-                    and c[ny][nx] == "o"
-                ):
+                if 0 <= ny < H and 0 <= nx < W and not visited[ny][nx] and c[ny][nx] == "o":
                     q.append((ny, nx))
                     visited[ny][nx] = True
                     s += 1

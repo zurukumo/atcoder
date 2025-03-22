@@ -8,12 +8,7 @@ def search(y, x, c):
         cy, cx = q.pop()
         for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             ny, nx = cy + dy, cx + dx
-            if (
-                0 <= nx < 10
-                and 0 <= ny < 10
-                and A[ny][nx] == "o"
-                and visited[ny][nx] == -1
-            ):
+            if 0 <= nx < 10 and 0 <= ny < 10 and A[ny][nx] == "o" and visited[ny][nx] == -1:
                 visited[ny][nx] = c
                 q.append((ny, nx))
 

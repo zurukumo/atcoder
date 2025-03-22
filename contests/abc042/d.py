@@ -10,15 +10,7 @@ for i in range(1, H + W + 1):
 
 ret = 0
 for i in range(H - A):
-    ret += (
-        fac[i + B - 1]
-        * inv[i]
-        * inv[B - 1]
-        * fac[H + W - i - B - 2]
-        * inv[H - i - 1]
-        * inv[W - B - 1]
-        % MOD
-    )
+    ret += fac[i + B - 1] * inv[i] * inv[B - 1] * fac[H + W - i - B - 2] * inv[H - i - 1] * inv[W - B - 1] % MOD
     ret %= MOD
 
 print(ret)

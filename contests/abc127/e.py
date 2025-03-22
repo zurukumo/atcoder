@@ -23,9 +23,7 @@ def comb(n, r):
     for i in range(1, n + 1):
         factorial[i] = (factorial[i - 1] * i) % MOD
 
-    return (
-        factorial[n] * pow(factorial[n - r], MOD - 2) * pow(factorial[r], MOD - 2)
-    ) % MOD
+    return (factorial[n] * pow(factorial[n - r], MOD - 2) * pow(factorial[r], MOD - 2)) % MOD
 
 
 res = 0

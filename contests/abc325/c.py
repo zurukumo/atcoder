@@ -16,12 +16,7 @@ for y in range(H):
             for dy in range(-1, 2):
                 for dx in range(-1, 2):
                     ny, nx = cy + dy, cx + dx
-                    if (
-                        0 <= ny < H
-                        and 0 <= nx < W
-                        and not visited[ny][nx]
-                        and S[ny][nx] == "#"
-                    ):
+                    if 0 <= ny < H and 0 <= nx < W and not visited[ny][nx] and S[ny][nx] == "#":
                         visited[ny][nx] = True
                         queue.append((ny, nx))
 

@@ -30,7 +30,5 @@ if X == Y == 1:
 else:
     P9 = comb((X - 2) * (Y - 2), D) * comb((X - 2) * (Y - 2) - D, L)
 
-ret = (
-    (R - X + 1) * (C - Y + 1) * (P1 - (P2 + P3) + (P4 + P5 + P6) - (P7 + P8) + P9) % mod
-)
+ret = (R - X + 1) * (C - Y + 1) * (P1 - (P2 + P3) + (P4 + P5 + P6) - (P7 + P8) + P9) % mod
 print(ret)

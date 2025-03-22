@@ -20,12 +20,7 @@ for sy in range(H):
             cy, cx, co = q.popleft()
             for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
                 ny, nx = cy + dy, cx + dx
-                if (
-                    0 <= ny < H
-                    and 0 <= nx < W
-                    and S[ny][nx] != "#"
-                    and co + 1 < cost[ny][nx]
-                ):
+                if 0 <= ny < H and 0 <= nx < W and S[ny][nx] != "#" and co + 1 < cost[ny][nx]:
                     q.append((ny, nx, co + 1))
                     cost[ny][nx] = co + 1
                     ret = max(ret, co + 1)

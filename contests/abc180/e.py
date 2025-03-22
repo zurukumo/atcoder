@@ -35,8 +35,6 @@ for bit in bit_patterns(N):
             p, q, r = XYZ[to]
 
             next_bit = bit | (1 << to)
-            dp[next_bit][to] = min(
-                dp[next_bit][to], dp[bit][fr] + abs(p - a) + abs(q - b) + max(0, r - c)
-            )
+            dp[next_bit][to] = min(dp[next_bit][to], dp[bit][fr] + abs(p - a) + abs(q - b) + max(0, r - c))
 
 print(dp[(2**N) - 1][0])

@@ -15,12 +15,7 @@ while True:
         visited[cy][cx] = c
         for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
             ny, nx = cy + dy, cx + dx
-            if (
-                0 <= ny < H
-                and 0 <= nx < W
-                and A[ny][nx] == "."
-                and visited[ny][nx] == -1
-            ):
+            if 0 <= ny < H and 0 <= nx < W and A[ny][nx] == "." and visited[ny][nx] == -1:
                 h.append((ny, nx))
                 visited[ny][nx] = c
 
@@ -29,12 +24,7 @@ while True:
         for dy in range(-2, 3):
             for dx in range(-2, 3):
                 ny, nx = cy + dy, cx + dx
-                if (
-                    0 <= ny < H
-                    and 0 <= nx < W
-                    and A[ny][nx] == "."
-                    and visited[ny][nx] == -1
-                ):
+                if 0 <= ny < H and 0 <= nx < W and A[ny][nx] == "." and visited[ny][nx] == -1:
                     h.append((ny, nx))
     if not h:
         break
