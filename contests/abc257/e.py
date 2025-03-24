@@ -1,12 +1,15 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+C = [int(i) for i in input().split()]
+
+ret = []
+mod = N % min(C)
+
+while N >= min(C):
+    for i in range(8, -1, -1):
+        if C[i] - min(C) <= mod:
+            ret.append(str(i + 1))
+            N -= C[i]
+            mod -= C[i] - min(C)
+            break
+
+print("".join(ret))
