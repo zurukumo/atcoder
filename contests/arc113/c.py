@@ -1,12 +1,16 @@
-import sys
+import collections
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+ret = 0
+mem = collections.defaultdict(int)
+mem[S[-1]] += 1
+mem[S[-2]] += 1
+for i in range(len(S) - 3, -1, -1):
+    mem[S[i]] += 1
+    if S[i] == S[i + 1] and S[i] != S[i + 2]:
+        ret += len(S) - i - mem[S[i]]
+        mem = collections.defaultdict(int)
+        mem[S[i]] = len(S) - i
+
+print(ret)

@@ -1,12 +1,16 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+import sortedcontainers
 
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+P = [int(i) for i in input().split()]
+
+sc = sortedcontainers.SortedList(range(N))
+xs = []
+for p in P[::-1]:
+    p -= 1
+    xs.append(sc.pop(p))
+
+ret = [0] * N
+for i, x in enumerate(xs[::-1]):
+    ret[x] = i + 1
+
+print(*ret)
