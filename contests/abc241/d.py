@@ -1,12 +1,26 @@
-import sys
+import sortedcontainers
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+Q = int(input())
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+sl = sortedcontainers.SortedList()
+for _ in range(Q):
+    query = [int(i) for i in input().split()]
+    if query[0] == 1:
+        _, x = query
+        sl.add(x)
+    elif query[0] == 2:
+        _, x, k = query
+        k -= 1
+        idx = sl.bisect_left(x + 1) - 1
+        if idx >= k:
+            print(sl[idx - k])
+        else:
+            print(-1)
+    elif query[0] == 3:
+        _, x, k = query
+        k -= 1
+        idx = sl.bisect_right(x - 1)
+        if idx + k < len(sl):
+            print(sl[idx + k])
+        else:
+            print(-1)

@@ -1,12 +1,22 @@
-import sys
+import heapq
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
-N = int(input())
-S = input()
 N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+A = [int(i) for i in input().split()]
+
+hq = A[::]
+heapq.heapify(hq)
+
+done = set()
+
+cnt = 0
+while True:
+    x = heapq.heappop(hq)
+    if x not in done:
+        done.add(x)
+        for a in A:
+            heapq.heappush(hq, x + a)
+        cnt += 1
+
+    if cnt == K:
+        print(x)
+        break
