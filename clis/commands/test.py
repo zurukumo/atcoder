@@ -10,7 +10,7 @@ def read_testcase_file(contest, problem, testcase) -> tuple[str, str]:
     with open(f"contests/{contest}/samples/{problem}-{testcase}-in.txt") as f:
         input = f.read()
     with open(f"contests/{contest}/samples/{problem}-{testcase}-out.txt") as f:
-        expected = f.read()
+        expected = f.read().strip()
 
     if input == "":
         raise FileNotFoundError
@@ -72,18 +72,24 @@ def main():
                 input=input,
                 capture_output=True,
                 text=True,
-                timeout=3,
+                timeout=5,
             )
         except subprocess.TimeoutExpired as error:
             print_yellow(f"TLE: Test {i}")
-            print_yellow(error.stdout.decode())
+            if error.stdout:
+                print_yellow(error.stdout.decode())
+            print()
+            print()
             failed = True
             continue
 
         if result.returncode != 0:
             print_yellow(f"CE: Test {i}")
-            print_yellow(result.stdout)
+            if result.stdout:
+                print_yellow(result.stdout)
             print_yellow(result.stderr)
+            print()
+            print()
             failed = True
             continue
 
@@ -91,8 +97,11 @@ def main():
             print_red(f"WA: Test {i}")
             print_red("Expected:")
             print_red(expected)
+            print()
             print_red("Got:")
             print_red(result.stdout)
+            print()
+            print()
             failed = True
             continue
 
