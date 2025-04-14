@@ -1,12 +1,31 @@
-import sys
+import itertools
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N, M, K = map(int, input().split())
+uvw = [[int(i) for i in input().split()] for _ in range(M)]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+ret = float("inf")
+for comb in itertools.combinations(range(M), N - 1):
+    s = 0
+    vec = [[] for _ in range(N)]
+    for i in comb:
+        u, v, w = uvw[i]
+        u -= 1
+        v -= 1
+        vec[u].append(v)
+        vec[v].append(u)
+        s += w
+
+    queue = [0]
+    visited = set([0])
+    while queue:
+        cur = queue.pop()
+        for nex in vec[cur]:
+            if nex in visited:
+                continue
+            visited.add(nex)
+            queue.append(nex)
+
+    if len(visited) == N:
+        ret = min(ret, s % K)
+
+print(ret)

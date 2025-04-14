@@ -1,12 +1,39 @@
-import sys
+import heapq
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+N, M, K = map(int, input().split())
+ab = [[int(i) for i in input().split()] for _ in range(M)]
+ph = [[int(i) for i in input().split()] for _ in range(K)]
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+graph = [[] for _ in range(N)]
+for a, b in ab:
+    a -= 1
+    b -= 1
+    graph[a].append(b)
+    graph[b].append(a)
+
+
+hq = []
+cost = [-1] * N
+for p, h in ph:
+    p -= 1
+    heapq.heappush(hq, (-h, p))
+    cost[p] = h
+
+while hq:
+    hp, cur = heapq.heappop(hq)
+    hp = -hp
+    if hp < cost[cur]:
+        continue
+    for nex in graph[cur]:
+        if hp - 1 <= cost[nex]:
+            continue
+        heapq.heappush(hq, (-(hp - 1), nex))
+        cost[nex] = hp - 1
+
+ret = []
+for i in range(N):
+    if cost[i] >= 0:
+        ret.append(i + 1)
+
+print(len(ret))
+print(*ret)
