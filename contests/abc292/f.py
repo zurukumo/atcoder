@@ -1,12 +1,9 @@
-import sys
+import math
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
+A, B = map(int, input().split())
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+A, B = max(A, B), min(A, B)
+
+x = math.atan2(2 * A - math.sqrt(3) * B, B)
+
+print(min(2 * math.sqrt(3) * B / 3, B / math.cos(x)))
