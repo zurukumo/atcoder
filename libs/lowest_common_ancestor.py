@@ -4,43 +4,43 @@ class DoublingLowestCommonAncestor:
         K = len(bin(N)) - 1
 
         # bfs
-        par = [[-1] * N for i in range(K)]
-        rnk = [-1] * N
-        rnk[0] = 0
+        parent = [[-1] * N for _ in range(K)]
+        rank = [-1] * N
+        rank[0] = 0
 
         q = [(0, -1)]
         while q:
             cur, pre = q.pop()
             for nex in G[cur]:
                 if nex != pre:
-                    par[0][nex] = cur
+                    parent[0][nex] = cur
                     q.append((nex, cur))
-                    rnk[nex] = rnk[cur] + 1
+                    rank[nex] = rank[cur] + 1
 
         # doubling
         for i in range(1, K):
             for j in range(N):
-                if par[i - 1][j] > 0:
-                    par[i][j] = par[i - 1][par[i - 1][j]]
+                if parent[i - 1][j] != -1:
+                    parent[i][j] = parent[i - 1][parent[i - 1][j]]
 
         self.K = K
-        self.par = par
-        self.rnk = rnk
+        self.parent = parent
+        self.rank = rank
 
     def query(self, a, b):
-        if self.rnk[a] > self.rnk[b]:
+        if self.rank[a] > self.rank[b]:
             a, b = b, a
 
-        diff = self.rnk[b] - self.rnk[a]
+        diff = self.rank[b] - self.rank[a]
         for i in range(self.K - 1, -1, -1):
             if diff & (1 << i):
-                b = self.par[i][b]
+                b = self.parent[i][b]
 
         if a == b:
             return a
 
         for i in range(self.K - 1, -1, -1):
-            if self.par[i][a] != self.par[i][b]:
-                a, b = self.par[i][a], self.par[i][b]
+            if self.parent[i][a] != self.parent[i][b]:
+                a, b = self.parent[i][a], self.parent[i][b]
 
-        return self.par[0][a]
+        return self.parent[0][a]
