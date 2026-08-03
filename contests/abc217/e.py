@@ -1,12 +1,23 @@
+import collections
+import heapq
 import sys
 
 input = sys.stdin.readline
 sys.setrecursionlimit(10**7)
 
-N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+Q = int(input())
+nq = collections.deque([])
+sq = []
+for _ in range(Q):
+    query = input().split()
+    if query[0] == "1":
+        x = int(query[1])
+        nq.append(x)
+    elif query[0] == "2":
+        if sq:
+            print(heapq.heappop(sq))
+        else:
+            print(nq.popleft())
+    else:
+        while nq:
+            heapq.heappush(sq, nq.pop())
