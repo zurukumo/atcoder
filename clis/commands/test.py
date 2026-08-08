@@ -23,9 +23,9 @@ def is_decimal_string(s: str) -> bool:
     return decimal_pattern.match(s) is not None
 
 
-def same(output: str, expected: str) -> bool:
-    output = output.strip().split()
-    expected = expected.strip().split()
+def same(output_plain: str, expected_plain: str) -> bool:
+    output = output_plain.strip().split()
+    expected = expected_plain.strip().split()
 
     if len(output) != len(expected):
         return False

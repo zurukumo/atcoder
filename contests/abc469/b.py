@@ -5,8 +5,9 @@ sys.setrecursionlimit(10**7)
 
 N = int(input())
 S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
-S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+ret = 0
+for i in range(N):
+    if S[i] == "x" and (i == 0 or S[i - 1] == "x") and (i == N - 1 or S[i + 1] == "x"):
+        ret += 1
+print(ret)

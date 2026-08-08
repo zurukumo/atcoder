@@ -1,3 +1,9 @@
+import sys
+
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
+
+
 # Kosaraju's algorithm
 class StronglyConnectedComponent:
     def __init__(self, n):
@@ -66,3 +72,32 @@ class StronglyConnectedComponent:
             groups[self.cmp[i]].append(i)
 
         return groups
+
+
+T = int(input())
+for _ in range(T):
+    N, M = map(int, input().split())
+    UV = [[int(i) for i in input().split()] for _ in range(M)]
+    W = int(input())
+    S = [input() for _ in range(N)]
+
+    scc = StronglyConnectedComponent(N * W)
+    for u, v in UV:
+        u -= 1
+        v -= 1
+        for d in range(W):
+            if S[u][d] == "o" and S[v][(d + 1) % W] == "o":
+                scc.add_edge(u * W + d, v * W + (d + 1) % W)
+            if S[v][d] == "o" and S[u][(d + 1) % W] == "o":
+                scc.add_edge(v * W + d, u * W + (d + 1) % W)
+    for u in range(N):
+        for d in range(W):
+            if S[u][d] == "o" and S[u][(d + 1) % W] == "o":
+                scc.add_edge(u * W + d, u * W + (d + 1) % W)
+
+    for group in scc.scc():
+        if len(group) > 1 and any(e % W == 0 for e in group):
+            print("Yes")
+            break
+    else:
+        print("No")
