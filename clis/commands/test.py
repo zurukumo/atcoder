@@ -3,7 +3,7 @@ import re
 import subprocess
 from typing import Generator
 
-from ..print import print_green, print_red, print_yellow
+from clis.print import print_green, print_red, print_yellow
 
 
 def read_testcase_file(contest, problem, testcase) -> tuple[str, str]:

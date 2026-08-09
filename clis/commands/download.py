@@ -4,8 +4,8 @@ import time
 
 from playwright.sync_api import sync_playwright
 
-from ..context import load_context
-from ..print import print_green, print_red
+from clis.context import load_context
+from clis.print import print_green, print_red
 
 
 def copy_template(contest: str, problem: str) -> None:
