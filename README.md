@@ -2,25 +2,20 @@
 
 ## Login
 ```bash
-USERNAME=your_username PASSWORD=your_password pipenv run login
-```
-
-## Run
-```bash
-pipenv run run abc001 a
+$ USERNAME=your_username PASSWORD=your_password pipenv run login
 ```
 
 ## Download sample cases
 ```bash
-pipenv run download abc001
+$ pipenv run download abc001
 ```
 
-## Download sample cases with submission code
+## Run
 ```bash
-pipenv run download abc001 --with-submission
+$ pipenv run run abc001 a
 ```
 
 ## Test
 ```bash
-pipenv run test abc001 a
+$ pipenv run test abc001 a
 ```
