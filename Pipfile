@@ -14,7 +14,7 @@ mypy = "*"
 ruff = "*"
 
 [scripts]
-format = "ruff format"
+format = "python3 -m ruff format"
 unittest = "python3 -m unittest discover -v tests"
 login = "python3 -m clis.commands.login"
 download = "python3 -m clis.commands.download"
