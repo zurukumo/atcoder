@@ -1,12 +1,15 @@
-import sys
-
-input = sys.stdin.readline
-sys.setrecursionlimit(10**7)
-
+X = input()
 N = int(input())
-S = input()
-N, K = map(int, input().split())
-xy = [[int(i) for i in input().split()] for _ in range(N)]
-x = [int(i) for i in input().split()]
 S = [input() for _ in range(N)]
-A = [int(input()) for _ in range(N)]
+
+T = []
+
+for s in S:
+    t = ""
+    for c in s:
+        t += chr(ord("a") + X.index(c))
+    T.append(t)
+
+st = zip(S, T)
+for s, t in sorted(st, key=lambda x: x[1]):
+    print(s)
